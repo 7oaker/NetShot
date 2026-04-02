@@ -46,8 +46,8 @@ export default function App() {
         <AppSection />
         <Sports />
         <FeatureGrid />
-        <FAQ />
         <Preorder />
+        <FAQ />
       </main>
       <Footer />
     </>

@@ -148,32 +148,6 @@ export default function Preorder() {
               ))}
             </div>
 
-            {/* Amazon CTA */}
-            <a
-              href="https://www.amazon.com/dp/PLACEHOLDER"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="amazon-btn"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '9px',
-                background: '#ff9900',
-                borderRadius: '980px',
-                padding: '13px 24px',
-                color: '#000', fontFamily: 'var(--font)',
-                fontSize: '15px', fontWeight: 600,
-                textDecoration: 'none',
-                transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
-                boxShadow: '0 0 24px rgba(255,153,0,0.3)',
-                whiteSpace: 'nowrap',
-                alignSelf: 'flex-start',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#ffaa1a'; e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 0 36px rgba(255,153,0,0.45)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#ff9900'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 24px rgba(255,153,0,0.3)' }}
-            >
-              <img src={amazonBlackIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
-              Buy on Amazon
-            </a>
-
             {/* 3D model */}
             <div className="model-container" style={{
               flex: 1,
@@ -184,6 +158,31 @@ export default function Preorder() {
             }}>
               <Model3D autoRotate={true} enableOrbit={false} height="100%" />
             </div>
+
+            {/* Amazon CTA */}
+            <a
+              href="https://www.amazon.com/dp/PLACEHOLDER"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="amazon-btn"
+              style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '9px',
+                background: '#ff9900',
+                borderRadius: '980px',
+                padding: '13px 24px',
+                color: '#000', fontFamily: 'var(--font)',
+                fontSize: '15px', fontWeight: 600,
+                textDecoration: 'none',
+                transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
+                boxShadow: '0 0 24px rgba(255,153,0,0.3)',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#ffaa1a'; e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 0 36px rgba(255,153,0,0.45)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = '#ff9900'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 24px rgba(255,153,0,0.3)' }}
+            >
+              <img src={amazonBlackIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
+              Buy on Amazon
+            </a>
           </div>
 
           {/* ── App Waitlist ── */}
@@ -247,7 +246,7 @@ export default function Preorder() {
             {/* Email form */}
             {!submitted ? (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '8px' }}>
+                <form onSubmit={handleSubmit} className="notify-form" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <input
                     type="email"
                     placeholder="your@email.com"
@@ -278,6 +277,7 @@ export default function Preorder() {
                     whiteSpace: 'nowrap',
                     transition: 'background 0.2s, transform 0.2s',
                     boxShadow: '0 0 24px rgba(0,113,227,0.35)',
+                    width: '100%',
                   }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#0077ed'; e.currentTarget.style.transform = 'scale(1.03)' }}
                   onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)' }}>
@@ -313,7 +313,6 @@ export default function Preorder() {
             grid-template-columns: 1fr !important;
           }
           .amazon-btn {
-            align-self: center !important;
             justify-content: center;
             width: 100%;
             box-sizing: border-box;
@@ -321,6 +320,7 @@ export default function Preorder() {
           .model-container {
             min-height: 280px !important;
           }
+
         }
       `}</style>
     </section>
