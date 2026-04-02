@@ -1,35 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-const faqs = [
-  {
-    q: 'How does NetShot attach to a tennis net?',
-    a: 'NetShot features a precision-machined aluminium clamp that slides onto any standard tennis net post or top rail in under 5 seconds. No tools required.',
-  },
-  {
-    q: 'What phones does NetShot support?',
-    a: "NetShot's universal spring-loaded cradle holds any smartphone up to 75mm wide and 12mm thick — covering all major iPhone and Android models.",
-  },
-  {
-    q: 'How do I record my tennis match with NetShot?',
-    a: 'Mount NetShot on the net post, clip in your phone, and open the NetShot app. Press record and the AI automatically detects rallies, clips highlights, and organises your session — no editing required.',
-  },
-  {
-    q: 'Is there an AI highlights app for tennis?',
-    a: 'Yes. The NetShot companion app (coming soon for iOS and Android) uses AI to automatically detect rallies, clip highlights, and organise your sessions so you can improve without ever touching a video editor.',
-  },
-  {
-    q: 'Does NetShot work for padel?',
-    a: 'NetShot currently supports tennis net posts. A padel-optimised version is in development and coming soon.',
-  },
-  {
-    q: 'What material is the NetShot mount made from?',
-    a: 'NetShot is machined from aircraft-grade 6061 aluminium, weighs just 238g, and has a sandblasted anodised finish for long-term durability on outdoor courts.',
-  },
-]
+import { useLang } from '../i18n/LanguageContext'
 
 export default function FAQ() {
+  const { t } = useLang()
   const sectionRef = useRef<HTMLElement>(null)
   const headRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
@@ -66,15 +40,15 @@ export default function FAQ() {
 
       <div ref={headRef} style={{ textAlign: 'center', marginBottom: 'clamp(48px, 7vw, 72px)', opacity: 0 }}>
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
-          FAQ
+          {t.faq.label}
         </p>
         <h2 style={{ fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
-          Common questions.
+          {t.faq.headline}
         </h2>
       </div>
 
       <div ref={listRef} style={{ maxWidth: '720px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '0' }}>
-        {faqs.map((faq, i) => (
+        {t.faq.items.map((faq, i) => (
           <div
             key={i}
             style={{

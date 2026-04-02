@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useLang } from '../i18n/LanguageContext'
 
-const features = [
+const featureMeta = [
   {
-    title: 'Premium Aluminium',
-    body: 'Machined from 6061 aircraft-grade aluminium. Built for courts, built to last. No plastic. No compromises.',
     accent: '#a1a1a6',
-    size: 'large',
+    size: 'large' as const,
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
         <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="url(#alum)" strokeWidth="1.5" fill="none"/>
@@ -22,10 +20,8 @@ const features = [
     ),
   },
   {
-    title: 'Universal Fit',
-    body: 'Any net post. Any phone. Instantly secure.',
     accent: '#0071e3',
-    size: 'small',
+    size: 'small' as const,
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
         <circle cx="18" cy="18" r="14" stroke="#0071e3" strokeWidth="1.5"/>
@@ -35,10 +31,8 @@ const features = [
     ),
   },
   {
-    title: 'App Connected',
-    body: 'iOS & Android. Automatic sync. Everything in one place.',
     accent: '#30d158',
-    size: 'small',
+    size: 'small' as const,
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
         <rect x="10" y="4" width="16" height="28" rx="4" stroke="#30d158" strokeWidth="1.5"/>
@@ -48,10 +42,8 @@ const features = [
     ),
   },
   {
-    title: 'Auto Highlights',
-    body: 'AI detects your best moments and clips them automatically. No editing. No hassle. Just great footage.',
     accent: '#ff9f0a',
-    size: 'large',
+    size: 'large' as const,
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
         <path d="M8 20L32 20M20 8L32 20L20 32" stroke="#ff9f0a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -61,10 +53,8 @@ const features = [
     ),
   },
   {
-    title: 'Setup in Seconds',
-    body: 'Under 5 seconds from bag to recording. No tools required.',
     accent: '#64d2ff',
-    size: 'small',
+    size: 'small' as const,
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
         <circle cx="18" cy="18" r="13" stroke="#64d2ff" strokeWidth="1.5"/>
@@ -77,6 +67,7 @@ const features = [
 const MOBILE_PREVIEW = 2
 
 export default function FeatureGrid() {
+  const { t } = useLang()
   const sectionRef = useRef<HTMLDivElement>(null)
   const headRef = useRef<HTMLDivElement>(null)
   const gridRef = useRef<HTMLDivElement>(null)
@@ -131,13 +122,14 @@ export default function FeatureGrid() {
     }}>
       <div style={{ position: 'absolute', right: '-80px', top: '50%', transform: 'translateY(-50%)', width: '520px', height: '520px', borderRadius: '50%', background: 'rgba(0,113,227,0.2)', filter: 'blur(130px)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', left: '-80px', bottom: '25%', width: '480px', height: '480px', borderRadius: '50%', background: 'rgba(0,113,227,0.18)', filter: 'blur(120px)', pointerEvents: 'none' }} />
+
       {/* Header */}
       <div ref={headRef} style={{ textAlign: 'center', marginBottom: 'clamp(56px, 8vw, 72px)', opacity: 0 }}>
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
-          Why NetShot
+          {t.features.label}
         </p>
         <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
-          Everything considered.
+          {t.features.headline}
         </h2>
       </div>
 
@@ -149,8 +141,9 @@ export default function FeatureGrid() {
         maxWidth: '1100px',
         margin: '0 auto',
       }}>
-        {features.map((f, i) => {
-          const isLarge = f.size === 'large'
+        {t.features.items.map((f, i) => {
+          const meta = featureMeta[i]
+          const isLarge = meta.size === 'large'
           const isHidden = isMobile && !expanded && i >= MOBILE_PREVIEW
           return (
             <div
@@ -171,8 +164,11 @@ export default function FeatureGrid() {
                 overflow: 'hidden',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = `${f.accent}40`
-                e.currentTarget.style.background = `color-mix(in srgb, ${f.accent} 4%, var(--surface))`
+                e.currentTarget.style.borderColor = `${meta.accent}40`
+                // color-mix fallback: use accent at 4% opacity over surface (#1c1c1e)
+                e.currentTarget.style.background = CSS.supports('color', 'color-mix(in srgb, red 4%, black)')
+                  ? `color-mix(in srgb, ${meta.accent} 4%, var(--surface))`
+                  : '#232325'
                 e.currentTarget.style.transform = 'translateY(-4px)'
               }}
               onMouseLeave={e => {
@@ -184,10 +180,10 @@ export default function FeatureGrid() {
               <div style={{
                 position: 'absolute', top: 0, right: 0,
                 width: '200px', height: '200px',
-                background: `radial-gradient(circle at top right, ${f.accent}08, transparent 60%)`,
+                background: `radial-gradient(circle at top right, ${meta.accent}08, transparent 60%)`,
                 pointerEvents: 'none',
               }} />
-              <div style={{ marginBottom: '20px' }}>{f.icon}</div>
+              <div style={{ marginBottom: '20px' }}>{meta.icon}</div>
               <h3 style={{
                 fontSize: isLarge ? 'clamp(22px, 2.5vw, 30px)' : 'clamp(18px, 2vw, 22px)',
                 fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.025em', marginBottom: '10px'
@@ -222,7 +218,7 @@ export default function FeatureGrid() {
               gap: '8px',
             }}
           >
-            Show all {features.length} features
+            {t.features.showAll(featureMeta.length)}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M2 5l5 5 5-5" stroke="#f5f5f7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>

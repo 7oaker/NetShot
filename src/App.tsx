@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { LanguageProvider } from './i18n/LanguageContext'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Tagline from './components/Tagline'
@@ -36,7 +37,7 @@ export default function App() {
   }, [])
 
   return (
-    <>
+    <LanguageProvider>
       <Navbar />
       <main>
         <Hero />
@@ -50,6 +51,6 @@ export default function App() {
         <FAQ />
       </main>
       <Footer />
-    </>
+    </LanguageProvider>
   )
 }

@@ -1,14 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-const phrases = [
-  { label: 'Mount it.', sub: 'Clips to any net in seconds.' },
-  { label: 'Record it.', sub: 'Automatically captures every rally.' },
-  { label: 'Own it.', sub: 'Review, highlight, and share your game.' },
-]
+import { useLang } from '../i18n/LanguageContext'
 
 export default function Tagline() {
+  const { t } = useLang()
   const sectionRef = useRef<HTMLDivElement>(null)
   const cardsRef = useRef<HTMLDivElement>(null)
 
@@ -46,7 +41,7 @@ export default function Tagline() {
         marginBottom: '56px',
         fontWeight: 500,
       }}>
-        Three steps. Zero friction.
+        {t.tagline.label}
       </p>
 
       <div ref={cardsRef} style={{
@@ -57,7 +52,7 @@ export default function Tagline() {
         maxWidth: '900px',
         margin: '0 auto',
       }}>
-        {phrases.map((p, i) => (
+        {t.tagline.phrases.map((p, i) => (
           <div key={i} style={{
             flex: '1 1 220px',
             maxWidth: '260px',

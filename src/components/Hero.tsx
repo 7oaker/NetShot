@@ -1,11 +1,15 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import amazonWhiteIcon from '../assets/logo/amazon/icons8-amazon-100.png'
+import { useLang } from '../i18n/LanguageContext'
+import { AMAZON_URL } from '../constants'
 
 export default function Hero() {
+  const { t } = useLang()
   const headlineRef = useRef<HTMLHeadingElement>(null)
   const subRef = useRef<HTMLDivElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.3 })
 
@@ -63,7 +67,7 @@ export default function Hero() {
         <source src="/hero-tennis.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark gradient overlay — heavier at top and bottom so text pops */}
+      {/* Dark gradient overlay */}
       <div style={{
         position: 'absolute', inset: 0,
         background: 'linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.35) 40%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.85) 100%)',
@@ -80,7 +84,6 @@ export default function Hero() {
         zIndex: 1,
       }} />
 
-
       {/* Headline */}
       <h1 ref={headlineRef} style={{
         textAlign: 'center',
@@ -91,7 +94,7 @@ export default function Hero() {
         padding: 0,
         fontFamily: 'var(--font)',
       }}>
-        {['Play.', 'Capture.', 'Enjoy.'].map((word, i) => (
+        {t.hero.headline.map((word, i) => (
           <span key={i} style={{
             display: 'block',
             fontSize: 'clamp(56px, 10vw, 108px)',
@@ -116,15 +119,15 @@ export default function Hero() {
           maxWidth: '480px',
           margin: '0 auto',
         }}>
-          Your game. Captured effortlessly.
+          {t.hero.sub1}
           <br />
-          The premium aluminium mount built for the net.
+          {t.hero.sub2}
         </p>
       </div>
 
       <div ref={ctaRef} style={{ display: 'flex', gap: '12px', marginTop: '36px', zIndex: 2, position: 'relative', opacity: 0, flexWrap: 'wrap', justifyContent: 'center' }}>
         <a
-          href="https://www.amazon.com/dp/PLACEHOLDER"
+          href={AMAZON_URL}
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -141,7 +144,7 @@ export default function Hero() {
           onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(0,113,227,0.35)' }}
         >
           <img src={amazonWhiteIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
-          Order Now
+          {t.hero.orderNow}
         </a>
         <button
           onClick={() => scrollTo('how-it-works')}
@@ -155,7 +158,7 @@ export default function Hero() {
           }}
           onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.transform = 'scale(1.04)' }}
           onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'scale(1)' }}>
-          See How It Works
+          {t.hero.seeHow}
         </button>
       </div>
 
@@ -165,7 +168,7 @@ export default function Hero() {
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px',
         zIndex: 2,
       }}>
-        <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Scroll</span>
+        <span style={{ fontSize: '11px', color: 'var(--text-tertiary)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{t.hero.scroll}</span>
         <div style={{
           width: '1px', height: '40px',
           background: 'linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)',

@@ -1,17 +1,22 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { gsap } from 'gsap'
 import logoIcon from '../assets/logo/favicon/favicon-96x96.png'
-
-const navLinks: [string, string][] = [
-  ['How it Works', 'how-it-works'],
-  ['The App', 'app'],
-  ['Sports', 'sports'],
-]
+import { useLang } from '../i18n/LanguageContext'
+import type { Lang } from '../i18n/translations'
 
 export default function Navbar() {
+  const { lang, t, setLang } = useLang()
   const navRef = useRef<HTMLElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const menuBtnRef = useRef<HTMLButtonElement>(null)
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const navLinks: [string, string][] = [
+    [t.nav.howItWorks, 'how-it-works'],
+    [t.nav.theApp, 'app'],
+    [t.nav.sports, 'sports'],
+  ]
 
   useEffect(() => {
     gsap.fromTo(navRef.current, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1, delay: 0.5, ease: 'power3.out' })
@@ -19,6 +24,38 @@ export default function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Focus first item when menu opens
+  useEffect(() => {
+    if (menuOpen && menuRef.current) {
+      const first = menuRef.current.querySelector<HTMLElement>('button, a')
+      first?.focus()
+    }
+  }, [menuOpen])
+
+  // Focus trap for mobile menu
+  const handleMenuKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (!menuRef.current) return
+    if (e.key === 'Escape') {
+      setMenuOpen(false)
+      menuBtnRef.current?.focus()
+      return
+    }
+    if (e.key !== 'Tab') return
+    const focusable = Array.from(
+      menuRef.current.querySelectorAll<HTMLElement>('button, a, [tabindex]:not([tabindex="-1"])')
+    )
+    if (focusable.length === 0) return
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault()
+      last.focus()
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault()
+      first.focus()
+    }
   }, [])
 
   const scrollTo = (id: string) => {
@@ -74,6 +111,10 @@ export default function Navbar() {
               {label}
             </button>
           ))}
+
+          {/* Language toggle */}
+          <LangToggle lang={lang} setLang={setLang} />
+
           <button onClick={() => scrollTo('preorder')} style={{
             background: '#0071e3', border: 'none', cursor: 'pointer',
             color: '#fff', fontFamily: 'var(--font)',
@@ -83,7 +124,7 @@ export default function Navbar() {
           }}
           onMouseEnter={e => { e.currentTarget.style.background = '#0077ed'; e.currentTarget.style.transform = 'scale(1.03)' }}
           onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)' }}>
-            Get Yours
+            {t.nav.getYours}
           </button>
         </div>
 
@@ -95,11 +136,14 @@ export default function Navbar() {
             fontSize: '13px', fontWeight: 500,
             padding: '7px 14px', borderRadius: '980px',
           }}>
-            Get Yours
+            {t.nav.getYours}
           </button>
           <button
+            ref={menuBtnRef}
             onClick={() => setMenuOpen(o => !o)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
             style={{
               background: 'none',
               border: '1px solid rgba(255,255,255,0.15)',
@@ -124,18 +168,24 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div style={{
-          position: 'fixed',
-          top: '52px', left: 0, right: 0,
-          zIndex: 999,
-          background: 'rgba(0,0,0,0.96)',
-          backdropFilter: 'saturate(180%) blur(20px)',
-          WebkitBackdropFilter: 'saturate(180%) blur(20px)',
-          borderBottom: '1px solid rgba(255,255,255,0.08)',
-          padding: '8px 24px 20px',
-          display: 'flex',
-          flexDirection: 'column',
-        }}>
+        <div
+          id="mobile-menu"
+          ref={menuRef}
+          role="dialog"
+          aria-label="Navigation menu"
+          onKeyDown={handleMenuKeyDown}
+          style={{
+            position: 'fixed',
+            top: '52px', left: 0, right: 0,
+            zIndex: 999,
+            background: 'rgba(0,0,0,0.96)',
+            backdropFilter: 'saturate(180%) blur(20px)',
+            WebkitBackdropFilter: 'saturate(180%) blur(20px)',
+            borderBottom: '1px solid rgba(255,255,255,0.08)',
+            padding: '8px 24px 20px',
+            display: 'flex',
+            flexDirection: 'column',
+          }}>
           {navLinks.map(([label, id]) => (
             <button key={id} onClick={() => scrollTo(id)} style={{
               background: 'none', border: 'none',
@@ -149,6 +199,9 @@ export default function Navbar() {
               {label}
             </button>
           ))}
+          <div style={{ paddingTop: '12px' }}>
+            <LangToggle lang={lang} setLang={setLang} />
+          </div>
         </div>
       )}
 
@@ -159,5 +212,38 @@ export default function Navbar() {
         }
       `}</style>
     </>
+  )
+}
+
+function LangToggle({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center',
+      background: 'rgba(255,255,255,0.06)',
+      border: '1px solid rgba(255,255,255,0.1)',
+      borderRadius: '980px',
+      padding: '3px',
+      gap: '2px',
+    }}>
+      {(['en', 'de'] as Lang[]).map(l => (
+        <button
+          key={l}
+          onClick={() => setLang(l)}
+          style={{
+            background: lang === l ? 'rgba(255,255,255,0.15)' : 'none',
+            border: 'none', cursor: 'pointer',
+            color: lang === l ? '#f5f5f7' : 'rgba(245,245,247,0.45)',
+            fontFamily: 'var(--font)',
+            fontSize: '11px', fontWeight: 600,
+            letterSpacing: '0.04em',
+            padding: '3px 8px', borderRadius: '980px',
+            transition: 'background 0.2s, color 0.2s',
+            textTransform: 'uppercase',
+          }}
+        >
+          {l}
+        </button>
+      ))}
+    </div>
   )
 }

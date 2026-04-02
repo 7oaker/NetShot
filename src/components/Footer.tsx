@@ -1,4 +1,8 @@
+import { useLang } from '../i18n/LanguageContext'
+
 export default function Footer() {
+  const { t } = useLang()
+
   return (
     <footer style={{
       background: '#000',
@@ -20,20 +24,14 @@ export default function Footer() {
             NetShot
           </div>
           <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>
-            Capture your game.
+            {t.footer.tagline}
           </div>
         </div>
 
         {/* Links */}
         <nav aria-label="Footer navigation">
           <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap' }}>
-            {[
-              { label: 'Tennis', href: '#sports' },
-              { label: 'Padel', href: '#sports' },
-              { label: 'How It Works', href: '#how-it-works' },
-              { label: 'The App', href: '#app' },
-              { label: 'Pre-order', href: '#preorder' },
-            ].map(({ label, href }) => (
+            {t.footer.links.map(({ label, href }) => (
               <a key={label} href={href} style={{
                 fontSize: '13px',
                 color: 'var(--text-tertiary)',
@@ -50,7 +48,7 @@ export default function Footer() {
 
         {/* Legal */}
         <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>
-          © {new Date().getFullYear()} NetShot. All rights reserved.
+          {t.footer.rights(new Date().getFullYear())}
         </div>
       </div>
     </footer>

@@ -2,20 +2,20 @@ import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import amazonBlackIcon from '../assets/logo/amazon/black/icons8-amazon-100.png'
 import Model3D from './Model3D'
+import { useLang } from '../i18n/LanguageContext'
+import { AMAZON_URL } from '../constants'
 
-const stats = [
-  { value: '6061', label: 'Aluminium' },
-  { value: '238g', label: 'Weight' },
-  { value: '<5s', label: 'Mount time' },
-  { value: '∞', label: 'Potential' },
-]
+const statsValues = ['6061', '238g', '<5s', '∞']
+const featureColors = ['#0071e3', '#30d158', '#ff9f0a']
 
 export default function Preorder() {
+  const { t } = useLang()
   const sectionRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [focused, setFocused] = useState(false)
+  const [emailError, setEmailError] = useState(false)
 
   useEffect(() => {
     gsap.fromTo(contentRef.current,
@@ -27,9 +27,16 @@ export default function Preorder() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!email.includes('@')) return
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    if (!valid) {
+      setEmailError(true)
+      return
+    }
+    setEmailError(false)
     setSubmitted(true)
   }
+
+  const { getYoursCard, appCard } = t.preorder
 
   return (
     <section id="preorder" ref={sectionRef} style={{
@@ -67,8 +74,8 @@ export default function Preorder() {
           lineHeight: 0.95,
           marginBottom: '16px',
         }}>
-          Your game.<br />
-          <span style={{ color: '#0071e3' }}>Captured effortlessly.</span>
+          {t.preorder.headline}<br />
+          <span style={{ color: '#0071e3' }}>{t.preorder.subheadline}</span>
         </h2>
         <p style={{
           fontSize: 'clamp(15px, 1.6vw, 18px)',
@@ -77,7 +84,7 @@ export default function Preorder() {
           margin: '0 auto clamp(36px, 6vw, 56px)',
           lineHeight: 1.6,
         }}>
-          Get the mount now or join the waitlist for the NetShot app.
+          {t.preorder.description}
         </p>
 
         {/* Two CTA cards */}
@@ -102,7 +109,6 @@ export default function Preorder() {
             gap: '20px',
             overflow: 'hidden',
           }}>
-            {/* Badge + title + desc */}
             <div>
               <span style={{
                 display: 'inline-flex', alignItems: 'center', gap: '6px',
@@ -114,13 +120,13 @@ export default function Preorder() {
                 marginBottom: '14px',
               }}>
                 <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#ff9900', display: 'inline-block' }} />
-                Available Now
+                {getYoursCard.badge}
               </span>
               <div style={{ fontSize: 'clamp(22px, 2.8vw, 32px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', marginBottom: '8px' }}>
-                Get Yours
+                {getYoursCard.title}
               </div>
               <div style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                Built from aerospace-grade aluminium. Mounts to any tennis net post in seconds.
+                {getYoursCard.description}
               </div>
             </div>
 
@@ -130,8 +136,8 @@ export default function Preorder() {
               gridTemplateColumns: 'repeat(4, 1fr)',
               gap: '8px',
             }}>
-              {stats.map((s) => (
-                <div key={s.label} style={{
+              {statsValues.map((value, i) => (
+                <div key={i} style={{
                   background: 'rgba(255,255,255,0.04)',
                   border: '1px solid rgba(255,255,255,0.07)',
                   borderRadius: '12px',
@@ -139,10 +145,10 @@ export default function Preorder() {
                   textAlign: 'center',
                 }}>
                   <div style={{ fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em' }}>
-                    {s.value}
+                    {value}
                   </div>
                   <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '3px' }}>
-                    {s.label}
+                    {getYoursCard.statsLabels[i]}
                   </div>
                 </div>
               ))}
@@ -161,7 +167,7 @@ export default function Preorder() {
 
             {/* Amazon CTA */}
             <a
-              href="https://www.amazon.com/dp/PLACEHOLDER"
+              href={AMAZON_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="amazon-btn"
@@ -181,7 +187,7 @@ export default function Preorder() {
               onMouseLeave={e => { e.currentTarget.style.background = '#ff9900'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 24px rgba(255,153,0,0.3)' }}
             >
               <img src={amazonBlackIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
-              Buy on Amazon
+              {getYoursCard.cta}
             </a>
           </div>
 
@@ -207,23 +213,19 @@ export default function Preorder() {
                 marginBottom: '14px',
               }}>
                 <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#0071e3', display: 'inline-block', boxShadow: '0 0 8px #0071e3' }} />
-                Coming Soon
+                {appCard.badge}
               </span>
               <div style={{ fontSize: 'clamp(22px, 2.8vw, 32px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', marginBottom: '12px' }}>
-                The App
+                {appCard.title}
               </div>
               <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>
-                AI highlights, training review, and autopilot recording — all in one place. Join the waitlist and be first to know when it drops.
+                {appCard.description}
               </p>
             </div>
 
             {/* Feature list */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {[
-                { label: 'AI Highlights', desc: 'Auto-clipped rallies & winners', color: '#0071e3' },
-                { label: 'Training Mode', desc: 'Frame-by-frame review & coach share', color: '#30d158' },
-                { label: 'Autopilot', desc: 'Smart recording, saves battery', color: '#ff9f0a' },
-              ].map(f => (
+              {appCard.features.map((f, i) => (
                 <div key={f.label} style={{
                   display: 'flex', alignItems: 'flex-start', gap: '10px',
                   padding: '12px 14px',
@@ -231,7 +233,7 @@ export default function Preorder() {
                   border: '1px solid rgba(255,255,255,0.06)',
                   borderRadius: '12px',
                 }}>
-                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: f.color, flexShrink: 0, marginTop: '5px', boxShadow: `0 0 8px ${f.color}80` }} />
+                  <span style={{ width: 7, height: 7, borderRadius: '50%', background: featureColors[i], flexShrink: 0, marginTop: '5px', boxShadow: `0 0 8px ${featureColors[i]}80` }} />
                   <div>
                     <div style={{ fontSize: '13px', fontWeight: 600, color: '#f5f5f7', marginBottom: '2px' }}>{f.label}</div>
                     <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{f.desc}</div>
@@ -249,16 +251,17 @@ export default function Preorder() {
                 <form onSubmit={handleSubmit} className="notify-form" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <input
                     type="email"
-                    placeholder="your@email.com"
+                    placeholder={appCard.placeholder}
                     value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={e => { setEmail(e.target.value); setEmailError(false) }}
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
-                    required
+                    aria-invalid={emailError}
+                    aria-describedby={emailError ? 'email-error' : undefined}
                     style={{
                       flex: 1,
                       background: 'rgba(255,255,255,0.06)',
-                      border: `1px solid ${focused ? 'rgba(0,113,227,0.6)' : 'rgba(255,255,255,0.12)'}`,
+                      border: `1px solid ${emailError ? 'rgba(255,69,58,0.7)' : focused ? 'rgba(0,113,227,0.6)' : 'rgba(255,255,255,0.12)'}`,
                       borderRadius: '980px',
                       padding: '12px 18px',
                       color: '#f5f5f7',
@@ -266,9 +269,14 @@ export default function Preorder() {
                       fontSize: '14px',
                       outline: 'none',
                       transition: 'border-color 0.25s, box-shadow 0.25s',
-                      boxShadow: focused ? '0 0 0 3px rgba(0,113,227,0.15)' : 'none',
+                      boxShadow: emailError ? '0 0 0 3px rgba(255,69,58,0.15)' : focused ? '0 0 0 3px rgba(0,113,227,0.15)' : 'none',
                     }}
                   />
+                  {emailError && (
+                    <p id="email-error" role="alert" style={{ margin: '0 0 0 4px', fontSize: '12px', color: '#ff453a' }}>
+                      Please enter a valid email address.
+                    </p>
+                  )}
                   <button type="submit" style={{
                     background: '#0071e3', border: 'none', cursor: 'pointer',
                     color: '#fff', fontFamily: 'var(--font)',
@@ -281,11 +289,11 @@ export default function Preorder() {
                   }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#0077ed'; e.currentTarget.style.transform = 'scale(1.03)' }}
                   onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)' }}>
-                    Notify Me
+                    {appCard.notifyMe}
                   </button>
                 </form>
                 <p style={{ margin: 0, fontSize: '12px', color: 'var(--text-tertiary)', paddingLeft: '4px' }}>
-                  No spam. Unsubscribe any time.
+                  {appCard.noSpam}
                 </p>
               </div>
             ) : (
@@ -300,7 +308,7 @@ export default function Preorder() {
                   <circle cx="10" cy="10" r="9" stroke="#30d158" strokeWidth="1.5"/>
                   <path d="M6.5 10l2.5 2.5 4.5-5" stroke="#30d158" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                You're on the list!
+                {appCard.onList}
               </div>
             )}
           </div>
@@ -320,7 +328,6 @@ export default function Preorder() {
           .model-container {
             min-height: 280px !important;
           }
-
         }
       `}</style>
     </section>
