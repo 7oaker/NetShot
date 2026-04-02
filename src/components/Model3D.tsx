@@ -1,13 +1,14 @@
-import { Suspense, useRef } from 'react'
+import { Suspense, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Environment, ContactShadows, OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 
-function NetShotModel({ autoRotate }: { autoRotate: boolean }) {
+function NetShotModel({ autoRotate, dragging }: { autoRotate: boolean; dragging: boolean }) {
   const groupRef = useRef<THREE.Group>(null)
-  const { scene } = useGLTF('/model.glb')
+  const innerRef = useRef<THREE.Object3D>(null)
+  const { scene: rawScene } = useGLTF('/Tennisnetz_Halterung_V1.glb')
+  const scene = useMemo(() => rawScene.clone(true), [rawScene])
 
-  // Enhance material to look aluminium / premium
   scene.traverse((child) => {
     if ((child as THREE.Mesh).isMesh) {
       const mesh = child as THREE.Mesh
@@ -22,14 +23,23 @@ function NetShotModel({ autoRotate }: { autoRotate: boolean }) {
   })
 
   useFrame((_, delta) => {
-    if (autoRotate && groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.3
+    // Center on first frame
+    if (innerRef.current && innerRef.current.userData.centered !== true) {
+      const box = new THREE.Box3().setFromObject(innerRef.current)
+      const center = new THREE.Vector3()
+      box.getCenter(center)
+      innerRef.current.position.sub(center)
+      innerRef.current.userData.centered = true
+    }
+    // Slow auto-rotate, pauses while user drags
+    if (autoRotate && !dragging && groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.4
     }
   })
 
   return (
     <group ref={groupRef}>
-      <primitive object={scene} scale={2.2} position={[0, -0.5, 0]} />
+      <primitive ref={innerRef} object={scene} scale={0.45} />
     </group>
   )
 }
@@ -50,10 +60,12 @@ interface Model3DProps {
 }
 
 export default function Model3D({ autoRotate = true, height = '100%', enableOrbit = true }: Model3DProps) {
+  const [dragging, setDragging] = useState(false)
+
   return (
     <Canvas
       style={{ height, width: '100%', background: 'transparent' }}
-      camera={{ position: [0, 0.5, 5], fov: 45 }}
+      camera={{ position: [0, 0.5, 17], fov: 42 }}
       gl={{ antialias: true, alpha: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}
       shadows
     >
@@ -68,7 +80,7 @@ export default function Model3D({ autoRotate = true, height = '100%', enableOrbi
         {/* Environment for reflections */}
         <Environment preset="studio" />
 
-        <NetShotModel autoRotate={autoRotate} />
+        <NetShotModel autoRotate={autoRotate} dragging={dragging} />
 
         {/* Ground shadow */}
         <ContactShadows
@@ -84,10 +96,10 @@ export default function Model3D({ autoRotate = true, height = '100%', enableOrbi
           <OrbitControls
             enableZoom={false}
             enablePan={false}
-            minPolarAngle={Math.PI / 3}
-            maxPolarAngle={Math.PI / 1.8}
-            rotateSpeed={0.5}
+            rotateSpeed={0.6}
             autoRotate={false}
+            onStart={() => setDragging(true)}
+            onEnd={() => setDragging(false)}
           />
         )}
       </Suspense>
@@ -95,4 +107,4 @@ export default function Model3D({ autoRotate = true, height = '100%', enableOrbi
   )
 }
 
-useGLTF.preload('/model.glb')
+useGLTF.preload('/Tennisnetz_Halterung_V1.glb')

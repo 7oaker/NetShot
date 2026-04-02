@@ -1,0 +1,143 @@
+import { useEffect, useRef, useState } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+const faqs = [
+  {
+    q: 'How does NetShot attach to a tennis net?',
+    a: 'NetShot features a precision-machined aluminium clamp that slides onto any standard tennis net post or top rail in under 5 seconds. No tools required.',
+  },
+  {
+    q: 'What phones does NetShot support?',
+    a: "NetShot's universal spring-loaded cradle holds any smartphone up to 75mm wide and 12mm thick — covering all major iPhone and Android models.",
+  },
+  {
+    q: 'How do I record my tennis match with NetShot?',
+    a: 'Mount NetShot on the net post, clip in your phone, and open the NetShot app. Press record and the AI automatically detects rallies, clips highlights, and organises your session — no editing required.',
+  },
+  {
+    q: 'Is there an AI highlights app for tennis?',
+    a: 'Yes. The NetShot companion app (coming soon for iOS and Android) uses AI to automatically detect rallies, clip highlights, and organise your sessions so you can improve without ever touching a video editor.',
+  },
+  {
+    q: 'Does NetShot work for padel?',
+    a: 'NetShot currently supports tennis net posts. A padel-optimised version is in development and coming soon.',
+  },
+  {
+    q: 'What material is the NetShot mount made from?',
+    a: 'NetShot is machined from aircraft-grade 6061 aluminium, weighs just 238g, and has a sandblasted anodised finish for long-term durability on outdoor courts.',
+  },
+]
+
+export default function FAQ() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const headRef = useRef<HTMLDivElement>(null)
+  const listRef = useRef<HTMLDivElement>(null)
+  const [open, setOpen] = useState<number | null>(null)
+
+  useEffect(() => {
+    gsap.fromTo(headRef.current,
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 1, ease: 'power4.out',
+        scrollTrigger: { trigger: headRef.current, start: 'top 80%' } }
+    )
+    if (listRef.current) {
+      gsap.fromTo(Array.from(listRef.current.children),
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.65, stagger: 0.08, ease: 'power3.out',
+          scrollTrigger: { trigger: listRef.current, start: 'top 78%' } }
+      )
+    }
+  }, [])
+
+  return (
+    <section
+      id="faq"
+      ref={sectionRef}
+      aria-label="Frequently asked questions about NetShot tennis net phone mount"
+      style={{
+        background: '#0a0a0a',
+        padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <div style={{ position: 'absolute', left: '-80px', top: '50%', transform: 'translateY(-50%)', width: '500px', height: '500px', borderRadius: '50%', background: 'rgba(0,113,227,0.18)', filter: 'blur(130px)', pointerEvents: 'none' }} />
+
+      <div ref={headRef} style={{ textAlign: 'center', marginBottom: 'clamp(48px, 7vw, 72px)', opacity: 0 }}>
+        <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
+          FAQ
+        </p>
+        <h2 style={{ fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
+          Common questions.
+        </h2>
+      </div>
+
+      <div ref={listRef} style={{ maxWidth: '720px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '0' }}>
+        {faqs.map((faq, i) => (
+          <div
+            key={i}
+            style={{
+              borderBottom: '1px solid var(--border)',
+              opacity: 0,
+            }}
+          >
+            <button
+              aria-expanded={open === i}
+              onClick={() => setOpen(open === i ? null : i)}
+              style={{
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '16px',
+                padding: 'clamp(18px, 2.5vw, 24px) 0',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                fontFamily: 'var(--font)',
+                textAlign: 'left',
+              }}
+            >
+              <h3 style={{
+                fontSize: 'clamp(15px, 1.6vw, 17px)',
+                fontWeight: 500,
+                color: open === i ? '#f5f5f7' : 'rgba(245,245,247,0.85)',
+                letterSpacing: '-0.01em',
+                margin: 0,
+                lineHeight: 1.4,
+              }}>
+                {faq.q}
+              </h3>
+              <span style={{
+                flexShrink: 0,
+                width: '22px', height: '22px',
+                borderRadius: '50%',
+                border: '1px solid rgba(255,255,255,0.12)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'transform 0.3s ease, border-color 0.3s ease',
+                transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)',
+                borderColor: open === i ? '#0071e3' : 'rgba(255,255,255,0.12)',
+              }}>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                  <path d="M5 1v8M1 5h8" stroke={open === i ? '#0071e3' : '#f5f5f7'} strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+              </span>
+            </button>
+            {open === i && (
+              <p style={{
+                fontSize: 'clamp(14px, 1.5vw, 15px)',
+                color: 'var(--text-secondary)',
+                lineHeight: 1.7,
+                paddingBottom: 'clamp(16px, 2vw, 22px)',
+                margin: 0,
+              }}>
+                {faq.a}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import amazonWhiteIcon from '../assets/logo/amazon/icons8-amazon-100.png'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -28,7 +29,14 @@ const sports = [
     stat3: { value: '< 5s', label: 'Setup Time' },
     emoji: '🎾',
     color: '#30d158',
-    images: [t1, t2, t3, t4, t5, t6],
+    images: [
+      { src: t1, alt: 'Tennis player at the baseline — record your tennis match with NetShot phone mount on the net post' },
+      { src: t2, alt: 'Tennis doubles match in action — NetShot captures every rally automatically' },
+      { src: t3, alt: 'Tennis player serving — automatic game recording with NetShot aluminium mount' },
+      { src: t4, alt: 'Tennis court from net level — perfect angle for NetShot phone mount recording' },
+      { src: t5, alt: 'Tennis training session — review technique with AI highlights from NetShot app' },
+      { src: t6, alt: 'Tennis match on clay court — AI-powered rally detection by NetShot' },
+    ],
   },
   {
     id: 'padel',
@@ -40,8 +48,13 @@ const sports = [
     stat2: { value: 'Padel', label: 'Optimised' },
     stat3: { value: '—', label: '' },
     emoji: '🏓',
-    color: '#0071e3',
-    images: [p1, p2, p3, p4],
+    color: '#ff9f0a',
+    images: [
+      { src: p1, alt: 'Padel court with glass walls — NetShot padel phone mount coming soon' },
+      { src: p2, alt: 'Padel players in a rally — record padel matches automatically with NetShot' },
+      { src: p3, alt: 'Padel game action shot — AI-powered padel highlights coming to NetShot' },
+      { src: p4, alt: 'Padel court overhead view — NetShot padel version in development' },
+    ],
   },
 ]
 
@@ -70,18 +83,14 @@ export default function Sports() {
   const sport = sports[active]
 
   return (
-    <section id="sports" ref={sectionRef} style={{
-      background: 'radial-gradient(ellipse 100% 120% at -10% 40%, rgba(0,113,227,0.18) 0%, transparent 55%), #0a0a0a',
+    <section id="sports" aria-label="Sports — NetShot for tennis and padel" ref={sectionRef} style={{
+      background: '#0a0a0a',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', bottom: '0%', right: '10%',
-        width: '500px', height: '400px',
-        background: 'radial-gradient(circle, rgba(0,113,227,0.16) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
+      <div style={{ position: 'absolute', left: '-80px', top: '50%', transform: 'translateY(-50%)', width: '500px', height: '500px', borderRadius: '50%', background: `${sport.color}33`, filter: 'blur(130px)', pointerEvents: 'none', transition: 'background 0.5s ease' }} />
+      <div style={{ position: 'absolute', right: '-80px', top: '30%', width: '480px', height: '480px', borderRadius: '50%', background: `${sport.color}28`, filter: 'blur(120px)', pointerEvents: 'none', transition: 'background 0.5s ease' }} />
       {/* Header */}
       <div ref={headRef} style={{ textAlign: 'center', marginBottom: 'clamp(48px, 7vw, 64px)', opacity: 0 }}>
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
@@ -185,19 +194,29 @@ export default function Sports() {
           </div>
 
           {sport.available && (
-            <button
-              onClick={() => document.getElementById('preorder')?.scrollIntoView({ behavior: 'smooth' })}
-              style={{
-                background: sport.color, border: 'none', cursor: 'pointer',
-                color: '#fff', fontFamily: 'var(--font)',
-                fontSize: '15px', fontWeight: 500,
-                padding: '12px 26px', borderRadius: '980px',
-                transition: 'transform 0.2s, opacity 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.opacity = '0.9' }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.opacity = '1' }}>
-              Pre-order Now →
-            </button>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <a
+                href="https://www.amazon.com/dp/PLACEHOLDER"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '9px',
+                  background: sport.color, borderRadius: '980px',
+                  padding: '13px 26px',
+                  color: '#fff', fontFamily: 'var(--font)',
+                  fontSize: '15px', fontWeight: 600,
+                  textDecoration: 'none',
+                  transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
+                  boxShadow: `0 0 24px ${sport.color}50`,
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = `0 0 36px ${sport.color}80` }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = `0 0 24px ${sport.color}50` }}
+              >
+                <img src={amazonWhiteIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
+                Order Now
+              </a>
+            </div>
           )}
         </div>
 
@@ -208,7 +227,7 @@ export default function Sports() {
           gridTemplateRows: 'repeat(3, 180px)',
           gap: '8px',
         }}>
-          {sport.images.map((src, i) => (
+          {sport.images.map((img, i) => (
             <div key={i} style={{
               borderRadius: '14px',
               overflow: 'hidden',
@@ -216,8 +235,10 @@ export default function Sports() {
               gridRow: i === 0 ? 'span 1' : 'span 1',
             }}>
               <img
-                src={src}
-                alt=""
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: '100%', height: '100%',
                   objectFit: 'cover',

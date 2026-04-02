@@ -124,17 +124,13 @@ export default function FeatureGrid() {
 
   return (
     <section ref={sectionRef} style={{
-      background: 'radial-gradient(ellipse 130% 90% at 50% 110%, rgba(0,113,227,0.18) 0%, transparent 55%), #000',
+      background: '#000',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', top: '20%', right: '-5%',
-        width: '500px', height: '500px',
-        background: 'radial-gradient(circle, rgba(0,113,227,0.18) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
+      <div style={{ position: 'absolute', right: '-80px', top: '50%', transform: 'translateY(-50%)', width: '520px', height: '520px', borderRadius: '50%', background: 'rgba(0,113,227,0.2)', filter: 'blur(130px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', left: '-80px', bottom: '25%', width: '480px', height: '480px', borderRadius: '50%', background: 'rgba(0,113,227,0.18)', filter: 'blur(120px)', pointerEvents: 'none' }} />
       {/* Header */}
       <div ref={headRef} style={{ textAlign: 'center', marginBottom: 'clamp(56px, 8vw, 72px)', opacity: 0 }}>
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>

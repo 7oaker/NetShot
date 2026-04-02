@@ -11,6 +11,7 @@ import AppSection from './components/AppSection'
 import Sports from './components/Sports'
 import FeatureGrid from './components/FeatureGrid'
 import Preorder from './components/Preorder'
+import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -45,6 +46,7 @@ export default function App() {
         <AppSection />
         <Sports />
         <FeatureGrid />
+        <FAQ />
         <Preorder />
       </main>
       <Footer />

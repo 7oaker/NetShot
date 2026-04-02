@@ -30,18 +30,14 @@ export default function Tagline() {
 
   return (
     <section ref={sectionRef} style={{
-      background: 'radial-gradient(ellipse 130% 90% at 50% -5%, rgba(0,113,227,0.18) 0%, transparent 55%), #000',
+      background: '#000',
       padding: 'clamp(80px, 12vw, 140px) 24px',
       textAlign: 'center',
       overflow: 'hidden',
       position: 'relative',
     }}>
-      <div style={{
-        position: 'absolute', bottom: '-10%', left: '15%',
-        width: '400px', height: '300px',
-        background: 'radial-gradient(circle, rgba(0,113,227,0.18) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
+      <div style={{ position: 'absolute', left: '-80px', top: '50%', transform: 'translateY(-50%)', width: '500px', height: '500px', borderRadius: '50%', background: 'rgba(0,113,227,0.2)', filter: 'blur(130px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', right: '-80px', top: '50%', transform: 'translateY(-50%)', width: '480px', height: '480px', borderRadius: '50%', background: 'rgba(0,113,227,0.18)', filter: 'blur(120px)', pointerEvents: 'none' }} />
       <p style={{
         fontSize: 'clamp(11px, 1.2vw, 13px)',
         color: 'var(--text-tertiary)',

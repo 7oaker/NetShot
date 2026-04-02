@@ -5,10 +5,10 @@ import Model3D from './Model3D'
 
 const specs = [
   { label: 'Material', value: 'Aircraft-grade 6061 aluminium', icon: '◈' },
-  { label: 'Weight', value: '142g — lighter than your phone', icon: '◎' },
+  { label: 'Weight', value: '238g: lighter than your phone', icon: '◎' },
   { label: 'Compatibility', value: 'Any net post or top rail', icon: '◉' },
-  { label: 'Phone fit', value: 'Universal — up to 90mm wide', icon: '◫' },
-  { label: 'Adjustment', value: '360° rotation, ±45° tilt', icon: '◬' },
+  { label: 'Phone fit', value: 'Universal: up to 75mm wide, 12 mm thick', icon: '◫' },
+  /*{ label: 'Adjustment', value: '360° rotation, ±45° tilt', icon: '◬' },*/
   { label: 'Finish', value: 'Sandblasted + anodised', icon: '◪' },
 ]
 
@@ -40,17 +40,13 @@ export default function ProductSpecs() {
 
   return (
     <section ref={sectionRef} style={{
-      background: 'radial-gradient(ellipse 100% 120% at -10% 60%, rgba(0,113,227,0.18) 0%, transparent 55%), #000',
+      background: '#000',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', bottom: '-5%', right: '5%',
-        width: '600px', height: '400px',
-        background: 'radial-gradient(circle, rgba(0,113,227,0.15) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
+      <div style={{ position: 'absolute', right: '-80px', top: '50%', transform: 'translateY(-50%)', width: '520px', height: '520px', borderRadius: '50%', background: 'rgba(0,113,227,0.2)', filter: 'blur(130px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', left: '-80px', bottom: '20%', width: '480px', height: '480px', borderRadius: '50%', background: 'rgba(0,113,227,0.16)', filter: 'blur(120px)', pointerEvents: 'none' }} />
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -61,7 +57,7 @@ export default function ProductSpecs() {
       }}>
         {/* 3D Model */}
         <div ref={modelRef} style={{ opacity: 0, height: 'clamp(380px, 50vw, 560px)', position: 'relative' }}>
-          <Model3D autoRotate={false} height="100%" enableOrbit />
+          <Model3D autoRotate={true} height="100%" enableOrbit />
           <div style={{
             position: 'absolute', bottom: '-16px', left: '50%', transform: 'translateX(-50%)',
             fontSize: '11px', color: 'var(--text-tertiary)', letterSpacing: '0.08em', textTransform: 'uppercase',

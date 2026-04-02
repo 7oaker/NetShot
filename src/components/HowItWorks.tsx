@@ -79,18 +79,14 @@ export default function HowItWorks() {
   }, [])
 
   return (
-    <section id="how-it-works" ref={sectionRef} style={{
-      background: 'radial-gradient(ellipse 100% 120% at 110% 50%, rgba(0,113,227,0.18) 0%, transparent 55%), #0a0a0a',
+    <section id="how-it-works" aria-label="How NetShot works — mount, clip, play, review" ref={sectionRef} style={{
+      background: '#0a0a0a',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', top: '10%', left: '-10%',
-        width: '500px', height: '500px',
-        background: 'radial-gradient(circle, rgba(0,113,227,0.16) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
+      <div style={{ position: 'absolute', left: '-80px', top: '50%', transform: 'translateY(-50%)', width: '520px', height: '520px', borderRadius: '50%', background: 'rgba(0,113,227,0.2)', filter: 'blur(130px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', right: '-80px', top: '30%', width: '480px', height: '480px', borderRadius: '50%', background: 'rgba(0,113,227,0.16)', filter: 'blur(120px)', pointerEvents: 'none' }} />
       {/* Header */}
       <div ref={headRef} style={{ textAlign: 'center', marginBottom: 'clamp(56px, 8vw, 80px)', opacity: 0 }}>
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>

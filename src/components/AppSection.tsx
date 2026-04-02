@@ -55,18 +55,14 @@ export default function AppSection() {
   const activeFeature = features[active]
 
   return (
-    <section id="app" ref={sectionRef} style={{
-      background: 'radial-gradient(ellipse 120% 80% at 50% -10%, rgba(0,113,227,0.18) 0%, transparent 55%), #080808',
+    <section id="app" aria-label="NetShot app — AI highlights, training mode, autopilot recording" ref={sectionRef} style={{
+      background: '#080808',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       overflow: 'hidden',
       position: 'relative',
     }}>
-      <div style={{
-        position: 'absolute', bottom: '10%', left: '-5%',
-        width: '500px', height: '500px',
-        background: 'radial-gradient(circle, rgba(0,113,227,0.18) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
+      <div style={{ position: 'absolute', left: '-80px', top: '40%', width: '500px', height: '500px', borderRadius: '50%', background: 'rgba(0,113,227,0.2)', filter: 'blur(130px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', right: '-80px', bottom: '20%', width: '480px', height: '480px', borderRadius: '50%', background: 'rgba(0,113,227,0.18)', filter: 'blur(120px)', pointerEvents: 'none' }} />
       {/* Glow */}
       <div style={{
         position: 'absolute', left: '50%', transform: 'translateX(-50%)',

@@ -25,20 +25,28 @@ export default function Footer() {
         </div>
 
         {/* Links */}
-        <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap' }}>
-          {['Tennis', 'Padel', 'Volleyball', 'The App', 'Contact'].map((link) => (
-            <a key={link} href="#" style={{
-              fontSize: '13px',
-              color: 'var(--text-tertiary)',
-              textDecoration: 'none',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={e => e.currentTarget.style.color = '#f5f5f7'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--text-tertiary)'}>
-              {link}
-            </a>
-          ))}
-        </div>
+        <nav aria-label="Footer navigation">
+          <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap' }}>
+            {[
+              { label: 'Tennis', href: '#sports' },
+              { label: 'Padel', href: '#sports' },
+              { label: 'How It Works', href: '#how-it-works' },
+              { label: 'The App', href: '#app' },
+              { label: 'Pre-order', href: '#preorder' },
+            ].map(({ label, href }) => (
+              <a key={label} href={href} style={{
+                fontSize: '13px',
+                color: 'var(--text-tertiary)',
+                textDecoration: 'none',
+                transition: 'color 0.2s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.color = '#f5f5f7'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-tertiary)'}>
+                {label}
+              </a>
+            ))}
+          </div>
+        </nav>
 
         {/* Legal */}
         <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>

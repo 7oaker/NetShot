@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import logoIcon from '../assets/logo/favicon/favicon-96x96.png'
 
 const navLinks: [string, string][] = [
   ['How it Works', 'how-it-works'],
@@ -47,7 +48,15 @@ export default function Navbar() {
           background: 'none', border: 'none', cursor: 'pointer',
           color: '#f5f5f7', fontFamily: 'var(--font)',
           fontSize: '17px', fontWeight: 700, letterSpacing: '-0.02em',
+          display: 'flex', alignItems: 'center', gap: '8px',
         }}>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            width: '26px', height: '26px', borderRadius: '6px',
+            background: '#fff', flexShrink: 0,
+          }}>
+            <img src={logoIcon} alt="NetShot" style={{ width: '18px', height: '18px' }} />
+          </span>
           NetShot
         </button>
 
@@ -74,7 +83,7 @@ export default function Navbar() {
           }}
           onMouseEnter={e => { e.currentTarget.style.background = '#0077ed'; e.currentTarget.style.transform = 'scale(1.03)' }}
           onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)' }}>
-            Pre-order
+            Get Yours
           </button>
         </div>
 
@@ -86,7 +95,7 @@ export default function Navbar() {
             fontSize: '13px', fontWeight: 500,
             padding: '7px 14px', borderRadius: '980px',
           }}>
-            Pre-order
+            Get Yours
           </button>
           <button
             onClick={() => setMenuOpen(o => !o)}

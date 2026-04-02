@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import amazonWhiteIcon from '../assets/logo/amazon/icons8-amazon-100.png'
 
 export default function Hero() {
-  const headlineRef = useRef<HTMLDivElement>(null)
+  const headlineRef = useRef<HTMLHeadingElement>(null)
   const subRef = useRef<HTMLDivElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function Hero() {
   }
 
   return (
-    <section style={{
+    <section aria-label="NetShot tennis net phone mount — record your game automatically" style={{
       minHeight: '100vh',
       background: '#000',
       display: 'flex',
@@ -47,6 +48,8 @@ export default function Hero() {
         muted
         loop
         playsInline
+        poster="/hero-poster.jpg"
+        aria-hidden="true"
         style={{
           position: 'absolute', inset: 0,
           width: '100%', height: '100%',
@@ -79,11 +82,14 @@ export default function Hero() {
 
 
       {/* Headline */}
-      <div ref={headlineRef} style={{
+      <h1 ref={headlineRef} style={{
         textAlign: 'center',
         zIndex: 2,
         position: 'relative',
         pointerEvents: 'none',
+        margin: 0,
+        padding: 0,
+        fontFamily: 'var(--font)',
       }}>
         {['Play.', 'Capture.', 'Enjoy.'].map((word, i) => (
           <span key={i} style={{
@@ -98,7 +104,7 @@ export default function Hero() {
             {word}
           </span>
         ))}
-      </div>
+      </h1>
 
       {/* Sub + CTA */}
       <div ref={subRef} style={{ textAlign: 'center', zIndex: 2, position: 'relative', opacity: 0, marginTop: '32px' }}>
@@ -117,20 +123,26 @@ export default function Hero() {
       </div>
 
       <div ref={ctaRef} style={{ display: 'flex', gap: '12px', marginTop: '36px', zIndex: 2, position: 'relative', opacity: 0, flexWrap: 'wrap', justifyContent: 'center' }}>
-        <button
-          onClick={() => scrollTo('preorder')}
+        <a
+          href="https://www.amazon.com/dp/PLACEHOLDER"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
-            background: '#0071e3', border: 'none', cursor: 'pointer',
+            display: 'inline-flex', alignItems: 'center', gap: '9px',
+            background: '#0071e3', borderRadius: '980px',
+            padding: '14px 32px',
             color: '#fff', fontFamily: 'var(--font)',
             fontSize: '17px', fontWeight: 500,
-            padding: '14px 32px', borderRadius: '980px',
+            textDecoration: 'none',
             transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
             boxShadow: '0 0 40px rgba(0,113,227,0.35)',
           }}
           onMouseEnter={e => { e.currentTarget.style.background = '#0077ed'; e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 0 60px rgba(0,113,227,0.5)' }}
-          onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(0,113,227,0.35)' }}>
-          Pre-order Now
-        </button>
+          onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(0,113,227,0.35)' }}
+        >
+          <img src={amazonWhiteIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
+          Order Now
+        </a>
         <button
           onClick={() => scrollTo('how-it-works')}
           style={{
