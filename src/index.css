@@ -5,19 +5,84 @@
 }
 
 :root {
+  /* Backgrounds */
   --bg: #000000;
   --bg-2: #0a0a0a;
+  --bg-3: #080808;
+  /* Surfaces */
   --surface: #1c1c1e;
   --surface-2: #2c2c2e;
+  --surface-3: #232325;
+  /* Borders */
   --border: rgba(255,255,255,0.08);
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-medium: rgba(255,255,255,0.12);
+  /* Text */
   --text: #f5f5f7;
   --text-secondary: #a1a1a6;
   --text-tertiary: #636366;
+  --text-faint: rgba(245,245,247,0.85);
+  --text-muted: rgba(245,245,247,0.70);
+  --text-ghost: rgba(245,245,247,0.45);
+  /* Accent */
   --accent: #0071e3;
   --accent-hover: #0077ed;
+  /* Overlays (light-on-dark) */
+  --overlay-subtle: rgba(255,255,255,0.03);
+  --overlay-faint: rgba(255,255,255,0.04);
+  --overlay-light: rgba(255,255,255,0.06);
+  --overlay-base: rgba(255,255,255,0.08);
+  --overlay-medium: rgba(255,255,255,0.12);
+  --overlay-strong: rgba(255,255,255,0.15);
+  --overlay-bold: rgba(255,255,255,0.20);
+  /* Navigation */
+  --nav-bg: rgba(0,0,0,0.72);
+  --nav-border: rgba(255,255,255,0.06);
+  --menu-bg: rgba(0,0,0,0.96);
+  /* Misc */
+  --logo-bg: #ffffff;
   --white: #ffffff;
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
+
+
+/* Light mode — disabled for now, uncomment to re-enable
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f5f5f7;
+    --bg-3: #f0f0f5;
+    --surface: #e8e8ed;
+    --surface-2: #d1d1d6;
+    --surface-3: #d8d8dd;
+    --border: rgba(0,0,0,0.08);
+    --border-subtle: rgba(0,0,0,0.05);
+    --border-medium: rgba(0,0,0,0.10);
+    --text: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-tertiary: #aeaeb2;
+    --text-faint: rgba(29,29,31,0.85);
+    --text-muted: rgba(29,29,31,0.70);
+    --text-ghost: rgba(29,29,31,0.45);
+    --overlay-subtle: rgba(0,0,0,0.02);
+    --overlay-faint: rgba(0,0,0,0.03);
+    --overlay-light: rgba(0,0,0,0.04);
+    --overlay-base: rgba(0,0,0,0.06);
+    --overlay-medium: rgba(0,0,0,0.08);
+    --overlay-strong: rgba(0,0,0,0.10);
+    --overlay-bold: rgba(0,0,0,0.12);
+    --nav-bg: rgba(255,255,255,0.82);
+    --nav-border: rgba(0,0,0,0.06);
+    --menu-bg: rgba(255,255,255,0.97);
+    --logo-bg: #1d1d1f;
+  }
+
+  ::selection {
+    background: rgba(0,113,227,0.2);
+    color: #1d1d1f;
+  }
+}
+*/
 
 html {
   scroll-behavior: auto;

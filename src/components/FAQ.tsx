@@ -30,7 +30,7 @@ export default function FAQ() {
       ref={sectionRef}
       aria-label="Frequently asked questions about NetShot tennis net phone mount"
       style={{
-        background: '#0a0a0a',
+        background: 'var(--bg-2)',
         padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
         position: 'relative',
         overflow: 'hidden',
@@ -42,7 +42,7 @@ export default function FAQ() {
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
           {t.faq.label}
         </p>
-        <h2 style={{ fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
+        <h2 style={{ fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
           {t.faq.headline}
         </h2>
       </div>
@@ -76,7 +76,7 @@ export default function FAQ() {
               <h3 style={{
                 fontSize: 'clamp(15px, 1.6vw, 17px)',
                 fontWeight: 500,
-                color: open === i ? '#f5f5f7' : 'rgba(245,245,247,0.85)',
+                color: open === i ? 'var(--text)' : 'var(--text-faint)',
                 letterSpacing: '-0.01em',
                 margin: 0,
                 lineHeight: 1.4,
@@ -87,14 +87,14 @@ export default function FAQ() {
                 flexShrink: 0,
                 width: '22px', height: '22px',
                 borderRadius: '50%',
-                border: '1px solid rgba(255,255,255,0.12)',
+                border: '1px solid var(--border-medium)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 transition: 'transform 0.3s ease, border-color 0.3s ease',
                 transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)',
-                borderColor: open === i ? '#0071e3' : 'rgba(255,255,255,0.12)',
+                borderColor: open === i ? 'var(--accent)' : 'var(--border-medium)',
               }}>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                  <path d="M5 1v8M1 5h8" stroke={open === i ? '#0071e3' : '#f5f5f7'} strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M5 1v8M1 5h8" stroke={open === i ? 'var(--accent)' : 'var(--text)'} strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
               </span>
             </button>

@@ -25,7 +25,7 @@ export default function Tagline() {
 
   return (
     <section ref={sectionRef} style={{
-      background: '#000',
+      background: 'var(--bg)',
       padding: 'clamp(80px, 12vw, 140px) 24px',
       textAlign: 'center',
       overflow: 'hidden',
@@ -56,8 +56,8 @@ export default function Tagline() {
           <div key={i} style={{
             flex: '1 1 220px',
             maxWidth: '260px',
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(255,255,255,0.07)',
+            background: 'var(--overlay-subtle)',
+            border: '1px solid var(--border)',
             borderRadius: '20px',
             padding: 'clamp(28px, 4vw, 40px) clamp(20px, 3vw, 32px)',
             cursor: 'default',
@@ -69,8 +69,8 @@ export default function Tagline() {
             e.currentTarget.style.transform = 'translateY(-6px)'
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'
-            e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
+            e.currentTarget.style.borderColor = 'var(--border)'
+            e.currentTarget.style.background = 'var(--overlay-subtle)'
             e.currentTarget.style.transform = 'translateY(0)'
           }}>
             <div style={{
@@ -86,7 +86,7 @@ export default function Tagline() {
             <div style={{
               fontSize: 'clamp(28px, 4vw, 40px)',
               fontWeight: 700,
-              color: '#f5f5f7',
+              color: 'var(--text)',
               letterSpacing: '-0.03em',
               lineHeight: 1,
               marginBottom: '14px',

@@ -34,7 +34,7 @@ export default function ProductSpecs() {
 
   return (
     <section ref={sectionRef} style={{
-      background: '#000',
+      background: 'var(--bg)',
       paddingTop: 'clamp(120px, 16vw, 180px)',
       paddingBottom: 'clamp(40px, 6vw, 80px)',
       paddingLeft: 'clamp(24px, 6vw, 80px)',
@@ -69,7 +69,7 @@ export default function ProductSpecs() {
           <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
             {t.productSpecs.label}
           </p>
-          <h2 style={{ fontSize: 'clamp(32px, 5vw, 54px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', lineHeight: 1.05, marginBottom: '16px' }}>
+          <h2 style={{ fontSize: 'clamp(32px, 5vw, 54px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.05, marginBottom: '16px' }}>
             {t.productSpecs.headline}<br />
             <span style={{ color: 'var(--text-secondary)', fontWeight: 300 }}>{t.productSpecs.subheadline}</span>
           </h2>
@@ -91,7 +91,7 @@ export default function ProductSpecs() {
                   <span style={{ color: '#0071e3', fontSize: '16px' }}>{specIcons[i]}</span>
                   {spec.label}
                 </span>
-                <span style={{ fontSize: '14px', color: '#f5f5f7', fontWeight: 500, textAlign: 'right', maxWidth: '55%' }}>
+                <span style={{ fontSize: '14px', color: 'var(--text)', fontWeight: 500, textAlign: 'right', maxWidth: '55%' }}>
                   {spec.value}
                 </span>
               </div>

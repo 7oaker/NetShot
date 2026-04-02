@@ -40,7 +40,7 @@ export default function Preorder() {
 
   return (
     <section id="preorder" ref={sectionRef} style={{
-      background: '#000',
+      background: 'var(--bg)',
       minHeight: '100vh',
       padding: 'clamp(72px, 10vw, 120px) clamp(24px, 6vw, 80px)',
       textAlign: 'center',
@@ -69,7 +69,7 @@ export default function Preorder() {
         <h2 style={{
           fontSize: 'clamp(38px, 6vw, 72px)',
           fontWeight: 800,
-          color: '#f5f5f7',
+          color: 'var(--text)',
           letterSpacing: '-0.04em',
           lineHeight: 0.95,
           marginBottom: '16px',
@@ -100,8 +100,8 @@ export default function Preorder() {
 
           {/* ── Get Yours ── */}
           <div style={{
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: 'var(--overlay-subtle)',
+            border: '1px solid var(--border)',
             borderRadius: '24px',
             padding: 'clamp(24px, 3vw, 36px)',
             display: 'flex',
@@ -122,7 +122,7 @@ export default function Preorder() {
                 <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#ff9900', display: 'inline-block' }} />
                 {getYoursCard.badge}
               </span>
-              <div style={{ fontSize: 'clamp(22px, 2.8vw, 32px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', marginBottom: '8px' }}>
+              <div style={{ fontSize: 'clamp(22px, 2.8vw, 32px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', marginBottom: '8px' }}>
                 {getYoursCard.title}
               </div>
               <div style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
@@ -138,13 +138,13 @@ export default function Preorder() {
             }}>
               {statsValues.map((value, i) => (
                 <div key={i} style={{
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: 'var(--overlay-faint)',
+                  border: '1px solid var(--border)',
                   borderRadius: '12px',
                   padding: '12px 8px',
                   textAlign: 'center',
                 }}>
-                  <div style={{ fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em' }}>
+                  <div style={{ fontSize: 'clamp(16px, 2vw, 22px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em' }}>
                     {value}
                   </div>
                   <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', marginTop: '3px' }}>
@@ -193,7 +193,7 @@ export default function Preorder() {
 
           {/* ── App Waitlist ── */}
           <div style={{
-            background: 'rgba(255,255,255,0.03)',
+            background: 'var(--overlay-subtle)',
             border: '1px solid rgba(0,113,227,0.15)',
             borderRadius: '24px',
             padding: 'clamp(24px, 3vw, 36px)',
@@ -215,7 +215,7 @@ export default function Preorder() {
                 <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#0071e3', display: 'inline-block', boxShadow: '0 0 8px #0071e3' }} />
                 {appCard.badge}
               </span>
-              <div style={{ fontSize: 'clamp(22px, 2.8vw, 32px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', marginBottom: '12px' }}>
+              <div style={{ fontSize: 'clamp(22px, 2.8vw, 32px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', marginBottom: '12px' }}>
                 {appCard.title}
               </div>
               <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.7, margin: 0 }}>
@@ -229,13 +229,13 @@ export default function Preorder() {
                 <div key={f.label} style={{
                   display: 'flex', alignItems: 'flex-start', gap: '10px',
                   padding: '12px 14px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  background: 'var(--overlay-subtle)',
+                  border: '1px solid var(--border-subtle)',
                   borderRadius: '12px',
                 }}>
                   <span style={{ width: 7, height: 7, borderRadius: '50%', background: featureColors[i], flexShrink: 0, marginTop: '5px', boxShadow: `0 0 8px ${featureColors[i]}80` }} />
                   <div>
-                    <div style={{ fontSize: '13px', fontWeight: 600, color: '#f5f5f7', marginBottom: '2px' }}>{f.label}</div>
+                    <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text)', marginBottom: '2px' }}>{f.label}</div>
                     <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{f.desc}</div>
                   </div>
                 </div>
@@ -260,11 +260,11 @@ export default function Preorder() {
                     aria-describedby={emailError ? 'email-error' : undefined}
                     style={{
                       flex: 1,
-                      background: 'rgba(255,255,255,0.06)',
-                      border: `1px solid ${emailError ? 'rgba(255,69,58,0.7)' : focused ? 'rgba(0,113,227,0.6)' : 'rgba(255,255,255,0.12)'}`,
+                      background: 'var(--overlay-light)',
+                      border: `1px solid ${emailError ? 'rgba(255,69,58,0.7)' : focused ? 'rgba(0,113,227,0.6)' : 'var(--border-medium)'}`,
                       borderRadius: '980px',
                       padding: '12px 18px',
-                      color: '#f5f5f7',
+                      color: 'var(--text)',
                       fontFamily: 'var(--font)',
                       fontSize: '14px',
                       outline: 'none',

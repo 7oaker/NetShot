@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <footer style={{
-      background: '#000',
+      background: 'var(--bg)',
       borderTop: '1px solid var(--border)',
       padding: '40px clamp(24px, 6vw, 80px)',
     }}>
@@ -20,7 +20,7 @@ export default function Footer() {
       }}>
         {/* Logo */}
         <div>
-          <div style={{ fontSize: '18px', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.02em', marginBottom: '4px' }}>
+          <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.02em', marginBottom: '4px' }}>
             NetShot
           </div>
           <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>
@@ -38,7 +38,7 @@ export default function Footer() {
                 textDecoration: 'none',
                 transition: 'color 0.2s',
               }}
-              onMouseEnter={e => e.currentTarget.style.color = '#f5f5f7'}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
               onMouseLeave={e => e.currentTarget.style.color = 'var(--text-tertiary)'}>
                 {label}
               </a>

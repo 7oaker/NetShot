@@ -57,7 +57,7 @@ export default function HowItWorks() {
 
   return (
     <section id="how-it-works" aria-label="How NetShot works — mount, clip, play, review" ref={sectionRef} style={{
-      background: '#0a0a0a',
+      background: 'var(--bg-2)',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       position: 'relative',
       overflow: 'hidden',
@@ -70,7 +70,7 @@ export default function HowItWorks() {
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
           {t.howItWorks.label}
         </p>
-        <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
+        <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
           {t.howItWorks.headline}<br />
           <span style={{ color: 'var(--text-secondary)', fontWeight: 300 }}>{t.howItWorks.subheadline}</span>
         </h2>
@@ -97,14 +97,14 @@ export default function HowItWorks() {
             position: 'relative',
             opacity: 0,
           }}
-          onMouseEnter={e => e.currentTarget.style.background = '#232325'}
+          onMouseEnter={e => e.currentTarget.style.background = 'var(--surface-3)'}
           onMouseLeave={e => e.currentTarget.style.background = 'var(--surface)'}
           >
             <div style={{ marginBottom: '24px' }}>{stepIcons[i]}</div>
             <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', fontWeight: 600, letterSpacing: '0.1em', marginBottom: '10px' }}>
               {step.number}
             </div>
-            <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.02em', marginBottom: '10px' }}>
+            <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.02em', marginBottom: '10px' }}>
               {step.headline}
             </h3>
             <p style={{ fontSize: 'clamp(13px, 1.4vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.6 }}>

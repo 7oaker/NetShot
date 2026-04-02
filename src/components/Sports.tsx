@@ -77,7 +77,7 @@ export default function Sports() {
 
   return (
     <section id="sports" aria-label="Sports — NetShot for tennis and padel" ref={sectionRef} style={{
-      background: '#0a0a0a',
+      background: 'var(--bg-2)',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       position: 'relative',
       overflow: 'hidden',
@@ -90,7 +90,7 @@ export default function Sports() {
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
           {t.sports.label}
         </p>
-        <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
+        <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
           {t.sports.headline}<br />
           <span style={{ color: 'var(--text-secondary)', fontWeight: 300 }}>{t.sports.subheadline}</span>
         </h2>
@@ -106,9 +106,9 @@ export default function Sports() {
               onClick={() => setActive(i)}
               style={{
                 display: 'flex', alignItems: 'center', gap: '8px',
-                background: active === i ? 'rgba(255,255,255,0.08)' : 'transparent',
-                border: `1px solid ${active === i ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.08)'}`,
-                color: active === i ? '#f5f5f7' : 'var(--text-tertiary)',
+                background: active === i ? 'var(--overlay-base)' : 'transparent',
+                border: `1px solid ${active === i ? 'var(--overlay-bold)' : 'var(--border)'}`,
+                color: active === i ? 'var(--text)' : 'var(--text-tertiary)',
                 fontFamily: 'var(--font)', fontSize: '15px', fontWeight: 500,
                 padding: '10px 22px', borderRadius: '980px', cursor: 'pointer',
                 transition: 'all 0.25s ease',
@@ -170,7 +170,7 @@ export default function Sports() {
 
           <div style={{ fontSize: '40px', marginBottom: '16px' }}>{meta.emoji}</div>
 
-          <h3 style={{ fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', marginBottom: '12px' }}>
+          <h3 style={{ fontSize: 'clamp(22px, 3vw, 32px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', marginBottom: '12px' }}>
             {sportText.tagline}
           </h3>
           <p style={{ fontSize: 'clamp(14px, 1.5vw, 16px)', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '32px' }}>
@@ -180,7 +180,7 @@ export default function Sports() {
           <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap', marginBottom: meta.available ? '32px' : '0' }}>
             {[stat1, stat2].filter(s => s.value !== '—').map((stat, i) => (
               <div key={i}>
-                <div style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, color: meta.available ? '#f5f5f7' : 'var(--text-tertiary)', letterSpacing: '-0.03em' }}>
+                <div style={{ fontSize: 'clamp(24px, 3vw, 32px)', fontWeight: 700, color: meta.available ? 'var(--text)' : 'var(--text-tertiary)', letterSpacing: '-0.03em' }}>
                   {stat.value}
                 </div>
                 <div style={{ fontSize: '12px', color: 'var(--text-tertiary)', marginTop: '3px' }}>

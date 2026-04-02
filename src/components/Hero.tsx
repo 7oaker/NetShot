@@ -37,7 +37,7 @@ export default function Hero() {
   return (
     <section aria-label="NetShot tennis net phone mount — record your game automatically" style={{
       minHeight: '100vh',
-      background: '#000',
+      background: 'var(--bg)',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',

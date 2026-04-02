@@ -115,7 +115,7 @@ export default function FeatureGrid() {
 
   return (
     <section ref={sectionRef} style={{
-      background: '#000',
+      background: 'var(--bg)',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       position: 'relative',
       overflow: 'hidden',
@@ -128,7 +128,7 @@ export default function FeatureGrid() {
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
           {t.features.label}
         </p>
-        <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
+        <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
           {t.features.headline}
         </h2>
       </div>
@@ -168,7 +168,7 @@ export default function FeatureGrid() {
                 // color-mix fallback: use accent at 4% opacity over surface (#1c1c1e)
                 e.currentTarget.style.background = CSS.supports('color', 'color-mix(in srgb, red 4%, black)')
                   ? `color-mix(in srgb, ${meta.accent} 4%, var(--surface))`
-                  : '#232325'
+                  : 'var(--surface-3)'
                 e.currentTarget.style.transform = 'translateY(-4px)'
               }}
               onMouseLeave={e => {
@@ -186,7 +186,7 @@ export default function FeatureGrid() {
               <div style={{ marginBottom: '20px' }}>{meta.icon}</div>
               <h3 style={{
                 fontSize: isLarge ? 'clamp(22px, 2.5vw, 30px)' : 'clamp(18px, 2vw, 22px)',
-                fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.025em', marginBottom: '10px'
+                fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.025em', marginBottom: '10px'
               }}>
                 {f.title}
               </h3>
@@ -204,10 +204,10 @@ export default function FeatureGrid() {
           <button
             onClick={handleExpand}
             style={{
-              background: 'rgba(255,255,255,0.06)',
-              border: '1px solid rgba(255,255,255,0.12)',
+              background: 'var(--overlay-light)',
+              border: '1px solid var(--border-medium)',
               borderRadius: '980px',
-              color: '#f5f5f7',
+              color: 'var(--text)',
               fontFamily: 'var(--font)',
               fontSize: '14px',
               fontWeight: 500,
@@ -220,7 +220,7 @@ export default function FeatureGrid() {
           >
             {t.features.showAll(featureMeta.length)}
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M2 5l5 5 5-5" stroke="#f5f5f7" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 5l5 5 5-5" stroke="var(--text)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
         </div>

@@ -35,7 +35,7 @@ export default function AppSection() {
 
   return (
     <section id="app" aria-label="NetShot app — AI highlights, training mode, autopilot recording" ref={sectionRef} style={{
-      background: '#080808',
+      background: 'var(--bg-3)',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       overflow: 'hidden',
       position: 'relative',
@@ -57,7 +57,7 @@ export default function AppSection() {
         <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
           {t.app.label}
         </p>
-        <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: '#f5f5f7', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
+        <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
           {t.app.headline}
         </h2>
         <p style={{ marginTop: '20px', fontSize: 'clamp(16px, 1.8vw, 19px)', color: 'var(--text-secondary)', maxWidth: '520px', margin: '20px auto 0', lineHeight: 1.6 }}>
@@ -74,8 +74,8 @@ export default function AppSection() {
               key={f.id}
               onClick={() => setActive(i)}
               style={{
-                background: active === i ? featureColors[i] : 'rgba(255,255,255,0.06)',
-                border: `1px solid ${active === i ? featureColors[i] : 'rgba(255,255,255,0.1)'}`,
+                background: active === i ? featureColors[i] : 'var(--overlay-light)',
+                border: `1px solid ${active === i ? featureColors[i] : 'var(--border)'}`,
                 color: active === i ? '#fff' : 'var(--text-secondary)',
                 fontFamily: 'var(--font)',
                 fontSize: '13px', fontWeight: 500,
@@ -191,8 +191,8 @@ export default function AppSection() {
         <div style={{ textAlign: 'center', marginTop: '32px' }}>
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
-            background: 'rgba(255,255,255,0.04)',
-            border: '1px solid rgba(255,255,255,0.08)',
+            background: 'var(--overlay-faint)',
+            border: '1px solid var(--border)',
             borderRadius: '980px', padding: '8px 20px',
             fontSize: '13px', color: 'var(--text-tertiary)',
           }}>
