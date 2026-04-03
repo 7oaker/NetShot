@@ -39,7 +39,7 @@ export default function Preorder() {
   const { getYoursCard, appCard } = t.preorder
 
   return (
-    <section id="preorder" ref={sectionRef} style={{
+    <section id="order" ref={sectionRef} style={{
       background: 'var(--bg)',
       minHeight: '100vh',
       padding: 'clamp(72px, 10vw, 120px) clamp(24px, 6vw, 80px)',

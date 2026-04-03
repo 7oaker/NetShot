@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impressum — NetShot</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --bg: #000;
+        --surface: #0d0d0d;
+        --border: rgba(255,255,255,0.08);
+        --text: #f5f5f5;
+        --text-secondary: rgba(255,255,255,0.65);
+        --text-tertiary: rgba(255,255,255,0.38);
+        --accent: #0071e3;
+      }
+
+      html { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+      body { min-height: 100vh; display: flex; flex-direction: column; }
+
+      header {
+        border-bottom: 1px solid var(--border);
+        padding: 20px clamp(24px, 6vw, 80px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .logo {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+
+      .back {
+        font-size: 13px;
+        color: var(--text-tertiary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.2s;
+      }
+      .back:hover { color: var(--text); }
+      .back::before { content: '←'; }
+
+      main {
+        flex: 1;
+        padding: clamp(48px, 8vw, 96px) clamp(24px, 6vw, 80px);
+        max-width: 780px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      h1 {
+        font-size: clamp(32px, 6vw, 52px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: 48px;
+        color: var(--text);
+      }
+
+      .block {
+        margin-bottom: 32px;
+      }
+
+      .company {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 15px;
+        color: var(--text-secondary);
+        line-height: 1.75;
+      }
+
+      p + p { margin-top: 6px; }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover { text-decoration: underline; }
+
+      hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 40px 0;
+      }
+
+      h2 {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-tertiary);
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 10px;
+        margin-top: 28px;
+      }
+      h3:first-of-type { margin-top: 0; }
+
+      .legal-body {
+        font-size: 14px;
+        color: var(--text-tertiary);
+        line-height: 1.8;
+      }
+      .legal-body + .legal-body { margin-top: 12px; }
+
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 28px clamp(24px, 6vw, 80px);
+        text-align: center;
+        font-size: 12px;
+        color: var(--text-tertiary);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo">NetShot</a>
+      <a href="/" class="back">Zurück</a>
+    </header>
+
+    <main>
+      <h1>Impressum</h1>
+
+      <div class="block">
+        <p class="company">FERRO System GmbH</p>
+        <p>Lager: A-3680 Persenbeug, Industriestraße 2</p>
+        <p>Büro: A-3244 Ruprechtshofen, Melktalstraße 13/1</p>
+      </div>
+
+      <div class="block">
+        <p>Tel: <a href="tel:+436767777000">+43 676 7777 000</a></p>
+        <p>E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a></p>
+      </div>
+
+      <div class="block">
+        <p>Firmenbuchnummer: 575296z</p>
+        <p>UID-Nummer: ATU77965757</p>
+        <p>Firmengericht: Landesgericht St. Pölten</p>
+        <p>Behörde gem. ECG (E-Commerce Gesetz): Bezirkshauptmannschaft Melk</p>
+      </div>
+
+      <div class="block">
+        <p>Bankverbindung: Raiffeisenbank Region Schallaburg eGen</p>
+        <p>IBAN: AT70 3247 7000 0001 7681</p>
+      </div>
+
+      <div class="block">
+        <p>Geschäftsführer: Daniel Reiterlehner, <a href="mailto:d.reiterlehner@ferrosystem.at">d.reiterlehner@ferrosystem.at</a></p>
+      </div>
+
+      <hr />
+
+      <h2>Informationspflicht</h2>
+
+      <h3>Haftung für Inhalte auf dieser Webseite</h3>
+      <p class="legal-body">
+        Diese Webseite soll den Zugang der Öffentlichkeit zu Informationen rund um FERRO System GmbH ermöglichen.
+        Die Informationen auf dieser Webseite werden von uns nach bestem Wissen und Gewissen erstellt. Trotz aller
+        gebotenen Sorgfalt kann die unbedingte Genauigkeit, Aktualität und Richtigkeit der hier angebotenen
+        Informationen aber nicht garantiert werden. Wenn wir Kenntnis von Fehlern oder Irrtümern erhalten, werden
+        wir uns bemühen, diese zu berichtigen. Sachliche Hinweise an unsere Redaktion sind wir Ihnen dankbar.
+      </p>
+
+      <h3>Haftung für Hyperlinks</h3>
+      <p class="legal-body">
+        Wir haben auf unseren Seiten Links zu anderen Seiten im Internet gelegt. Für alle diese Links gilt, dass wir
+        auf die Gestaltung und die Inhalte der verlinkten Seiten keinen Einfluss haben. Wir distanzieren uns daher
+        ausdrücklich von den Inhalten dieser verlinkten Seiten, und machen uns diese nicht zu Eigen. Dies gilt für
+        die Inhalte aller externen Webseiten, die über unsere Webseite (auch durch Banner, Gästebücher oder Counter)
+        erreicht werden können.
+      </p>
+      <p class="legal-body">
+        Sollten wir Kenntnis von einer rechtswidrigen Tätigkeit oder Information auf einer von uns verlinkten Website
+        erhalten, so entfernen wir sofort den entsprechenden Link. Sollten Sie Kenntnisse über diesbezügliche Hinweise
+        haben bitten wir Sie uns eine E-Mail zuzusenden.
+      </p>
+
+      <h3>Foto- und Videomaterial</h3>
+      <p class="legal-body">
+        Fotos und Videos von <a href="https://www.pexels.com/" target="_blank" rel="noopener noreferrer">pexels.com</a> und Eigenproduktion
+      </p>
+    </main>
+
+    <footer>
+      &copy; <script>document.write(new Date().getFullYear())</script> NetShot. Alle Rechte vorbehalten.
+    </footer>
+  </body>
+</html>

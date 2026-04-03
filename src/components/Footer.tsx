@@ -47,8 +47,21 @@ export default function Footer() {
         </nav>
 
         {/* Legal */}
-        <div style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>
-          {t.footer.rights(new Date().getFullYear())}
+        <div style={{ fontSize: '12px', color: 'var(--text-tertiary)', display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <span>{t.footer.rights(new Date().getFullYear())}</span>
+          <a
+            href="/impressum.html"
+            style={{
+              color: 'var(--text-tertiary)',
+              textDecoration: 'underline',
+              textUnderlineOffset: '3px',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--text-tertiary)'}
+          >
+            Impressum
+          </a>
         </div>
       </div>
     </footer>

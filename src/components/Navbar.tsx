@@ -122,7 +122,7 @@ export default function Navbar() {
           {/* Language toggle */}
           <LangToggle lang={lang} setLang={setLang} light={!scrolled} />
 
-          <button onClick={() => scrollTo('preorder')} style={{
+          <button onClick={() => scrollTo('order')} style={{
             background: '#0071e3', border: 'none', cursor: 'pointer',
             color: '#fff', fontFamily: 'var(--font)',
             fontSize: '13px', fontWeight: 500,
@@ -137,7 +137,7 @@ export default function Navbar() {
 
         {/* Mobile controls */}
         <div className="nav-mobile" style={{ display: 'none', alignItems: 'center', gap: '10px' }}>
-          <button onClick={() => scrollTo('preorder')} style={{
+          <button onClick={() => scrollTo('order')} style={{
             background: '#0071e3', border: 'none', cursor: 'pointer',
             color: '#fff', fontFamily: 'var(--font)',
             fontSize: '13px', fontWeight: 500,
