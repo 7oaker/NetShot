@@ -62,6 +62,19 @@ export default function Footer() {
           >
             Impressum
           </a>
+          <a
+            href="/datenschutz.html"
+            style={{
+              color: 'var(--text-tertiary)',
+              textDecoration: 'underline',
+              textUnderlineOffset: '3px',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--text-tertiary)'}
+          >
+            Datenschutz
+          </a>
         </div>
       </div>
     </footer>
