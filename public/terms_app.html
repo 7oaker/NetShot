@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nutzungsbedingungen — NetShot App</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --bg: #000;
+        --surface: #0d0d0d;
+        --border: rgba(255,255,255,0.08);
+        --text: #f5f5f5;
+        --text-secondary: rgba(255,255,255,0.65);
+        --text-tertiary: rgba(255,255,255,0.38);
+        --accent: #0071e3;
+      }
+
+      html { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+      body { min-height: 100vh; display: flex; flex-direction: column; }
+
+      header {
+        border-bottom: 1px solid var(--border);
+        padding: 20px clamp(24px, 6vw, 80px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .logo {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .lang-toggle {
+        display: flex;
+        gap: 2px;
+        background: rgba(255,255,255,0.06);
+        border-radius: 6px;
+        padding: 3px;
+      }
+
+      .lang-btn {
+        background: none;
+        border: none;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-tertiary);
+        cursor: pointer;
+        border-radius: 4px;
+        font-family: 'Inter', sans-serif;
+        transition: all .15s;
+      }
+
+      .lang-btn.active {
+        background: rgba(255,255,255,0.10);
+        color: var(--text);
+      }
+
+      .back {
+        font-size: 13px;
+        color: var(--text-tertiary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.2s;
+      }
+      .back:hover { color: var(--text); }
+      .back::before { content: '←'; }
+
+      .doc-switcher {
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        gap: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding: 0 clamp(24px, 6vw, 80px);
+      }
+      .doc-switcher::-webkit-scrollbar { display: none; }
+      .doc-switcher a {
+        display: inline-block;
+        padding: 14px 18px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-tertiary);
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        white-space: nowrap;
+        transition: color .2s, border-color .2s;
+      }
+      .doc-switcher a:hover { color: var(--text-secondary); }
+      .doc-switcher a.active { color: var(--text); border-bottom-color: var(--text); }
+
+      main {
+        flex: 1;
+        padding: clamp(48px, 8vw, 96px) clamp(24px, 6vw, 80px);
+        max-width: 780px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .lang-content { display: none; }
+      .lang-content.active { display: block; }
+
+      h1 {
+        font-size: clamp(32px, 6vw, 52px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: 12px;
+        color: var(--text);
+      }
+
+      .meta {
+        font-size: 13px;
+        color: var(--text-tertiary);
+        margin-bottom: 56px;
+        line-height: 1.6;
+      }
+
+      .section {
+        margin-bottom: 48px;
+      }
+
+      h2 {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-tertiary);
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 12px;
+        margin-top: 32px;
+      }
+      h3:first-of-type { margin-top: 0; }
+
+      h4 {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        margin-top: 20px;
+        margin-bottom: 6px;
+      }
+
+      p {
+        font-size: 14px;
+        color: var(--text-tertiary);
+        line-height: 1.8;
+      }
+
+      p + p { margin-top: 10px; }
+
+      ul {
+        margin-top: 8px;
+        padding-left: 20px;
+        font-size: 14px;
+        color: var(--text-tertiary);
+        line-height: 1.8;
+      }
+
+      li { margin-bottom: 4px; }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover { text-decoration: underline; }
+
+      strong {
+        color: var(--text-secondary);
+        font-weight: 600;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 40px 0;
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 28px clamp(24px, 6vw, 80px);
+        text-align: center;
+        font-size: 12px;
+        color: var(--text-tertiary);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo">NetShot</a>
+      <div class="header-right">
+        <div class="lang-toggle">
+          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="/" class="back" id="back-link">Zurück</a>
+      </div>
+    </header>
+
+    <nav class="doc-switcher" aria-label="Dokumente">
+      <a href="/datenschutz.html" data-de="Datenschutz Website" data-en="Privacy Policy Website">Datenschutz Website</a>
+      <a href="/datenschutz_app.html" data-de="Datenschutz App" data-en="Privacy Policy App">Datenschutz App</a>
+      <a href="/terms_app.html" class="active" data-de="Nutzungsbedingungen" data-en="Terms of Use">Nutzungsbedingungen</a>
+    </nav>
+
+    <main>
+
+      <!-- GERMAN -->
+      <div class="lang-content" id="content-de">
+        <h1>Nutzungsbedingungen</h1>
+        <p class="meta">
+          Version 1.0 &nbsp;·&nbsp; Gültig ab 9. April 2026 &nbsp;·&nbsp; Anwendbares Recht: Österreichisches Recht &amp; EU-Verbraucherrecht
+        </p>
+
+        <!-- 1 -->
+        <div class="section">
+          <h2>1. Parteien &amp; Annahme</h2>
+
+          <p>
+            Diese Nutzungsbedingungen („<strong>Bedingungen</strong>") stellen einen rechtsverbindlichen
+            Vertrag zwischen Ihnen („<strong>Nutzer</strong>") und folgendem Unternehmen dar:
+          </p>
+
+          <p style="margin-top: 16px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Österreich<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>
+          </p>
+
+          <p>
+            („<strong>wir</strong>", „<strong>uns</strong>", „<strong>Entwickler</strong>") hinsichtlich
+            Ihrer Nutzung der mobilen Anwendung NetShot sowie aller damit verbundenen Dienste (die „<strong>App</strong>").
+          </p>
+
+          <p>
+            <strong>Durch das Herunterladen, Installieren oder Verwenden der App bestätigen Sie, dass Sie diese
+            Bedingungen und unsere <a href="/datenschutz_app.html">Datenschutzerklärung</a> gelesen, verstanden
+            und akzeptiert haben.</strong>
+            Wenn Sie nicht einverstanden sind, installieren oder verwenden Sie die App nicht.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 2 -->
+        <div class="section">
+          <h2>2. Beschreibung der App</h2>
+
+          <p>
+            NetShot ist eine Sport-Videoaufnahme-App für iOS und Android, mit der Nutzer folgende Aktionen durchführen können:
+          </p>
+          <ul>
+            <li>Vollständige Spielaufnahmen mit der Gerätekamera für Sitzungen von bis zu 120 Minuten aufzeichnen.</li>
+            <li>Highlight-Momente automatisch markieren, indem während der Aufnahme konfigurierbare Triggerwörter gesprochen werden (z. B. „Clip it!", „Cut").</li>
+            <li>Einzelne Clips rund um jeden markierten Moment mit konfigurierbaren Rückblick- und Pufferfenstern extrahieren und verwalten.</li>
+            <li>Clips zu einem teilbaren Highlight-Reel mit Übergängen zusammenstellen, vollständig auf dem Gerät verarbeitet.</li>
+          </ul>
+
+          <p>
+            Die App funktioniert <strong>vollständig offline</strong>. Sie erfordert kein Konto,
+            überträgt keine Aufnahmen an von uns betriebene Server und bietet keinerlei
+            Coaching-, Sportperformance-, medizinische oder sicherheitsbezogene Beratung.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 3 -->
+        <div class="section">
+          <h2>3. Lizenzgewährung</h2>
+
+          <p>
+            Vorbehaltlich Ihrer Einhaltung dieser Bedingungen gewähren wir Ihnen eine <strong>beschränkte,
+            nicht-exklusive, nicht übertragbare, widerrufliche Lizenz</strong> zum Herunterladen, Installieren
+            und Verwenden der App auf Geräten, die Sie besitzen oder kontrollieren, ausschließlich für persönliche,
+            nicht-kommerzielle Zwecke.
+          </p>
+
+          <h4>Folgendes ist nicht gestattet:</h4>
+          <ul>
+            <li>Kopieren, Modifizieren, Anpassen, Übersetzen oder Erstellen von abgeleiteten Werken der App oder eines Teils davon.</li>
+            <li>Reverse Engineering, Dekompilierung oder Disassemblierung der App, es sei denn, dies ist durch zwingendes Recht ausdrücklich erlaubt (einschließlich § 40e österreichisches Urheberrechtsgesetz / UrhG).</li>
+            <li>Unterlizenzieren, Verkaufen, Weiterverkaufen, Vermieten, Verleasen, Übertragen oder kommerzielle Auswertung der App.</li>
+            <li>Entfernen, Ändern oder Verdecken von Eigentumshinweisen, Beschriftungen oder Markierungen in oder auf der App.</li>
+            <li>Verwendung der App zur Entwicklung eines konkurrierenden Produkts oder Dienstes.</li>
+            <li>Umgehung technischer Schutzmaßnahmen in der App.</li>
+          </ul>
+
+          <p>Alle nicht ausdrücklich gewährten Rechte sind vorbehalten. Die Lizenz endet automatisch bei Verstoß gegen diese Bedingungen.</p>
+        </div>
+
+        <hr />
+
+        <!-- 4 -->
+        <div class="section">
+          <h2>4. Berechtigung &amp; Alter</h2>
+
+          <p>
+            Sie müssen mindestens <strong>16 Jahre alt</strong> sein, um die App zu verwenden. Wenn Sie zwischen
+            16 und 18 Jahre alt sind, bestätigen Sie, dass Sie die Zustimmung eines Elternteils oder gesetzlichen
+            Vormunds eingeholt haben, der diesen Bedingungen auch in Ihrem Namen zustimmt.
+          </p>
+
+          <p>
+            Wenn Sie ein Elternteil oder Vormund sind und erfahren, dass Ihr Kind unter 16 Jahren die App ohne
+            Erlaubnis installiert oder genutzt hat, kontaktieren Sie uns bitte unter
+            <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>, damit wir geeignete Maßnahmen ergreifen können.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 5 -->
+        <div class="section">
+          <h2>5. Aufnahme Dritter</h2>
+
+          <p>
+            Die Aufnahme anderer Personen ohne deren Wissen oder Zustimmung kann rechtswidrig sein. Sie tragen
+            die volle rechtliche Verantwortung für alle Aufnahmen, die Sie mit der App erstellen.
+          </p>
+
+          <h4>Ihre Pflichten bei Aufnahmen</h4>
+          <ul>
+            <li><strong>Einwilligung einholen.</strong> Bevor Sie ein Spiel oder eine Sitzung aufnehmen, in der andere Personen erkennbar sind, müssen Sie deren vorherige, informierte Zustimmung gemäß geltendem Recht einholen, einschließlich der DSGVO (Art. 6 Abs. 1 lit. a), des österreichischen DSG 2018 und der österreichischen Bildnisschutzbestimmungen nach §§ 77–78 UrhG.</li>
+            <li><strong>Vereinsregeln einhalten.</strong> Viele Sportvereine und -anlagen verbieten oder beschränken Videoaufnahmen. Sie müssen alle Regeln des Veranstaltungsorts einhalten, bevor Sie die App für Aufnahmen verwenden.</li>
+            <li><strong>Keine Aufnahmen von Minderjährigen</strong> ohne ausdrückliche schriftliche Zustimmung des Elternteils oder gesetzlichen Vormunds.</li>
+            <li><strong>Keine Aufnahmen an Orten</strong>, an denen eine berechtigte Privatheitserwartung besteht (z. B. Umkleideräume, Toiletten) – dies ist nach österreichischem Recht eine Straftat (§ 120a StGB).</li>
+            <li><strong>Aufnahmen verantwortungsvoll behandeln.</strong> Sie sind der Verantwortliche für alle Aufnahmen von Dritten. Das Teilen oder Veröffentlichen solcher Aufnahmen ohne geeignete Rechtsgrundlage kann zivil- und strafrechtliche Konsequenzen haben.</li>
+          </ul>
+
+          <p>
+            Wir stellen die App nur als technisches Werkzeug zur Verfügung. Wir verarbeiten, sehen, moderieren oder
+            haben keinen Zugang zu Ihren Aufnahmen. Wir übernehmen keine Haftung für Aufnahmen, die unter Verstoß
+            gegen geltendes Recht, Rechte Dritter oder diese Bedingungen erstellt werden.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 6 -->
+        <div class="section">
+          <h2>6. Zulässige Nutzung</h2>
+
+          <p>Sie verpflichten sich, die App nur für rechtmäßige Zwecke und in Übereinstimmung mit diesen Bedingungen zu verwenden. Folgende Verhaltensweisen sind streng verboten:</p>
+          <ul>
+            <li>Verwendung der App zur Aufzeichnung, Speicherung oder Weitergabe von Inhalten, die rechtswidrig, verleumderisch, obszön oder eine Verletzung von Rechten Dritter darstellen.</li>
+            <li>Aufnahme von Personen auf eine Weise, die rechtswidrige Überwachung, Stalking, Belästigung oder eine Verletzung der Privatsphäre nach österreichischem oder EU-Recht darstellt.</li>
+            <li>Versuche, auf Teile des Codes, der Daten oder der Funktionalität der App zuzugreifen, sie zu manipulieren oder zu stören, die über die normale Nutzung hinausgehen.</li>
+            <li>Verwendung der App zur Verletzung der Rechte des geistigen Eigentums Dritter, einschließlich der Aufzeichnung kommerziell lizenzierter Übertragungsinhalte.</li>
+            <li>Falsche Darstellung Ihrer Identität, Berechtigung oder Beziehung zu uns, um Support oder andere Vorteile zu erhalten.</li>
+            <li>Verwendung der App für kommerzielle Zwecke ohne unsere vorherige schriftliche Zustimmung.</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <!-- 7 -->
+        <div class="section">
+          <h2>7. Geistiges Eigentum</h2>
+
+          <h3>Unser Eigentum</h3>
+          <p>
+            Die App, einschließlich Quellcode, Design, Benutzeroberfläche, Grafiken, Icons, Logos, Texte und alle
+            anderen von uns erstellten Inhalte, ist durch Urheber-, Marken- und andere Gesetze zum Schutz des
+            geistigen Eigentums geschützt. „NetShot" und das NetShot-Logo sind unser Eigentum.
+          </p>
+
+          <h3>Ihre Inhalte</h3>
+          <p>
+            Sie behalten alle Eigentumsrechte an Aufnahmen, Clips und Reels, die Sie mit der App erstellen.
+            Da die App vollständig offline funktioniert und keine Daten an unsere Server überträgt, erhalten,
+            speichern oder erwerben wir keine Rechte an Ihren Inhalten.
+          </p>
+
+          <p>
+            Sie sichern zu und garantieren, dass: (a) Sie alle notwendigen Rechte und Genehmigungen für die
+            Erstellung Ihrer Inhalte besitzen; und (b) Ihre Inhalte keine Rechte Dritter verletzen, einschließlich
+            Datenschutz-, Persönlichkeits-, Urheber- oder Persönlichkeitsrechten nach österreichischem Recht
+            (§§ 16, 77–78 UrhG; § 1 DSG).
+          </p>
+
+          <h3>Feedback</h3>
+          <p>
+            Wenn Sie uns Fehlerberichte, Funktionsvorschläge oder anderes Feedback übermitteln, gewähren Sie uns
+            eine unbefristete, gebührenfreie, weltweite Lizenz zur Nutzung und Integration dieses Feedbacks in die
+            App ohne Vergütung an Sie.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 8 -->
+        <div class="section">
+          <h2>8. Datenschutz</h2>
+
+          <p>
+            Ihre Nutzung der App unterliegt auch unserer <a href="/datenschutz_app.html">Datenschutzerklärung</a>,
+            die durch Verweis in diese Bedingungen aufgenommen wird. NetShot überträgt Ihre Aufnahmen, Spieldaten
+            oder Einstellungen nicht an von uns betriebene Server. Alle App-Daten verbleiben ausschließlich auf
+            Ihrem Gerät.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 9 -->
+        <div class="section">
+          <h2>9. Dienste Dritter</h2>
+
+          <p>Die App nutzt folgende plattformseitige Dienste von Drittanbietern:</p>
+          <ul>
+            <li><strong>Apple SFSpeechRecognizer (iOS):</strong> Zur Sprachbefehlserkennung. Unterliegt der <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Datenschutzrichtlinie von Apple</a> und deren Nutzungsbedingungen.</li>
+            <li><strong>Google Speech Recognition (Android):</strong> Zur Sprachbefehlserkennung. Unterliegt der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzrichtlinie von Google</a> und deren Nutzungsbedingungen.</li>
+            <li><strong>Apple App Store / Google Play:</strong> Vertriebsplattformen für die App, jeweils mit eigenen Nutzungsbedingungen.</li>
+          </ul>
+
+          <p>
+            Wir sind nicht verantwortlich für die Verfügbarkeit, Inhalte, Sicherheit oder Datenschutzpraktiken
+            von Drittanbieterdiensten. Die App kann künftig weitere Drittanbieterdienste integrieren; wir werden
+            diese Bedingungen entsprechend aktualisieren, bevor eine solche Integration in Kraft tritt.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 10 -->
+        <div class="section">
+          <h2>10. Gewährleistungsausschluss</h2>
+
+          <p>
+            <strong>Soweit nach geltendem Recht zulässig</strong> wird die App „wie besehen" und „wie verfügbar"
+            ohne jegliche ausdrückliche oder stillschweigende Garantie bereitgestellt. Wir schließen ausdrücklich
+            alle Gewährleistungen aus, einschließlich, aber nicht beschränkt auf:
+          </p>
+          <ul>
+            <li><strong>Eignung für einen bestimmten Zweck.</strong> Die App ist ein Allzweck-Aufnahme- und Clip-Verwaltungswerkzeug. Wir machen keine Zusicherungen zur Eignung für professionelle Sportproduktion, Übertragung oder einen bestimmten Anwendungsfall.</li>
+            <li><strong>Genauigkeit der Spracherkennung.</strong> Die Schlüsselworterkennung hängt von Umgebungsgeräuschen, Mikrofonqualität, Aussprache, Erkennungssprache und den Fähigkeiten der zugrundeliegenden Plattform-Sprach-Engine ab.</li>
+            <li><strong>Ununterbrochener oder fehlerfreier Betrieb.</strong> Die App kann durch Gerätelimitierungen, Betriebssystem-Updates oder andere außerhalb unserer Kontrolle liegende Faktoren beeinträchtigt werden.</li>
+            <li><strong>Erhalt von Aufnahmen.</strong> Wir haften nicht für den Verlust von Aufnahmen durch Geräteausfall, Speichervollauslastung oder andere Ursachen. Sie sind für eigene Backups verantwortlich.</li>
+            <li><strong>Kompatibilität.</strong> Wir garantieren nicht, dass die App auf allen Geräten oder mit allen zukünftigen Versionen von iOS oder Android funktioniert.</li>
+          </ul>
+
+          <p>
+            Nichts in diesem Abschnitt schränkt gesetzlich vorgeschriebene Gewährleistungen oder Rechte ein,
+            die nach österreichischem Verbraucherschutzrecht (KSchG) oder EU-Verbraucherrecht nicht ausgeschlossen
+            werden können.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 11 -->
+        <div class="section">
+          <h2>11. Haftungsbeschränkung</h2>
+
+          <p>
+            <strong>Soweit nach geltendem Recht zulässig</strong> haften wir und unsere verbundenen Unternehmen,
+            Direktoren, Mitarbeiter, Vertreter und Lizenzgeber nicht für indirekte, zufällige, besondere, Folge-
+            oder Strafschäden, einschließlich, aber nicht beschränkt auf:
+          </p>
+          <ul>
+            <li>Datenverlust, Verlust von Aufnahmen, Umsatzverlust oder Reputationsschäden, die im Zusammenhang mit der App oder diesen Bedingungen entstehen.</li>
+            <li>Schäden aus Aufnahmen von Dritten ohne angemessene Einwilligung, einschließlich zivilrechtlicher oder strafrechtlicher Ansprüche gegen Sie.</li>
+            <li>Schäden durch das Versäumnis der Spracherkennung, einen Highlight-Moment zu erfassen.</li>
+            <li>Schäden durch Gerät- oder Datenverlust, einschließlich des Verlusts von auf Ihrem Gerät gespeicherten Aufnahmen.</li>
+            <li>Schäden durch Ihren Verstoß gegen diese Bedingungen oder geltendes Recht.</li>
+          </ul>
+
+          <p>
+            Soweit unsere Haftung nach zwingendem österreichischem Recht nicht vollständig ausgeschlossen werden
+            kann, ist unsere Gesamthaftung für jeden Anspruch auf <strong>EUR 50</strong> oder den Betrag
+            begrenzt, den Sie in den zwölf Monaten vor dem Anspruch für die App bezahlt haben, je nachdem, welcher
+            Betrag höher ist. Die App wird derzeit kostenlos angeboten.
+          </p>
+
+          <p>
+            Nichts in diesen Bedingungen schließt die Haftung aus oder beschränkt sie für: (a) Tod oder
+            Körperverletzung durch grobe Fahrlässigkeit; (b) Betrug oder betrügerische Falschangaben; oder
+            (c) jede Haftung, die nach österreichischem oder EU-Recht nicht rechtmäßig ausgeschlossen werden kann.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 12 -->
+        <div class="section">
+          <h2>12. Verbraucherrechte</h2>
+
+          <p>
+            Wenn Sie Verbraucher im Sinne des österreichischen Konsumentenschutzgesetzes (KSchG) sind, gelten
+            folgende Bestimmungen zusätzlich zu den übrigen Bedingungen. Im Falle eines Widerspruchs geht das
+            österreichische Verbraucherschutzrecht vor.
+          </p>
+
+          <h3>Gesetzliche Gewährleistung</h3>
+          <p>
+            Sie haben gesetzliche Gewährleistungsrechte gemäß §§ 922–933b ABGB und der EU-Warenkauf-Richtlinie
+            (EU) 2019/771. Diese Rechte können durch vertragliche Vereinbarung nicht aufgehoben oder beschränkt
+            werden. Die gesetzliche Gewährleistungsfrist für digitale Produkte beträgt zwei Jahre ab dem Datum,
+            an dem die App Ihnen zur Verfügung gestellt wurde.
+          </p>
+
+          <h3>Rücktrittsrecht</h3>
+          <p>
+            Die App wird kostenlos vertrieben. Soweit die App als kostenpflichtiges Produkt angeboten und digitale
+            Inhalte unmittelbar nach dem Kauf bereitgestellt werden, erkennen Sie ausdrücklich an, dass Sie gemäß
+            Art. 16 lit. m der Verbraucherrechterichtlinie Ihr Rücktrittsrecht verlieren, sobald der Download
+            begonnen hat, nachdem Sie hierüber informiert wurden und Ihre ausdrückliche Zustimmung zur sofortigen
+            Lieferung gegeben haben.
+          </p>
+
+          <h3>Online-Streitbeilegung</h3>
+          <p>
+            Die Europäische Kommission stellt eine
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">Online-Streitbeilegungsplattform (OS-Plattform)</a>
+            für Verbraucherstreitigkeiten aus Online-Verträgen zur Verfügung. Unsere Kontakt-E-Mail für OS-Zwecke
+            ist <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>. Wir sind nicht verpflichtet,
+            an einem alternativen Streitbeilegungsverfahren teilzunehmen, werden jedoch versuchen, jede Beschwerde
+            direkt und einvernehmlich zu lösen.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 13 -->
+        <div class="section">
+          <h2>13. Kündigung</h2>
+
+          <h3>Kündigung durch Sie</h3>
+          <p>
+            Sie können diese Bedingungen jederzeit durch Löschen der App von Ihrem Gerät kündigen.
+            Das Löschen entfernt die App und ihre zugehörigen Daten aus dem Gerätesandbox. Zuvor in
+            Ihrer Fotomediathek gespeicherte Inhalte bleiben davon unberührt.
+          </p>
+
+          <h3>Kündigung durch uns</h3>
+          <p>
+            Wir können Ihre Lizenz zur Nutzung der App mit sofortiger Wirkung kündigen oder aussetzen, wenn Sie
+            diese Bedingungen wesentlich verletzen, insbesondere bei rechtswidriger Nutzung, Verletzung von
+            Rechten Dritter oder Missbrauch der App.
+          </p>
+
+          <h3>Folgen der Kündigung</h3>
+          <p>
+            Bei Kündigung enden alle Ihnen gemäß diesen Bedingungen gewährten Rechte sofort. Die Abschnitte 6, 7,
+            10, 11 und 15 sowie alle Bestimmungen, die ihrem Wesen nach über die Kündigung hinaus gelten sollen,
+            bleiben bestehen.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 14 -->
+        <div class="section">
+          <h2>14. Änderungen der Nutzungsbedingungen</h2>
+
+          <p>
+            Wir können diese Bedingungen aktualisieren, um Änderungen in der App, dem anwendbaren Recht oder
+            unseren Praktiken widerzuspiegeln. Die aktuelle Version ist stets unter
+            <a href="https://netshot.store/terms_app.html">netshot.store/terms_app.html</a>
+            verfügbar und innerhalb der App zugänglich.
+          </p>
+
+          <p>
+            Wir werden Sie über wesentliche Änderungen durch eine Benachrichtigung in der App mindestens
+            <strong>30 Tage</strong> vor Inkrafttreten informieren. Die weitere Nutzung der App nach dem
+            Inkrafttreten geänderter Bedingungen gilt als Annahme der Änderungen. Für Verbraucher können
+            zwingende Rechte nach österreichischem und EU-Recht durch Änderungen dieser Bedingungen nicht
+            zu Ihrem Nachteil geändert werden.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 15 -->
+        <div class="section">
+          <h2>15. Anwendbares Recht &amp; Streitigkeiten</h2>
+
+          <h3>Anwendbares Recht</h3>
+          <p>
+            Diese Bedingungen unterliegen dem Recht der <strong>Republik Österreich</strong> und sind gemäß
+            diesem auszulegen, ohne Rücksicht auf Kollisionsnormen, und vorbehaltlich zwingender
+            Verbraucherschutzbestimmungen des Landes Ihres gewöhnlichen Aufenthalts, wenn Sie Verbraucher sind.
+          </p>
+
+          <h3>Gerichtsstand</h3>
+          <p>
+            Vorbehaltlich zwingender gesetzlicher Bestimmungen zum Gerichtsstand für Verbraucher unterliegen
+            alle Streitigkeiten aus oder im Zusammenhang mit diesen Bedingungen der ausschließlichen
+            Zuständigkeit der zuständigen Gerichte <strong>Wiens, Österreich</strong>. Wenn Sie Verbraucher
+            in einem anderen EU-Mitgliedstaat sind, behalten Sie das Recht, Verfahren vor den Gerichten Ihres
+            gewöhnlichen Aufenthalts gemäß Art. 18 der EU-Verordnung 1215/2012 einzuleiten.
+          </p>
+
+          <h3>Gütliche Einigung</h3>
+          <p>
+            Bevor Sie formelle Verfahren einleiten, bitten wir Sie, uns zunächst unter
+            <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a> zu kontaktieren,
+            damit wir versuchen können, die Angelegenheit direkt zu klären.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 16 -->
+        <div class="section">
+          <h2>16. App-Store-Anforderungen</h2>
+
+          <h3>Apple App Store</h3>
+          <p>
+            Diese Bedingungen sind ein Vertrag zwischen Ihnen und uns, <strong>nicht mit Apple Inc.</strong>
+            Apple ist nicht verantwortlich für die App oder deren Inhalte und hat keine Verpflichtung zur
+            Bereitstellung von Wartung, technischem Support oder anderen Diensten für die App. Im Falle einer
+            Nichtkonformität der App mit einer anwendbaren Garantie können Sie Apple benachrichtigen, und Apple
+            erstattet den App-Kaufpreis (falls vorhanden); im maximal gesetzlich zulässigen Umfang hat Apple
+            keine weitere Gewährleistungsverpflichtung in Bezug auf die App.
+          </p>
+
+          <p>
+            <strong>Apple und seine Tochtergesellschaften sind Drittbegünstigte</strong> dieser Bedingungen
+            und haben nach Ihrer Annahme das Recht, diese Bedingungen als Drittbegünstigte gegen Sie
+            durchzusetzen.
+          </p>
+
+          <h3>Google Play Store</h3>
+          <p>
+            Diese Bedingungen sind ein Vertrag zwischen Ihnen und uns, <strong>nicht mit Google LLC.</strong>
+            Google ist nicht verantwortlich für die App oder deren Inhalte. Ihre Nutzung der App muss auch
+            den Nutzungsbedingungen von Google Play entsprechen. Google übernimmt keine Verantwortung für
+            Gewährleistungsansprüche, Produkthaftung, Verbraucherbeschwerden oder
+            Streitigkeiten über geistiges Eigentum in Bezug auf die App.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 17 -->
+        <div class="section">
+          <h2>17. Kontakt</h2>
+
+          <p>Für Fragen, Beschwerden oder Support-Anfragen zu diesen Bedingungen oder der App:</p>
+
+          <p style="margin-top: 16px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Österreich<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a><br />
+            Website: <a href="https://netshot.store" target="_blank" rel="noopener">netshot.store</a>
+          </p>
+
+          <p>Wir bemühen uns, innerhalb von 5 Werktagen zu antworten.</p>
+        </div>
+      </div>
+
+      <!-- ENGLISH -->
+      <div class="lang-content" id="content-en">
+        <h1>Terms of Use</h1>
+        <p class="meta">
+          Version 1.0 &nbsp;·&nbsp; Effective April 9, 2026 &nbsp;·&nbsp; Governing law: Austrian law &amp; EU consumer law
+        </p>
+
+        <!-- 1 -->
+        <div class="section">
+          <h2>1. Parties &amp; Acceptance</h2>
+
+          <p>
+            These Terms of Use ("<strong>Terms</strong>") constitute a legally binding agreement
+            between you ("<strong>User</strong>") and:
+          </p>
+
+          <p style="margin-top: 16px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Austria<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>
+          </p>
+
+          <p>
+            ("<strong>we</strong>", "<strong>us</strong>", "<strong>Developer</strong>") regarding
+            your use of the NetShot mobile application and any related services (the "<strong>App</strong>").
+          </p>
+
+          <p>
+            <strong>By downloading, installing, or using the App, you confirm that you have read,
+            understood, and agree to be bound by these Terms and our
+            <a href="/datenschutz_app.html">Privacy Policy</a>.</strong>
+            If you do not agree, do not install or use the App.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 2 -->
+        <div class="section">
+          <h2>2. Description of the App</h2>
+
+          <p>
+            NetShot is a sports video-recording application for iOS and Android that enables users to:
+          </p>
+          <ul>
+            <li>Record full match footage using the device camera for sessions up to 120 minutes.</li>
+            <li>Automatically mark highlight moments by speaking configurable trigger words (e.g. "Clip it!", "Cut") during recording.</li>
+            <li>Extract and manage individual clips around each marked moment with configurable lookback and buffer windows.</li>
+            <li>Compile clips into a shareable highlight reel with transitions, processed entirely on-device.</li>
+          </ul>
+
+          <p>
+            The App operates <strong>entirely offline</strong>. It does not require an account,
+            does not transmit recordings to any server operated by us, and does not provide
+            coaching, sports performance analysis, medical, or safety advice of any kind.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 3 -->
+        <div class="section">
+          <h2>3. License Grant</h2>
+
+          <p>
+            Subject to your compliance with these Terms, we grant you a <strong>limited,
+            non-exclusive, non-transferable, revocable license</strong> to download, install,
+            and use the App on devices you own or control, solely for your personal,
+            non-commercial purposes.
+          </p>
+
+          <h4>You may not:</h4>
+          <ul>
+            <li>Copy, modify, adapt, translate, or create derivative works of the App or any part thereof.</li>
+            <li>Reverse-engineer, decompile, or disassemble the App, except to the extent expressly permitted by mandatory law (including § 40e Austrian Copyright Act / UrhG).</li>
+            <li>Sublicense, sell, resell, rent, lease, transfer, or commercially exploit the App.</li>
+            <li>Remove, alter, or obscure any proprietary notices, labels, or marks on or in the App.</li>
+            <li>Use the App to develop a competing product or service.</li>
+            <li>Circumvent any technical protection measures incorporated in the App.</li>
+          </ul>
+
+          <p>All rights not expressly granted herein are reserved. The license terminates automatically upon any breach of these Terms.</p>
+        </div>
+
+        <hr />
+
+        <!-- 4 -->
+        <div class="section">
+          <h2>4. Eligibility &amp; Age</h2>
+
+          <p>
+            You must be at least <strong>16 years of age</strong> to use the App. If you are
+            between 16 and 18 years of age, you confirm that you have obtained the consent of a
+            parent or legal guardian who also agrees to these Terms on your behalf.
+          </p>
+
+          <p>
+            If you are a parent or guardian and become aware that your child under 16 has installed
+            or used the App without authorisation, please contact us at
+            <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a> so we can take appropriate steps.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 5 -->
+        <div class="section">
+          <h2>5. Recording Third Parties</h2>
+
+          <p>
+            Recording other individuals without their knowledge or consent may be unlawful. You
+            bear full legal responsibility for all recordings you make using the App.
+          </p>
+
+          <h4>Your obligations when recording</h4>
+          <ul>
+            <li><strong>Obtain consent.</strong> Before recording any match or session in which other individuals are identifiable, you must obtain their prior, informed consent in accordance with applicable law including the GDPR (Art. 6(1)(a)), the Austrian DSG 2018, and the Austrian image-rights provisions of §§ 77–78 UrhG.</li>
+            <li><strong>Comply with venue rules.</strong> Many sports clubs and facilities prohibit or restrict video recording. You must comply with all venue policies before using the App to record.</li>
+            <li><strong>Do not record minors</strong> without the explicit written consent of their parent or legal guardian.</li>
+            <li><strong>Do not record in locations</strong> where a reasonable expectation of privacy exists (e.g. changing rooms, restrooms) — this is a criminal offence under Austrian law (§ 120a StGB).</li>
+            <li><strong>Handle recordings responsibly.</strong> You are the data controller for any recordings of third parties you make. Sharing or publishing such recordings without appropriate legal basis may expose you to civil and criminal liability.</li>
+          </ul>
+
+          <p>
+            We provide the App as a technical tool only. We do not process, view, moderate, or
+            have access to any recordings you make. We accept no liability for recordings made in
+            violation of applicable law, third-party rights, or these Terms.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 6 -->
+        <div class="section">
+          <h2>6. Acceptable Use</h2>
+
+          <p>You agree to use the App only for lawful purposes and in accordance with these Terms. The following conduct is strictly prohibited:</p>
+          <ul>
+            <li>Using the App to record, store, or share content that is illegal, defamatory, obscene, or that infringes any third party's rights.</li>
+            <li>Recording individuals in a manner that constitutes unlawful surveillance, stalking, harassment, or a violation of their right to privacy under Austrian or EU law.</li>
+            <li>Attempting to access, tamper with, or disrupt any part of the App's code, storage, or functionality beyond normal use.</li>
+            <li>Using the App to infringe the intellectual property rights of third parties, including recording commercially licensed broadcast content.</li>
+            <li>Misrepresenting your identity, eligibility, or relationship with us to obtain support or other benefits.</li>
+            <li>Using the App for any commercial purpose without our prior written consent.</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <!-- 7 -->
+        <div class="section">
+          <h2>7. Intellectual Property</h2>
+
+          <h3>Our property</h3>
+          <p>
+            The App, including its source code, design, user interface, graphics, icons, logos,
+            text, and all other content created by us, is protected by copyright, trade mark, and
+            other intellectual property laws. "NetShot" and the NetShot logo are our property.
+          </p>
+
+          <h3>Your content</h3>
+          <p>
+            You retain all ownership rights in recordings, clips, and reels you create using the
+            App. Because the App operates entirely offline without transmitting data to our servers,
+            we do not receive, store, or acquire any rights in your content.
+          </p>
+
+          <p>
+            You represent and warrant that: (a) you own or have the necessary rights and permissions
+            to create your content; and (b) your content does not infringe the rights of any third
+            party, including rights of privacy, publicity, copyright, or personality rights under
+            Austrian law (§§ 16, 77–78 UrhG; § 1 DSG).
+          </p>
+
+          <h3>Feedback</h3>
+          <p>
+            If you submit bug reports, feature suggestions, or other feedback to us, you grant us a
+            perpetual, royalty-free, worldwide license to use and incorporate such feedback into the
+            App without compensation to you.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 8 -->
+        <div class="section">
+          <h2>8. Privacy</h2>
+
+          <p>
+            Your use of the App is also governed by our <a href="/datenschutz_app.html">Privacy Policy</a>,
+            which is incorporated into these Terms by reference. NetShot does not transmit your
+            recordings, match data, or settings to any server operated by us. All App data resides
+            exclusively on your device.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 9 -->
+        <div class="section">
+          <h2>9. Third-Party Services</h2>
+
+          <p>The App relies on the following platform-level services provided by third parties:</p>
+          <ul>
+            <li><strong>Apple SFSpeechRecognizer (iOS):</strong> Used for voice command detection. Subject to <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a> and Terms of Service.</li>
+            <li><strong>Google Speech Recognition (Android):</strong> Used for voice command detection. Subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> and Terms of Service.</li>
+            <li><strong>Apple App Store / Google Play:</strong> Distribution platforms for the App, each subject to their own terms.</li>
+          </ul>
+
+          <p>
+            We are not responsible for the availability, content, security, or privacy practices
+            of any third-party service. The App may in future integrate additional third-party
+            services; we will update these Terms accordingly before any such integration takes effect.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 10 -->
+        <div class="section">
+          <h2>10. Disclaimer of Warranties</h2>
+
+          <p>
+            <strong>To the fullest extent permitted by applicable law</strong>, the App is provided
+            "as is" and "as available" without warranty of any kind, express or implied. We expressly
+            disclaim all warranties, including but not limited to:
+          </p>
+          <ul>
+            <li><strong>Fitness for a particular purpose.</strong> The App is a general-purpose recording and clip-management tool. We make no representation that it is suitable for professional sports production, broadcast, or any specific use case.</li>
+            <li><strong>Accuracy of voice detection.</strong> Keyword detection depends on ambient noise levels, microphone quality, spoken accent, recognition language, and the capabilities of the underlying platform speech engine.</li>
+            <li><strong>Uninterrupted or error-free operation.</strong> The App may be affected by device limitations, operating system updates, or other factors outside our control.</li>
+            <li><strong>Preservation of recordings.</strong> We are not liable for loss of recordings due to device failure, storage exhaustion, or any other cause. You are responsible for maintaining your own backups.</li>
+            <li><strong>Compatibility.</strong> We do not warrant that the App will function on all devices or with all future versions of iOS or Android.</li>
+          </ul>
+
+          <p>
+            Nothing in this section limits mandatory statutory warranties or rights that cannot be
+            excluded under Austrian consumer protection law (KSchG) or EU consumer law.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 11 -->
+        <div class="section">
+          <h2>11. Limitation of Liability</h2>
+
+          <p>
+            <strong>To the fullest extent permitted by applicable law</strong>, we and our affiliates,
+            directors, employees, agents, and licensors shall not be liable for any indirect,
+            incidental, special, consequential, or punitive damages, including but not limited to:
+          </p>
+          <ul>
+            <li>Loss of data, loss of recordings, loss of revenue, or loss of goodwill arising out of or in connection with the App or these Terms.</li>
+            <li>Damages arising from recordings you make of third parties without appropriate consent, including any civil or criminal claims brought against you.</li>
+            <li>Damages arising from the failure of voice detection to capture a highlight moment.</li>
+            <li>Damages arising from device or data loss, including loss of recorded footage stored on your device.</li>
+            <li>Damages arising from your violation of these Terms or any applicable law.</li>
+          </ul>
+
+          <p>
+            Where our liability cannot be fully excluded under mandatory Austrian law, our total
+            aggregate liability for any claim shall not exceed <strong>EUR 50</strong> or the
+            amount you paid for the App in the twelve months preceding the claim, whichever is
+            greater. The App is currently offered free of charge.
+          </p>
+
+          <p>
+            Nothing in these Terms excludes or limits liability for: (a) death or personal injury
+            caused by our gross negligence; (b) fraud or fraudulent misrepresentation; or (c) any
+            liability that cannot be lawfully excluded under Austrian or EU law.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 12 -->
+        <div class="section">
+          <h2>12. Consumer Rights</h2>
+
+          <p>
+            If you are a consumer within the meaning of the Austrian Konsumentenschutzgesetz (KSchG),
+            the following provisions apply in addition to the rest of these Terms. In the event of a
+            conflict, Austrian consumer protection law prevails.
+          </p>
+
+          <h3>Statutory warranty (Gewährleistung)</h3>
+          <p>
+            You have mandatory warranty rights under §§ 922–933b ABGB and the EU Sale of Goods
+            Directive (EU) 2019/771. These rights cannot be waived or limited by contractual
+            agreement. The statutory warranty period for digital products is two years from the
+            date the App was made available to you.
+          </p>
+
+          <h3>Right of withdrawal</h3>
+          <p>
+            The App is distributed free of charge. Where the App is offered as a paid product and
+            digital content is delivered immediately upon purchase, you expressly acknowledge that
+            you lose your right of withdrawal under Art. 16(m) of the Consumer Rights Directive
+            once download has begun, having been informed of this in advance and having given your
+            express consent to immediate delivery.
+          </p>
+
+          <h3>Online dispute resolution</h3>
+          <p>
+            The European Commission provides an
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">Online Dispute Resolution (ODR) platform</a>
+            for consumer disputes arising from online contracts. Our contact e-mail for ODR purposes
+            is <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>. We are not obliged to participate
+            in an alternative dispute resolution procedure, but we will endeavour to resolve any
+            complaint directly and amicably.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 13 -->
+        <div class="section">
+          <h2>13. Termination</h2>
+
+          <h3>Termination by you</h3>
+          <p>
+            You may terminate these Terms at any time by deleting the App from your device.
+            Deletion removes the App and its associated data from the device sandbox. Content
+            previously saved to your Photo Library is unaffected.
+          </p>
+
+          <h3>Termination by us</h3>
+          <p>
+            We may terminate or suspend your license to use the App with immediate effect if you
+            materially breach these Terms, in particular in cases of illegal use, violation of
+            third-party rights, or abuse of the App.
+          </p>
+
+          <h3>Effect of termination</h3>
+          <p>
+            Upon termination, all rights granted to you under these Terms cease immediately.
+            Sections 6, 7, 10, 11, and 15, and any provisions by their nature intended to
+            survive, shall survive termination.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 14 -->
+        <div class="section">
+          <h2>14. Changes to These Terms</h2>
+
+          <p>
+            We may update these Terms to reflect changes in the App, applicable law, or our
+            practices. The current version is always available at
+            <a href="https://netshot.store/terms_app.html">netshot.store/terms_app.html</a>
+            and is accessible from within the App.
+          </p>
+
+          <p>
+            We will notify you of material changes through a notice in the App at least
+            <strong>30 days</strong> before they take effect. Continued use of the App after
+            the effective date of revised Terms constitutes acceptance of the changes. For
+            consumers, mandatory rights under Austrian and EU law cannot be altered to your
+            detriment by changes to these Terms.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 15 -->
+        <div class="section">
+          <h2>15. Governing Law &amp; Disputes</h2>
+
+          <h3>Governing law</h3>
+          <p>
+            These Terms shall be governed by and construed in accordance with the laws of the
+            <strong>Republic of Austria</strong>, without regard to its conflict-of-law rules,
+            and subject to mandatory consumer protection provisions of the country in which
+            you are habitually resident if you are a consumer.
+          </p>
+
+          <h3>Jurisdiction</h3>
+          <p>
+            Subject to mandatory statutory provisions on jurisdiction for consumers, any dispute
+            arising out of or in connection with these Terms shall be subject to the exclusive
+            jurisdiction of the competent courts of <strong>Vienna, Austria</strong>. If you are
+            a consumer in another EU Member State, you retain the right to bring proceedings
+            before the courts of your place of habitual residence pursuant to Art. 18 of EU
+            Regulation 1215/2012.
+          </p>
+
+          <h3>Amicable resolution</h3>
+          <p>
+            Before initiating formal proceedings we encourage you to contact us first at
+            <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a> so that we can try to resolve the
+            matter directly.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 16 -->
+        <div class="section">
+          <h2>16. App Store Requirements</h2>
+
+          <h3>Apple App Store</h3>
+          <p>
+            These Terms are an agreement between you and us, <strong>not with Apple Inc.</strong>
+            Apple is not responsible for the App or its content and has no obligation to provide
+            maintenance, technical support, or other services for the App. In the event of any
+            failure of the App to conform to an applicable warranty, you may notify Apple and Apple
+            will refund the App purchase price (if any); to the maximum extent permitted by law,
+            Apple has no other warranty obligation with respect to the App.
+          </p>
+
+          <p>
+            <strong>Apple and its subsidiaries are third-party beneficiaries</strong> of these
+            Terms and, upon your acceptance, will have the right to enforce these Terms against
+            you as a third-party beneficiary.
+          </p>
+
+          <h3>Google Play Store</h3>
+          <p>
+            These Terms are an agreement between you and us, <strong>not with Google LLC.</strong>
+            Google is not responsible for the App or its content. Your use of the App must also
+            comply with Google Play's Terms of Service. Google bears no responsibility for warranty
+            claims, product liability, consumer complaints, or intellectual property disputes
+            relating to the App.
+          </p>
+        </div>
+
+        <hr />
+
+        <!-- 17 -->
+        <div class="section">
+          <h2>17. Contact</h2>
+
+          <p>For questions, complaints, or support requests regarding these Terms or the App:</p>
+
+          <p style="margin-top: 16px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Austria<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a><br />
+            Website: <a href="https://netshot.store" target="_blank" rel="noopener">netshot.store</a>
+          </p>
+
+          <p>We aim to respond within 5 business days.</p>
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      &copy; <script>document.write(new Date().getFullYear())</script> NetShot. <span id="footer-rights">Alle Rechte vorbehalten.</span>
+      &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a>
+    </footer>
+
+    <script>
+      const STORAGE_KEY = 'netshot-lang';
+      const btns = document.querySelectorAll('.lang-btn');
+      const contents = document.querySelectorAll('.lang-content');
+      const backLink = document.getElementById('back-link');
+      const footerRights = document.getElementById('footer-rights');
+      const navLinks = document.querySelectorAll('.doc-switcher a');
+
+      function setLang(lang) {
+        btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+        contents.forEach(c => c.classList.toggle('active', c.id === 'content-' + lang));
+        backLink.textContent = lang === 'de' ? 'Zurück' : 'Back';
+        footerRights.textContent = lang === 'de' ? 'Alle Rechte vorbehalten.' : 'All rights reserved.';
+        navLinks.forEach(a => { if (a.dataset[lang]) a.textContent = a.dataset[lang]; });
+        document.documentElement.lang = lang;
+        localStorage.setItem(STORAGE_KEY, lang);
+      }
+
+      btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+      const saved = localStorage.getItem(STORAGE_KEY);
+      const lang = (saved === 'de' || saved === 'en') ? saved : (navigator.language.startsWith('de') ? 'de' : 'en');
+      setLang(lang);
+    </script>
+  </body>
+</html>

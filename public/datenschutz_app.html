@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — NetShot App</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root { --bg: #000; --surface: #0d0d0d; --border: rgba(255,255,255,0.08); --text: #f5f5f5; --text-secondary: rgba(255,255,255,0.65); --text-tertiary: rgba(255,255,255,0.38); --accent: #0071e3; }
+      html { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; }
+      body { min-height: 100vh; display: flex; flex-direction: column; }
+      header { border-bottom: 1px solid var(--border); padding: 20px clamp(24px, 6vw, 80px); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .logo { font-size: 18px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+      .header-right { display: flex; align-items: center; gap: 20px; }
+      .lang-toggle { display: flex; gap: 2px; background: rgba(255,255,255,0.06); border-radius: 6px; padding: 3px; }
+      .lang-btn { background: none; border: none; padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--text-tertiary); cursor: pointer; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all .15s; }
+      .lang-btn.active { background: rgba(255,255,255,0.1); color: var(--text); }
+      .back { font-size: 13px; color: var(--text-tertiary); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+      .back:hover { color: var(--text); }
+      .back::before { content: '←'; }
+      .doc-switcher { border-bottom: 1px solid var(--border); display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; padding: 0 clamp(24px, 6vw, 80px); }
+      .doc-switcher::-webkit-scrollbar { display: none; }
+      .doc-switcher a { display: inline-block; padding: 14px 18px; font-size: 13px; font-weight: 500; color: var(--text-tertiary); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; transition: color .2s, border-color .2s; }
+      .doc-switcher a:hover { color: var(--text-secondary); }
+      .doc-switcher a.active { color: var(--text); border-bottom-color: var(--text); }
+      .lang-content { display: none; }
+      .lang-content.active { display: block; }
+      main { flex: 1; padding: clamp(48px, 8vw, 96px) clamp(24px, 6vw, 80px); max-width: 780px; margin: 0 auto; width: 100%; }
+      h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; color: var(--text); }
+      .meta { font-size: 13px; color: var(--text-tertiary); margin-bottom: 56px; line-height: 1.6; }
+      .section { margin-bottom: 48px; }
+      h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); margin-bottom: 20px; }
+      h3 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 12px; margin-top: 32px; }
+      h3:first-of-type { margin-top: 0; }
+      h4 { font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-top: 20px; margin-bottom: 6px; }
+      p { font-size: 14px; color: var(--text-tertiary); line-height: 1.8; }
+      p + p { margin-top: 10px; }
+      ul { margin-top: 8px; padding-left: 20px; font-size: 14px; color: var(--text-tertiary); line-height: 1.8; }
+      li { margin-bottom: 4px; }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      strong { color: var(--text-secondary); font-weight: 600; }
+      code { font-family: "SF Mono", "Fira Code", monospace; font-size: 12px; background: rgba(255,255,255,0.06); border-radius: 4px; padding: 1px 5px; color: var(--text-secondary); }
+      hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+      footer { border-top: 1px solid var(--border); padding: 28px clamp(24px, 6vw, 80px); text-align: center; font-size: 12px; color: var(--text-tertiary); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo">NetShot</a>
+      <div class="header-right">
+        <div class="lang-toggle">
+          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="/" class="back" id="back-link">Zurück</a>
+      </div>
+    </header>
+
+    <nav class="doc-switcher" aria-label="Dokumente">
+      <a href="/datenschutz.html" data-de="Datenschutz Website" data-en="Privacy Policy Website">Datenschutz Website</a>
+      <a href="/datenschutz_app.html" class="active" data-de="Datenschutz App" data-en="Privacy Policy App">Datenschutz App</a>
+      <a href="/terms_app.html" data-de="Nutzungsbedingungen" data-en="Terms of Use">Nutzungsbedingungen</a>
+    </nav>
+
+    <main>
+
+      <!-- ═══════════════════════ DEUTSCH ═══════════════════════ -->
+      <div class="lang-content" id="content-de">
+        <h1>Datenschutzerklärung</h1>
+        <p class="meta">Version 1.0 &nbsp;·&nbsp; Gültig ab 9. April 2026 &nbsp;·&nbsp; Rechtsgrundlage: DSGVO &amp; österreichisches DSG 2018</p>
+
+        <div class="section">
+          <h2>1. Verantwortlicher</h2>
+          <p>Verantwortlicher im Sinne von Art. 4 Abs. 7 DSGVO für die Verarbeitung personenbezogener Daten im Zusammenhang mit der NetShot-App:</p>
+          <p style="margin-top: 16px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Österreich<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a><br />
+            Website: <a href="https://netshot.store" target="_blank" rel="noopener">netshot.store</a>
+          </p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>2. Geltungsbereich und Zweck der App</h2>
+          <p>NetShot ist eine Sport-Videoaufnahme-App für iOS und Android. Sie ermöglicht es Nutzern, Tennis- und andere Sportspiele auf ihrem Mobilgerät aufzuzeichnen, Highlight-Momente automatisch per Sprachbefehl zu erkennen und die resultierenden Clips zu einem teilbaren Highlight-Reel zusammenzustellen — vollständig ohne Internetverbindung oder Benutzerkonto.</p>
+          <p>Diese Datenschutzerklärung gilt für alle Versionen der NetShot-Mobilanwendung (Bundle-ID: <code>com.netshotapp.netshot</code>), die über den Apple App Store und den Google Play Store vertrieben werden.</p>
+          <p>NetShot betreibt keine eigenen Server, erfordert keine Kontoregistrierung und überträgt Ihre Aufnahmen, Match-Daten oder persönlichen Einstellungen nicht an von NetShot betriebene Server. Alle von der App verarbeiteten Daten verbleiben ausschließlich auf Ihrem Gerät.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>3. Verarbeitete Datenkategorien</h2>
+          <p>NetShot verarbeitet die folgenden Datenkategorien. Sofern nicht anders angegeben, werden alle Daten ausschließlich auf Ihrem Gerät gespeichert und nie an von uns betriebene Server übermittelt.</p>
+
+          <h3>Videoaufnahmen</h3>
+          <p>Vollständige Match-Aufnahmen über die Gerätekamera während einer Aufnahmesitzung. Gespeichert im privaten Sandbox-Verzeichnis der App. Export in die Fotomediathek nur, wenn Sie die automatische Speicherfunktion ausdrücklich aktivieren.</p>
+
+          <h3>Audio (Mikrofon)</h3>
+          <p>Umgebungsgeräusche während der Aufnahme zur Echtzeit-Sprachbefehlserkennung. Rohaudio wird nie gespeichert oder übertragen; nur der erkannte Schlüsselworttext wird als Markierungsereignis gespeichert.</p>
+
+          <h3>Spracherkennungs-Transkripte</h3>
+          <p>Kurze Transkripte der Gerätespracherkennung, um festzustellen, ob ein konfiguriertes Schlüsselwort (z. B. „Clip it", „Cut") gesprochen wurde. Der Transkripttext wird sofort nach dem Schlüsselwortabgleich verworfen.</p>
+
+          <h4>Hinweis zur Spracherkennung von Drittanbietern</h4>
+          <p>NetShot fordert geräteseitige Erkennung an, wo die Plattform dies unterstützt. Auf iOS kann Apples SFSpeechRecognizer bei nicht unterstützten Sprachen auf serverseitige Verarbeitung zurückgreifen. Auf Android kann Googles Spracherkennungsdienst Audio auf Google-Servern verarbeiten. Wir kontrollieren, empfangen oder speichern keine dabei übermittelten Daten. Weitere Informationen: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple-Datenschutzrichtlinie</a> und <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google-Datenschutzrichtlinie</a>.</p>
+
+          <h3>Match-Metadaten</h3>
+          <p>Lokal gespeicherte Match-Datensätze: eine zufällig generierte Match-ID, Erstellungszeitstempel, Aufnahmedauer, Clip-Anzahl und Verarbeitungsstatus. Es werden keine Spielernamen, Spielstände oder Standortdaten erfasst.</p>
+
+          <h3>Highlight-Markierungen</h3>
+          <p>Zeitstempel (Millisekunden ab Aufnahmebeginn) und Auslösequelle (Sprachbefehl oder manueller Tastendruck) pro Match. Es werden keine biometrischen Identifikationsdaten abgeleitet oder gespeichert.</p>
+
+          <h3>App-Einstellungen</h3>
+          <p>Benutzerpräferenzen einschließlich Schlüsselwortlisten, Sprachauswahl, Videoqualität, Bildrate, Clip-Timing und UI-Konfiguration. Gespeichert im lokalen Key-Value-Speicher der App.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>4. Gerätezugriffe</h2>
+          <p>NetShot benötigt folgende Betriebssystem-Berechtigungen. Sie werden jeweils beim ersten Bedarf abgefragt und können jederzeit in den Geräteeinstellungen widerrufen werden.</p>
+
+          <h4>Kamera — erforderlich</h4>
+          <p>Zur Videoaufnahme während einer Match-Sitzung. Ohne Kamerazugriff ist die Kernfunktion nicht verfügbar.</p>
+
+          <h4>Mikrofon — erforderlich</h4>
+          <p>Wird vom Spracherkennungs-Framework benötigt, um Audio für die Schlüsselworterkennung zu erfassen. Die App speichert kein Rohaudio.</p>
+
+          <h4>Spracherkennung — erforderlich</h4>
+          <p>Erforderlich für den Zugriff auf die Spracherkennungs-Engine des Geräts zur Erkennung von Sprachbefehlen wie „Clip it!" während der Aufnahme.</p>
+
+          <h4>Fotomediathek — optional</h4>
+          <p>Wird nur angefordert, wenn Sie <em>Aufnahme automatisch speichern</em> oder <em>Highlight-Reel automatisch speichern</em> in den Einstellungen aktivieren. Ausschließlich zum Speichern von Videos in der Gerätekamerarolle.</p>
+
+          <p>Das Widerrufen einer erforderlichen Berechtigung deaktiviert die entsprechende Funktion. Das Widerrufen der Fotomediathek-Berechtigung deaktiviert die automatische Speicherung, beeinflusst aber weder Aufnahmen noch Reel-Erstellung.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>5. Rechtsgrundlagen der Verarbeitung</h2>
+          <p>Wir verarbeiten Daten auf folgenden Rechtsgrundlagen gemäß Art. 6 DSGVO:</p>
+
+          <h3>Art. 6 Abs. 1 lit. b DSGVO — Vertragserfüllung</h3>
+          <p>Die Verarbeitung von Kameradaten, Mikrofon-Audio, Spracherkennungsergebnissen, Match-Metadaten, Markierungen und App-Einstellungen ist zur Bereitstellung des von Ihnen durch Installation und Nutzung der App angeforderten Kerndienstes erforderlich.</p>
+
+          <h3>Art. 6 Abs. 1 lit. a DSGVO — Einwilligung</h3>
+          <p>Der Zugriff auf die Fotomediathek zum Speichern von Aufnahmen oder Reels basiert auf Ihrer ausdrücklichen Einwilligung bei der Erteilung der Berechtigung. Sie können diese Einwilligung jederzeit durch Deaktivierung der automatischen Speicherung oder Widerruf der Berechtigung in den Geräteeinstellungen zurückziehen.</p>
+
+          <h3>Art. 6 Abs. 1 lit. c DSGVO — Gesetzliche Verpflichtungen</h3>
+          <p>Soweit wir zur Verarbeitung oder Aufbewahrung von Daten verpflichtet sind (z. B. für Steuer- oder Buchführungszwecke), erfolgt dies auf der Grundlage des anwendbaren österreichischen und EU-Rechts.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>6. Verarbeitungszwecke</h2>
+          <p>Daten werden ausschließlich für folgende Zwecke verarbeitet:</p>
+          <ul>
+            <li>Aufnahme von Match-Videos und Verwaltung von Aufnahmesitzungen.</li>
+            <li>Echtzeit-Erkennung benutzerdefinierter Sprachbefehle zur Erstellung von Highlight-Markierungen am korrekten Zeitstempel.</li>
+            <li>Erstellung von Highlight-Reels durch Extrahieren und Zusammenfügen von Clip-Segmenten, vollständig auf dem Gerät.</li>
+            <li>Speicherung und Anzeige einer Bibliothek vergangener Match-Aufnahmen und zugehöriger Clips.</li>
+            <li>Speicherung fertiger Aufnahmen oder Reels in der Fotomediathek, wenn die automatische Speicherung aktiviert ist.</li>
+            <li>Lokale Speicherung von Benutzerpräferenzen zwischen App-Sitzungen.</li>
+          </ul>
+          <p>Wir verwenden Daten nicht für Werbung, Profiling, Verhaltensanalyse oder andere als die oben genannten Zwecke.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>7. Datenweitergabe und Dritte</h2>
+          <p>NetShot gibt Ihre personenbezogenen Daten <strong>nicht</strong> an Dritte für deren eigene Zwecke weiter, verkauft oder vermietet sie.</p>
+          <p>Die einzige drittbezogene Datenverarbeitung ergibt sich aus plattformseitigen Diensten des Betriebssystemanbieters für die Spracherkennung:</p>
+          <ul>
+            <li><strong>Apple Inc. (iOS):</strong> Stellt SFSpeechRecognizer bereit. Audiofragmente können auf Apples Servern verarbeitet werden, wenn geräteseitige Erkennung für die gewählte Sprache nicht verfügbar ist. Siehe <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple-Datenschutzrichtlinie</a>.</li>
+            <li><strong>Google LLC (Android):</strong> Stellt den Google-Spracherkennungsdienst bereit. Audiofragmente können auf Google-Servern verarbeitet werden. Siehe <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google-Datenschutzrichtlinie</a>.</li>
+          </ul>
+          <p>Wir sind nicht Verantwortlicher für die von Apple oder Google durchgeführte Verarbeitung. Jedes Unternehmen handelt als unabhängiger Verantwortlicher für seine Plattformdienste.</p>
+          <p>Die App wird über den Apple App Store und den Google Play Store vertrieben. Diese Plattformen können App-Installations- und Downloadstatistiken erfassen, die unserer Kontrolle entzogen sind.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>8. Internationale Datenübermittlungen</h2>
+          <p>Wir übermitteln keine personenbezogenen Daten in Länder außerhalb des Europäischen Wirtschaftsraums. Alle von NetShot direkt verarbeiteten Daten verbleiben auf Ihrem Gerät.</p>
+          <p>Apple Inc. und Google LLC haben ihren Hauptsitz in den USA. Soweit Spracherkennungsdaten an ihre Server übermittelt werden, können diese Übermittlungen einen Transfer in ein Drittland darstellen. Beide Unternehmen stützen sich auf Standardvertragsklauseln und andere von der Europäischen Kommission anerkannte Garantien gemäß Kapitel V DSGVO.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>9. Datenspeicherung</h2>
+          <p>Da alle Daten lokal auf Ihrem Gerät gespeichert werden, haben Sie die vollständige Kontrolle über die Speicherdauer:</p>
+          <ul>
+            <li><strong>Match-Aufnahmen und Clips</strong> verbleiben auf Ihrem Gerät, bis Sie sie über die App-Bibliothek oder die Gerätespeicherverwaltung löschen.</li>
+            <li><strong>App-Einstellungen</strong> bleiben bis zur Deinstallation der App oder zum Zurücksetzen innerhalb der App erhalten.</li>
+            <li><strong>Spracherkennungs-Audio</strong> wird nie gespeichert; es wird sofort nach Erhalt des Erkennungsergebnisses verworfen.</li>
+            <li><strong>In der Fotomediathek gespeicherte Videos</strong> werden gemäß Ihren persönlichen Einstellungen aufbewahrt und sind von der App-Deinstallation nicht betroffen.</li>
+          </ul>
+          <p>Die Deinstallation von NetShot entfernt alle App-Daten aus dem Gerätesandbox, einschließlich aller Match-Metadaten und Clips, mit Ausnahme von zuvor in der Fotomediathek gespeicherten Dateien.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>10. Datenschutz von Kindern</h2>
+          <p>NetShot richtet sich nicht an Kinder unter 16 Jahren. Wir erheben wissentlich keine personenbezogenen Daten von Kindern unter 16 Jahren. Wenn Sie Elternteil oder Vormund eines Kindes unter 16 Jahren sind, das die App genutzt hat, kontaktieren Sie uns bitte unter den Angaben in Abschnitt 13.</p>
+          <p>Wo anwendbar, ist die elterliche oder vormundschaftliche Einwilligung für die Nutzung der App durch Minderjährige gemäß Art. 8 DSGVO und § 4 Abs. 3 DSG 2018 erforderlich.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>11. Ihre Datenschutzrechte</h2>
+          <p>Gemäß DSGVO und österreichischem DSG 2018 stehen Ihnen folgende Rechte zu:</p>
+          <ul>
+            <li><strong>Auskunftsrecht (Art. 15 DSGVO)</strong> — Sie können Auskunft darüber verlangen, ob wir personenbezogene Daten über Sie verarbeiten.</li>
+            <li><strong>Recht auf Berichtigung (Art. 16 DSGVO)</strong> — Sie können die Korrektur unrichtiger oder die Vervollständigung unvollständiger Daten verlangen.</li>
+            <li><strong>Recht auf Löschung (Art. 17 DSGVO)</strong> — Sie können die Löschung Ihrer Daten verlangen, wenn diese für die Zwecke, für die sie erhoben wurden, nicht mehr notwendig sind.</li>
+            <li><strong>Recht auf Einschränkung (Art. 18 DSGVO)</strong> — Sie können unter bestimmten Umständen eine Einschränkung der Verarbeitung verlangen.</li>
+            <li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</strong> — Bei einwilligungs- oder vertragsbasierter Verarbeitung können Sie Ihre Daten in einem maschinenlesbaren Format erhalten.</li>
+            <li><strong>Widerspruchsrecht (Art. 21 DSGVO)</strong> — Sie können der auf berechtigten Interessen basierenden Verarbeitung widersprechen.</li>
+            <li><strong>Recht auf Widerruf der Einwilligung (Art. 7 Abs. 3 DSGVO)</strong> — Bei einwilligungsbasierter Verarbeitung können Sie die Einwilligung jederzeit widerrufen.</li>
+            <li><strong>Beschwerderecht (Art. 77 DSGVO)</strong> — Sie haben das Recht, jederzeit eine Beschwerde bei der zuständigen Aufsichtsbehörde einzureichen.</li>
+          </ul>
+          <p>Da NetShot alle Daten ausschließlich auf Ihrem Gerät speichert, können die meisten der genannten Rechte direkt innerhalb der App oder über die Speicher- und Berechtigungsverwaltung Ihres Geräts ausgeübt werden. Wir beantworten verifizierte Anfragen innerhalb von <strong>einem Monat</strong> gemäß Art. 12 Abs. 3 DSGVO.</p>
+          <p style="margin-top: 16px;">Zuständige Aufsichtsbehörde in Österreich:</p>
+          <p style="margin-top: 8px;">
+            <strong>Datenschutzbehörde (DSB)</strong><br />
+            Barichgasse 40–42, 1030 Wien &nbsp;·&nbsp; Tel: +43 1 52 152-0<br />
+            E-Mail: <a href="mailto:dsb@dsb.gv.at">dsb@dsb.gv.at</a> &nbsp;·&nbsp; Website: <a href="https://www.dsb.gv.at" target="_blank" rel="noopener">www.dsb.gv.at</a>
+          </p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>12. Sicherheit</h2>
+          <p>Wir treffen angemessene technische und organisatorische Maßnahmen zum Schutz personenbezogener Daten gemäß Art. 32 DSGVO:</p>
+          <ul>
+            <li><strong>Ausschließlich geräteseitige Speicherung.</strong> Alle App-Daten werden im privaten Sandbox-Verzeichnis der Anwendung gespeichert, das für andere Apps nicht zugänglich ist. iOS wendet zusätzliche Verschlüsselung über die Data Protection API an; Android verwendet dateibasierte Verschlüsselung auf unterstützten Geräten.</li>
+            <li><strong>Keine Cloud-Übertragung.</strong> Die App enthält keine Funktionalität, die Aufnahmen, Metadaten oder Einstellungen auf externe, von uns betriebene Server hochlädt.</li>
+            <li><strong>Datensparsamkeit.</strong> Die App erfasst nur die für die jeweilige Funktion unbedingt notwendigen Daten. Rohaudio wird nie gespeichert.</li>
+            <li><strong>Berechtigungsmodell.</strong> Der Datenzugriff wird durch das explizite Berechtigungs-Framework des Betriebssystems gesteuert und kann jederzeit vom Nutzer widerrufen werden.</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>13. Kontakt</h2>
+          <p>Bei Fragen, Anfragen oder Anliegen zu dieser Datenschutzerklärung oder der Verarbeitung Ihrer personenbezogenen Daten wenden Sie sich bitte an:</p>
+          <p style="margin-top: 16px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Österreich<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>
+          </p>
+          <p>Wir beantworten verifizierte Anfragen innerhalb von 30 Tagen (Art. 12 Abs. 3 DSGVO).</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>14. Änderungen dieser Erklärung</h2>
+          <p>Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Die aktuelle Version ist stets verfügbar unter <a href="https://netshot.store/datenschutz_app.html">netshot.store/datenschutz_app.html</a> und über <strong>Einstellungen → Rechtliches → Datenschutzerklärung</strong> innerhalb der App abrufbar.</p>
+          <p>Wesentliche Änderungen werden durch einen Hinweis in der App kommuniziert oder, soweit gesetzlich erforderlich, durch Einholung einer erneuten Einwilligung. Das Wirksamkeitsdatum am Anfang dieses Dokuments gibt an, wann die aktuelle Version in Kraft getreten ist.</p>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════ ENGLISH ═══════════════════════ -->
+      <div class="lang-content" id="content-en">
+        <h1>Privacy Policy</h1>
+        <p class="meta">Version 1.0 &nbsp;·&nbsp; Effective April 9, 2026 &nbsp;·&nbsp; Governing law: GDPR &amp; Austrian DSG 2018</p>
+
+        <div class="section">
+          <h2>1. Data Controller</h2>
+          <p>The entity responsible for the processing of personal data in connection with the NetShot application within the meaning of Article 4(7) GDPR is:</p>
+          <p style="margin-top: 16px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Austria<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a><br />
+            Website: <a href="https://netshot.store" target="_blank" rel="noopener">netshot.store</a>
+          </p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>2. Scope and Purpose of the App</h2>
+          <p>NetShot is a sports video-recording application for iOS and Android. It allows users to record tennis and other sport matches on their mobile device, automatically detect highlight moments via voice commands, and compile the resulting clips into a shareable highlight reel — entirely without an internet connection or user account.</p>
+          <p>This Privacy Policy applies to all versions of the NetShot mobile application (bundle identifier: <code>com.netshotapp.netshot</code>) distributed through the Apple App Store and the Google Play Store.</p>
+          <p>NetShot does not operate its own servers, does not require account registration, and does not transmit your recordings, match data, or personal settings to any server operated by NetShot. All data processed by the app resides exclusively on your device.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>3. Categories of Data Processed</h2>
+          <p>NetShot processes the following categories of data. Unless stated otherwise, all data is stored exclusively on your device and is never transmitted to servers operated by us.</p>
+
+          <h3>Video recordings</h3>
+          <p>Full match footage captured via the device camera during a recording session. Stored in the app's private sandbox directory. Exported to the device Photo Library only if you explicitly enable the auto-save feature.</p>
+
+          <h3>Audio (microphone)</h3>
+          <p>Ambient sound captured during recording for real-time voice command detection. Raw audio is never stored or transmitted; only the recognised keyword text is retained as a marker event.</p>
+
+          <h3>Speech recognition transcripts</h3>
+          <p>Short transcripts produced by the device speech engine solely to detect whether a configured keyword (e.g. "Clip it", "Cut") was spoken. The transcript string is discarded immediately after keyword matching.</p>
+
+          <h4>Note on third-party speech recognition</h4>
+          <p>NetShot requests on-device recognition where the platform supports it. On iOS, Apple's SFSpeechRecognizer may fall back to server-side processing for unsupported languages. On Android, Google's speech recognition service may process audio on Google's servers. We do not control, receive, or store data transmitted to Apple or Google. For details: <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+
+          <h3>Match metadata</h3>
+          <p>Per-match records stored locally: a randomly generated match identifier, creation timestamp, recording duration, clip count, and processing status. No player names, scores, or location data are collected.</p>
+
+          <h3>Highlight markers</h3>
+          <p>Timestamps (milliseconds elapsed from recording start) and the trigger source (voice command or manual button tap) stored per match. No identifying biometric information is derived or stored.</p>
+
+          <h3>App settings</h3>
+          <p>User preferences including keyword lists, language selection, video quality, frame rate, clip timing, and UI configuration. Stored in the app's local key-value store.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>4. Device Permissions</h2>
+          <p>NetShot requests the following operating-system permissions. You are asked for each permission at the point at which it is first needed and may revoke any permission at any time in your device settings.</p>
+
+          <h4>Camera — required</h4>
+          <p>Used to record video during a match session. Without camera access the core recording functionality is unavailable.</p>
+
+          <h4>Microphone — required</h4>
+          <p>Required by the speech recognition framework to capture audio for keyword detection. No raw audio is stored by the app.</p>
+
+          <h4>Speech Recognition — required</h4>
+          <p>Required to access the device's speech-recognition engine for detecting voice commands such as "Clip it!" during recording.</p>
+
+          <h4>Photo Library — optional</h4>
+          <p>Requested only when you enable <em>Auto-save Recording</em> or <em>Auto-save Highlight Reel</em> in Settings. Used solely to save your video to the device camera roll.</p>
+
+          <p>Revoking a required permission will disable the associated functionality. Revoking the Photo Library permission disables auto-save but does not affect recording or reel generation.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>5. Legal Basis for Processing</h2>
+          <p>We process data on the following legal bases under Article 6 GDPR:</p>
+
+          <h3>Art. 6(1)(b) — Performance of a contract</h3>
+          <p>Processing of camera data, microphone audio, speech recognition results, match metadata, markers, and app settings is necessary to provide the core service you requested when installing and using the App.</p>
+
+          <h3>Art. 6(1)(a) — Consent</h3>
+          <p>Access to the device Photo Library for saving recordings or reels is based on your explicit consent. You may withdraw this consent at any time by disabling the auto-save setting or revoking the permission in your device settings.</p>
+
+          <h3>Art. 6(1)(c) — Compliance with a legal obligation</h3>
+          <p>Where we are required to process or retain data (e.g. for tax or accounting purposes), we do so on the basis of applicable Austrian and EU law.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>6. Purposes of Processing</h2>
+          <p>Data is processed exclusively for the following purposes:</p>
+          <ul>
+            <li>Recording match video and managing recording sessions.</li>
+            <li>Detecting user-defined voice commands in real time to create highlight markers at the correct timestamp.</li>
+            <li>Generating highlight reels by extracting and concatenating clip segments, entirely on-device.</li>
+            <li>Storing and displaying a library of past match recordings and their associated clips.</li>
+            <li>Saving finished recordings or reels to the device Photo Library when auto-save is enabled.</li>
+            <li>Persisting user preferences locally between app sessions.</li>
+          </ul>
+          <p>We do not use data for advertising, profiling, behavioural analysis, or any purpose beyond those listed above.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>7. Data Sharing and Third Parties</h2>
+          <p>NetShot does <strong>not</strong> share, sell, rent, or otherwise disclose your personal data to third parties for their own purposes.</p>
+          <p>The only third-party data processing arises from platform-level services provided by the operating-system vendor for speech recognition:</p>
+          <ul>
+            <li><strong>Apple Inc. (iOS):</strong> Provides SFSpeechRecognizer. Audio fragments may be processed on Apple's servers if on-device recognition is unavailable. See <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.</li>
+            <li><strong>Google LLC (Android):</strong> Provides the Google speech recognition service. Audio fragments may be processed on Google's servers. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+          </ul>
+          <p>We are not the data controller for processing conducted by Apple or Google. The App is distributed through the Apple App Store and Google Play Store, which may collect installation statistics outside our control.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>8. International Data Transfers</h2>
+          <p>We do not transfer personal data to countries outside the European Economic Area. All data processed directly by NetShot remains on your device.</p>
+          <p>Apple Inc. and Google LLC are headquartered in the United States. Where speech-recognition data is transmitted to their servers, both companies rely on Standard Contractual Clauses and other adequacy mechanisms approved by the European Commission.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>9. Data Retention</h2>
+          <p>Because all data is stored locally on your device, you are in full control of retention:</p>
+          <ul>
+            <li><strong>Match recordings and clips</strong> remain on your device until you delete them via the App's library or your device storage management.</li>
+            <li><strong>App settings</strong> persist until you uninstall the App or reset settings within the App.</li>
+            <li><strong>Speech recognition audio</strong> is never stored; it is discarded immediately after the recognition result is received.</li>
+            <li><strong>Videos saved to the Photo Library</strong> are retained according to your personal Photo Library settings and are unaffected by App deletion.</li>
+          </ul>
+          <p>Uninstalling NetShot removes all App data from the device sandbox, except files previously saved to the Photo Library.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>10. Children's Privacy</h2>
+          <p>NetShot is not directed at children under the age of 16. We do not knowingly collect personal data from children under 16. If you are the parent or guardian of a child under 16 who has used the App, please contact us using the details in Section 13.</p>
+          <p>Where applicable, parental or guardian consent is required for use of the App by minors in accordance with Article 8 GDPR and § 4(3) of the Austrian DSG 2018.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>11. Your Data Protection Rights</h2>
+          <p>Under the GDPR and the Austrian DSG 2018, you have the following rights:</p>
+          <ul>
+            <li><strong>Right of Access (Art. 15 GDPR)</strong> — Request confirmation of whether we process personal data about you and a copy of that data.</li>
+            <li><strong>Right to Rectification (Art. 16 GDPR)</strong> — Request correction of inaccurate or completion of incomplete data.</li>
+            <li><strong>Right to Erasure (Art. 17 GDPR)</strong> — Request deletion of your data where it is no longer necessary for the purposes for which it was collected.</li>
+            <li><strong>Right to Restriction (Art. 18 GDPR)</strong> — Request restriction of processing in certain circumstances.</li>
+            <li><strong>Right to Data Portability (Art. 20 GDPR)</strong> — Receive your data in a structured, machine-readable format.</li>
+            <li><strong>Right to Object (Art. 21 GDPR)</strong> — Object to processing based on our legitimate interests.</li>
+            <li><strong>Right to Withdraw Consent (Art. 7(3) GDPR)</strong> — Withdraw consent at any time via device settings.</li>
+            <li><strong>Right to Lodge a Complaint (Art. 77 GDPR)</strong> — Lodge a complaint with the competent supervisory authority.</li>
+          </ul>
+          <p>Because NetShot stores all data exclusively on your device, most of the above rights can be exercised directly within the App. We will respond to verified requests within <strong>one month</strong> of receipt (Art. 12(3) GDPR).</p>
+          <p style="margin-top: 16px;">Supervisory authority in Austria:</p>
+          <p style="margin-top: 8px;">
+            <strong>Datenschutzbehörde (DSB)</strong><br />
+            Barichgasse 40–42, 1030 Vienna &nbsp;·&nbsp; Tel: +43 1 52 152-0<br />
+            E-Mail: <a href="mailto:dsb@dsb.gv.at">dsb@dsb.gv.at</a> &nbsp;·&nbsp; Website: <a href="https://www.dsb.gv.at" target="_blank" rel="noopener">www.dsb.gv.at</a>
+          </p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>12. Security</h2>
+          <p>We take appropriate technical and organisational measures to protect personal data in accordance with Article 32 GDPR:</p>
+          <ul>
+            <li><strong>On-device storage only.</strong> All app data is stored in the application's private sandbox directory. iOS applies encryption via the Data Protection API; Android uses file-based encryption on supported devices.</li>
+            <li><strong>No cloud transmission.</strong> The App does not include any functionality that uploads your recordings, metadata, or settings to external servers operated by us.</li>
+            <li><strong>Minimum data principle.</strong> The App collects only the data strictly necessary for the requested function. Raw audio is never stored.</li>
+            <li><strong>Permission model.</strong> Data access is gated by the operating system's explicit permission framework and can be revoked by the user at any time.</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>13. Contact</h2>
+          <p>For any questions, requests, or concerns regarding this Privacy Policy or the processing of your personal data:</p>
+          <p style="margin-top: 16px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Austria<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>
+          </p>
+          <p>We will respond to verified requests within 30 days (Art. 12(3) GDPR).</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>14. Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. The current version is always available at <a href="https://netshot.store/datenschutz_app.html">netshot.store/datenschutz_app.html</a> and accessible from within the App under <strong>Settings → Legal → Privacy Policy</strong>.</p>
+          <p>Material changes will be communicated through a notice within the App or, where required by law, by seeking renewed consent.</p>
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      &copy; <script>document.write(new Date().getFullYear())</script> NetShot. <span id="footer-rights">All rights reserved.</span>
+      &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a>
+    </footer>
+
+    <script>
+      const STORAGE_KEY = 'netshot-lang';
+      const btns = document.querySelectorAll('.lang-btn');
+      const contents = document.querySelectorAll('.lang-content');
+      const backLink = document.getElementById('back-link');
+      const footerRights = document.getElementById('footer-rights');
+      const navLinks = document.querySelectorAll('.doc-switcher a');
+
+      function setLang(lang) {
+        btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+        contents.forEach(c => c.classList.toggle('active', c.id === 'content-' + lang));
+        backLink.textContent = lang === 'de' ? 'Zurück' : 'Back';
+        footerRights.textContent = lang === 'de' ? 'Alle Rechte vorbehalten.' : 'All rights reserved.';
+        navLinks.forEach(a => { if (a.dataset[lang]) a.textContent = a.dataset[lang]; });
+        document.documentElement.lang = lang;
+        localStorage.setItem(STORAGE_KEY, lang);
+      }
+
+      btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+      const saved = localStorage.getItem(STORAGE_KEY);
+      const lang = (saved === 'de' || saved === 'en') ? saved : (navigator.language.startsWith('de') ? 'de' : 'en');
+      setLang(lang);
+    </script>
+  </body>
+</html>

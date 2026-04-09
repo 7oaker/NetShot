@@ -36,489 +36,425 @@
         gap: 16px;
       }
 
-      .logo {
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--text);
-        text-decoration: none;
-        letter-spacing: -0.02em;
-      }
+      .logo { font-size: 18px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
 
-      .back {
-        font-size: 13px;
-        color: var(--text-tertiary);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: color 0.2s;
-      }
+      .header-right { display: flex; align-items: center; gap: 20px; }
+
+      .lang-toggle { display: flex; gap: 2px; background: rgba(255,255,255,0.06); border-radius: 6px; padding: 3px; }
+      .lang-btn { background: none; border: none; padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--text-tertiary); cursor: pointer; border-radius: 4px; font-family: 'Inter', sans-serif; transition: all .15s; }
+      .lang-btn.active { background: rgba(255,255,255,0.1); color: var(--text); }
+
+      .back { font-size: 13px; color: var(--text-tertiary); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
       .back:hover { color: var(--text); }
       .back::before { content: '←'; }
 
-      main {
-        flex: 1;
-        padding: clamp(48px, 8vw, 96px) clamp(24px, 6vw, 80px);
-        max-width: 780px;
-        margin: 0 auto;
-        width: 100%;
-      }
+      .doc-switcher { border-bottom: 1px solid var(--border); display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; padding: 0 clamp(24px, 6vw, 80px); }
+      .doc-switcher::-webkit-scrollbar { display: none; }
+      .doc-switcher a { display: inline-block; padding: 14px 18px; font-size: 13px; font-weight: 500; color: var(--text-tertiary); text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; transition: color .2s, border-color .2s; }
+      .doc-switcher a:hover { color: var(--text-secondary); }
+      .doc-switcher a.active { color: var(--text); border-bottom-color: var(--text); }
 
-      h1 {
-        font-size: clamp(32px, 6vw, 52px);
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        margin-bottom: 12px;
-        color: var(--text);
-      }
+      .lang-content { display: none; }
+      .lang-content.active { display: block; }
 
-      .meta {
-        font-size: 13px;
-        color: var(--text-tertiary);
-        margin-bottom: 56px;
-        line-height: 1.6;
-      }
+      main { flex: 1; padding: clamp(48px, 8vw, 96px) clamp(24px, 6vw, 80px); max-width: 780px; margin: 0 auto; width: 100%; }
 
-      .section {
-        margin-bottom: 48px;
-      }
-
-      h2 {
-        font-size: 13px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--text-tertiary);
-        margin-bottom: 20px;
-      }
-
-      h3 {
-        font-size: 17px;
-        font-weight: 600;
-        color: var(--text);
-        margin-bottom: 12px;
-        margin-top: 32px;
-      }
+      h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 12px; color: var(--text); }
+      .meta { font-size: 13px; color: var(--text-tertiary); margin-bottom: 56px; line-height: 1.6; }
+      .section { margin-bottom: 48px; }
+      h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary); margin-bottom: 20px; }
+      h3 { font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 12px; margin-top: 32px; }
       h3:first-of-type { margin-top: 0; }
-
-      h4 {
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--text-secondary);
-        margin-top: 20px;
-        margin-bottom: 6px;
-      }
-
-      p {
-        font-size: 14px;
-        color: var(--text-tertiary);
-        line-height: 1.8;
-      }
-
+      h4 { font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-top: 20px; margin-bottom: 6px; }
+      p { font-size: 14px; color: var(--text-tertiary); line-height: 1.8; }
       p + p { margin-top: 10px; }
-
-      ul {
-        margin-top: 8px;
-        padding-left: 20px;
-        font-size: 14px;
-        color: var(--text-tertiary);
-        line-height: 1.8;
-      }
-
+      ul { margin-top: 8px; padding-left: 20px; font-size: 14px; color: var(--text-tertiary); line-height: 1.8; }
       li { margin-bottom: 4px; }
-
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
+      a { color: var(--accent); text-decoration: none; }
       a:hover { text-decoration: underline; }
-
-      strong {
-        color: var(--text-secondary);
-        font-weight: 600;
-      }
-
-      hr {
-        border: none;
-        border-top: 1px solid var(--border);
-        margin: 40px 0;
-      }
-
-      footer {
-        border-top: 1px solid var(--border);
-        padding: 28px clamp(24px, 6vw, 80px);
-        text-align: center;
-        font-size: 12px;
-        color: var(--text-tertiary);
-      }
+      strong { color: var(--text-secondary); font-weight: 600; }
+      hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+      footer { border-top: 1px solid var(--border); padding: 28px clamp(24px, 6vw, 80px); text-align: center; font-size: 12px; color: var(--text-tertiary); }
     </style>
   </head>
   <body>
     <header>
       <a href="/" class="logo">NetShot</a>
-      <a href="/" class="back">Zurück</a>
+      <div class="header-right">
+        <div class="lang-toggle">
+          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="/" class="back" id="back-link">Zurück</a>
+      </div>
     </header>
 
+    <nav class="doc-switcher" aria-label="Dokumente">
+      <a href="/datenschutz.html" class="active" data-de="Datenschutz Website" data-en="Privacy Policy Website">Datenschutz Website</a>
+      <a href="/datenschutz_app.html" data-de="Datenschutz App" data-en="Privacy Policy App">Datenschutz App</a>
+      <a href="/terms_app.html" data-de="Nutzungsbedingungen" data-en="Terms of Use">Nutzungsbedingungen</a>
+    </nav>
+
     <main>
-      <h1>Datenschutzerklärung</h1>
-      <p class="meta">
-        Letzte Aktualisierung: 07.04.2026 &nbsp;·&nbsp; Version: 1.0 &nbsp;·&nbsp; Gültig ab: 07.04.2026
-      </p>
 
-      <!-- 1 -->
-      <div class="section">
-        <h2>1. Datenschutz, Verantwortlicher und Geltungsbereich</h2>
+      <!-- ═══════════════════════ DEUTSCH ═══════════════════════ -->
+      <div class="lang-content" id="content-de">
+        <h1>Datenschutzerklärung</h1>
+        <p class="meta">Letzte Aktualisierung: 07.04.2026 &nbsp;·&nbsp; Version 1.0 &nbsp;·&nbsp; Gültig ab: 07.04.2026</p>
 
-        <p>
-          Wir respektieren die Privatsphäre der Besucherinnen und Besucher unserer Website und halten uns an die
-          geltenden datenschutzrechtlichen Vorschriften. Dazu zählen insbesondere die
-          <strong>Datenschutz-Grundverordnung der Europäischen Union („DSGVO")</strong> sowie das österreichische
-          Datenschutzgesetz (DSG).
-        </p>
+        <div class="section">
+          <h2>1. Datenschutz, Verantwortlicher und Geltungsbereich</h2>
+          <p>Wir respektieren die Privatsphäre der Besucherinnen und Besucher unserer Website und halten uns an die geltenden datenschutzrechtlichen Vorschriften, insbesondere die <strong>Datenschutz-Grundverordnung (DSGVO)</strong> sowie das österreichische Datenschutzgesetz (DSG).</p>
+          <p style="margin-top: 16px;">Diese Datenschutzerklärung gilt für: <strong>netshot.store</strong></p>
+          <p>Betroffene Personengruppen: Besucherinnen und Besucher der Website</p>
+          <p style="margin-top: 16px;">Verantwortlicher im Sinne der DSGVO:</p>
+          <p style="margin-top: 8px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Österreich<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>
+          </p>
+          <p style="margin-top: 16px;">Diese Erklärung informiert Sie über Zwecke, Kategorien, Rechtsgrundlagen, Auftragsverarbeiter, Empfänger und Speicherdauern der Datenverarbeitung.</p>
+        </div>
 
-        <p style="margin-top: 16px;">Diese Datenschutzerklärung gilt für folgende Website:</p>
-        <ul>
-          <li><strong>netshot.store</strong></li>
-        </ul>
+        <hr />
 
-        <p style="margin-top: 16px;">Betroffene Personengruppen:</p>
-        <ul>
-          <li>Besucherinnen und Besucher der Website</li>
-        </ul>
+        <div class="section">
+          <h2>2. Zwecke der Datenverarbeitung</h2>
 
-        <p style="margin-top: 16px;">Verantwortlicher im Sinne der DSGVO:</p>
-        <p style="margin-top: 10px;">
-          <strong>FERRO System GmbH</strong><br />
-          Büro: A-3244 Ruprechtshofen, Melktalstraße 13/1<br />
-          Österreich
-        </p>
-        <p>
-          E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>
-        </p>
+          <h3>2.1 Website-Hosting und Server-Logs</h3>
+          <h4>Zweck</h4>
+          <p>Die Website wird auf Servern eines Webhosting-Anbieters betrieben. Beim Abrufen der Seite werden vom Webserver automatisch technische Zugriffsdaten (Server-Logs) erfasst. Dies ist für den stabilen und sicheren Betrieb technisch notwendig.</p>
+          <h4>Erhobene Daten</h4>
+          <ul>
+            <li>IP-Adresse des anfragenden Geräts</li>
+            <li>Datum und Uhrzeit des Zugriffs</li>
+            <li>Aufgerufene URL / Seite</li>
+            <li>HTTP-Statuscode und übertragene Datenmenge</li>
+            <li>Referrer-URL</li>
+            <li>Browser-Typ, Browser-Version und Betriebssystem</li>
+          </ul>
+          <h4>Rechtsgrundlage</h4>
+          <p><strong>Berechtigte Interessen</strong> gemäß Art. 6 Abs. 1 lit. f DSGVO — sicherer, stabiler und effizienter Betrieb der Website sowie Erkennung und Abwehr von Missbrauch.</p>
+          <h4>Speicherdauer</h4>
+          <p>Server-Logs werden üblicherweise für wenige Wochen bis Monate gespeichert.</p>
 
-        <p style="margin-top: 16px;">Diese Erklärung informiert Sie darüber:</p>
-        <ul>
-          <li>zu welchen Zwecken personenbezogene Daten erhoben und verarbeitet werden,</li>
-          <li>welche Kategorien personenbezogener Daten betroffen sind,</li>
-          <li>auf welcher Rechtsgrundlage die Verarbeitung erfolgt,</li>
-          <li>welche Dritten als Auftragsverarbeiter eingebunden sind,</li>
-          <li>an wen Daten weitergegeben werden, und</li>
-          <li>wie lange Daten gespeichert werden.</li>
-        </ul>
+          <h3>2.2 Google Fonts</h3>
+          <h4>Zweck</h4>
+          <p>Diese Website verwendet <strong>Google Fonts</strong> (Google Ireland Limited) zur Darstellung von Schriftarten. Beim Laden der Seite werden die Schriftdateien direkt von den Servern von Google abgerufen.</p>
+          <h4>Erhobene Daten</h4>
+          <ul>
+            <li>IP-Adresse, Browser-Typ und -Version, Betriebssystem, aufgerufene Schriftdatei</li>
+          </ul>
+          <h4>Rechtsgrundlage</h4>
+          <p><strong>Berechtigte Interessen</strong> gemäß Art. 6 Abs. 1 lit. f DSGVO — einheitliche und hochwertige Darstellung der Website.</p>
+          <h4>Internationale Datenweitergabe</h4>
+          <p>Google Fonts kann Daten auf Servern außerhalb der EU/des EWR (insbesondere USA) verarbeiten. Als Garantien dienen das <strong>EU–US Data Privacy Framework</strong> und/oder <strong>Standardvertragsklauseln (SCCs)</strong> der Europäischen Kommission. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+          <h3>2.3 Lokaler Browser-Speicher (localStorage)</h3>
+          <h4>Zweck</h4>
+          <p>Die Website speichert im lokalen Speicher Ihres Browsers ausschließlich Ihre Sprachpräferenz. Es werden keine Cookies gesetzt; keine Weitergabe an Dritte.</p>
+          <h4>Gespeicherte Daten</h4>
+          <ul>
+            <li><code>netshot-lang</code> — Ihre gewählte Sprache (z. B. <code>de</code> oder <code>en</code>)</li>
+          </ul>
+          <h4>Rechtsgrundlage</h4>
+          <p><strong>Berechtigte Interessen</strong> gemäß Art. 6 Abs. 1 lit. f DSGVO — benutzerfreundliche Darstellung in der bevorzugten Sprache. Die gespeicherte Information enthält keine personenbezogenen Daten.</p>
+          <h4>Speicherdauer und Kontrolle</h4>
+          <p>Der Eintrag bleibt erhalten, bis Sie ihn in den Einstellungen Ihres Browsers löschen.</p>
+
+          <h3>2.4 Kontaktaufnahme per E-Mail</h3>
+          <h4>Zweck</h4>
+          <p>Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir Ihre Anfrage und die darin enthaltenen Daten, um Ihnen antworten zu können.</p>
+          <h4>Erhobene Daten</h4>
+          <ul>
+            <li>E-Mail-Adresse, Name und weitere Kontaktdaten (sofern angegeben), Nachrichteninhalt, technische E-Mail-Metadaten</li>
+          </ul>
+          <h4>Rechtsgrundlage</h4>
+          <p><strong>Berechtigte Interessen</strong> gemäß Art. 6 Abs. 1 lit. f DSGVO; bei Vertragsanbahnung auch Art. 6 Abs. 1 lit. b DSGVO.</p>
+          <h4>Hinweis</h4>
+          <p>Bitte übermitteln Sie in Ihrer E-Mail keine besonderen Kategorien personenbezogener Daten (Art. 9 DSGVO).</p>
+          <h4>Speicherdauer</h4>
+          <p>E-Mail-Korrespondenz wird für die zur Bearbeitung notwendige Dauer sowie entsprechend gesetzlicher Aufbewahrungspflichten gespeichert.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>3. Was wir nicht tun</h2>
+          <p>Auf <strong>netshot.store</strong> werden folgende Datenverarbeitungen <strong>nicht</strong> durchgeführt:</p>
+          <ul>
+            <li>Kein Einsatz von Web-Analytics oder Tracking-Tools (z. B. Google Analytics, Meta Pixel)</li>
+            <li>Keine Werbe- oder Marketing-Cookies</li>
+            <li>Kein Newsletter oder Waitlist-Anmeldeverfahren</li>
+            <li>Keine Benutzerkonten oder Registrierungsmöglichkeiten</li>
+            <li>Kein Retargeting oder verhaltensbasiertes Targeting</li>
+            <li>Kein Verkauf personenbezogener Daten an Dritte</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>4. Datenweitergabe</h2>
+          <p>Wir geben Ihre personenbezogenen Daten nur dann an Dritte weiter, wenn dies gesetzlich vorgeschrieben ist, für die Bereitstellung der Website technisch notwendig ist, oder Sie ausdrücklich eingewilligt haben.</p>
+          <p>Mögliche Empfänger: Auftragsverarbeiter (Hosting-Anbieter, Google Fonts), Steuerberater, Rechtsanwälte, Behörden und Aufsichtsbehörden.</p>
+          <p>Wir verkaufen Ihre personenbezogenen Daten <strong>nicht</strong> an Dritte.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>5. Schutz personenbezogener Daten</h2>
+          <p>Wir schützen personenbezogene Daten durch angemessene technische und organisatorische Maßnahmen, insbesondere:</p>
+          <ul>
+            <li>Verschlüsselung der Datenübertragung (TLS/HTTPS)</li>
+            <li>Zugriffsbeschränkungen auf Systeme und Daten</li>
+            <li>Regelmäßige Überprüfung unserer Systeme und Prozesse</li>
+          </ul>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>6. Internationale Datenweitergabe</h2>
+          <p>Durch den Einsatz von Google Fonts können Daten in die USA übermittelt werden. Als rechtliche Grundlage dienen das <strong>EU–US Data Privacy Framework</strong> sowie <strong>Standardvertragsklauseln (SCCs)</strong> der Europäischen Kommission.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>7. Ihre Rechte als betroffene Person</h2>
+          <p>Gemäß DSGVO stehen Ihnen folgende Rechte zu:</p>
+          <ul>
+            <li><strong>Auskunftsrecht (Art. 15 DSGVO)</strong></li>
+            <li><strong>Recht auf Berichtigung (Art. 16 DSGVO)</strong></li>
+            <li><strong>Recht auf Löschung (Art. 17 DSGVO)</strong></li>
+            <li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</strong></li>
+            <li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</strong></li>
+            <li><strong>Widerspruchsrecht (Art. 21 DSGVO)</strong></li>
+            <li><strong>Beschwerderecht (Art. 77 DSGVO)</strong></li>
+          </ul>
+          <p style="margin-top: 16px;">Zuständige Aufsichtsbehörde in Österreich:</p>
+          <p style="margin-top: 8px;">
+            <strong>Österreichische Datenschutzbehörde</strong><br />
+            Barichgasse 40–42, 1030 Wien<br />
+            Website: <a href="https://www.dsb.gv.at/" target="_blank" rel="noopener noreferrer">www.dsb.gv.at</a>
+          </p>
+          <p style="margin-top: 16px;">Zur Ausübung Ihrer Rechte wenden Sie sich an: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a></p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>8. Bereitstellung von Daten</h2>
+          <h3>Website-Besuch</h3>
+          <p>Die Bereitstellung personenbezogener Daten ist für den Website-Besuch weder gesetzlich noch vertraglich vorgeschrieben. Ohne bestimmte technische Daten kann die Website jedoch nicht dargestellt werden.</p>
+          <h3>Kontaktaufnahme per E-Mail</h3>
+          <p>Für eine Beantwortung Ihrer E-Mail-Anfrage benötigen wir zumindest Ihre E-Mail-Adresse.</p>
+        </div>
+
+        <hr />
+
+        <div class="section">
+          <h2>9. Änderungen dieser Datenschutzerklärung</h2>
+          <p>Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Alle Änderungen werden auf dieser Seite mit aktualisiertem Datum veröffentlicht.</p>
+        </div>
       </div>
 
-      <hr />
+      <!-- ═══════════════════════ ENGLISH ═══════════════════════ -->
+      <div class="lang-content" id="content-en">
+        <h1>Privacy Policy</h1>
+        <p class="meta">Last updated: 07.04.2026 &nbsp;·&nbsp; Version 1.0 &nbsp;·&nbsp; Effective: 07.04.2026</p>
 
-      <!-- 2 -->
-      <div class="section">
-        <h2>2. Zwecke der Datenverarbeitung</h2>
+        <div class="section">
+          <h2>1. Data Protection, Controller, and Scope</h2>
+          <p>We respect the privacy of visitors to our website and comply with applicable data protection regulations, in particular the <strong>General Data Protection Regulation (GDPR)</strong> and the Austrian Data Protection Act (DSG).</p>
+          <p style="margin-top: 16px;">This policy applies to: <strong>netshot.store</strong></p>
+          <p>Data subjects: visitors to the website</p>
+          <p style="margin-top: 16px;">Controller within the meaning of the GDPR:</p>
+          <p style="margin-top: 8px;">
+            <strong>FERRO System GmbH</strong><br />
+            Melktalstraße 13/1, A-3244 Ruprechtshofen, Austria<br />
+            E-Mail: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>
+          </p>
+          <p style="margin-top: 16px;">This statement informs you about the purposes, categories, legal bases, processors, recipients, and retention periods of data processing.</p>
+        </div>
 
-        <!-- 2.1 -->
-        <h3>2.1 Website-Hosting und Server-Logs</h3>
+        <hr />
 
-        <h4>Zweck</h4>
-        <p>
-          Die Website <strong>netshot.store</strong> wird auf Servern eines Webhosting-Anbieters betrieben. Beim
-          Abrufen der Seite werden vom Webserver automatisch technische Zugriffsdaten (sog. Server-Logs) erfasst.
-          Dies ist für den stabilen und sicheren Betrieb der Website technisch notwendig.
-        </p>
+        <div class="section">
+          <h2>2. Purposes of Data Processing</h2>
 
-        <h4>Erhobene und verarbeitete Daten</h4>
-        <ul>
-          <li>IP-Adresse des anfragenden Geräts</li>
-          <li>Datum und Uhrzeit des Zugriffs</li>
-          <li>Aufgerufene URL / Seite</li>
-          <li>HTTP-Statuscode und übertragene Datenmenge</li>
-          <li>Referrer-URL (Seite, von der aus Sie zu uns gelangt sind)</li>
-          <li>Browser-Typ, Browser-Version und Betriebssystem</li>
-        </ul>
+          <h3>2.1 Website Hosting and Server Logs</h3>
+          <h4>Purpose</h4>
+          <p>The website is hosted on the servers of a web hosting provider. When the page is accessed, the web server automatically records technical access data (server logs). This is technically necessary for the stable and secure operation of the website.</p>
+          <h4>Data collected</h4>
+          <ul>
+            <li>IP address of the requesting device</li>
+            <li>Date and time of access</li>
+            <li>URL / page accessed</li>
+            <li>HTTP status code and data volume transferred</li>
+            <li>Referrer URL</li>
+            <li>Browser type, version, and operating system</li>
+          </ul>
+          <h4>Legal basis</h4>
+          <p><strong>Legitimate interests</strong> pursuant to Art. 6(1)(f) GDPR — secure, stable, and efficient operation of the website, and detection and prevention of abuse.</p>
+          <h4>Retention period</h4>
+          <p>Server logs are typically stored for a few weeks to months.</p>
 
-        <h4>Rechtsgrundlage</h4>
-        <ul>
-          <li>
-            <strong>Berechtigte Interessen</strong> gemäß Art. 6 Abs. 1 lit. f DSGVO<br />
-            Unser berechtigtes Interesse ist der sichere, stabile und effiziente Betrieb der Website sowie die
-            Erkennung und Abwehr von Missbrauch.
-          </li>
-        </ul>
+          <h3>2.2 Google Fonts</h3>
+          <h4>Purpose</h4>
+          <p>This website uses <strong>Google Fonts</strong> (Google Ireland Limited) to display typefaces. When the page loads, font files are retrieved directly from Google's servers.</p>
+          <h4>Data collected</h4>
+          <ul>
+            <li>IP address, browser type and version, operating system, font file URL</li>
+          </ul>
+          <h4>Legal basis</h4>
+          <p><strong>Legitimate interests</strong> pursuant to Art. 6(1)(f) GDPR — consistent, high-quality display of the website.</p>
+          <h4>International transfers</h4>
+          <p>Google Fonts may process data on servers outside the EU/EEA (in particular the USA). The legal basis for such transfers is the <strong>EU–US Data Privacy Framework</strong> and/or <strong>Standard Contractual Clauses (SCCs)</strong>. For more information: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
 
-        <h4>Speicherdauer</h4>
-        <p>
-          Server-Logs werden üblicherweise für wenige Wochen bis Monate gespeichert, sofern sie nicht für die
-          Analyse von Sicherheitsvorfällen oder aus rechtlichen Gründen länger benötigt werden.
-        </p>
+          <h3>2.3 Local Browser Storage (localStorage)</h3>
+          <h4>Purpose</h4>
+          <p>The website stores only your language preference in your browser's local storage. No cookies are set; no sharing with third parties.</p>
+          <h4>Data stored</h4>
+          <ul>
+            <li><code>netshot-lang</code> — your chosen language (e.g. <code>de</code> or <code>en</code>)</li>
+          </ul>
+          <h4>Legal basis</h4>
+          <p><strong>Legitimate interests</strong> pursuant to Art. 6(1)(f) GDPR — user-friendly display in the visitor's preferred language. The stored information contains no personal data.</p>
+          <h4>Retention and control</h4>
+          <p>The entry remains in your browser's local storage until you delete it in your browser settings.</p>
 
-        <!-- 2.2 -->
-        <h3>2.2 Google Fonts</h3>
+          <h3>2.4 Contact by Email</h3>
+          <h4>Purpose</h4>
+          <p>When you contact us by email, we process your inquiry and the data it contains in order to respond to you.</p>
+          <h4>Data collected</h4>
+          <ul>
+            <li>Email address, name and other contact details (if provided), message content, technical email metadata</li>
+          </ul>
+          <h4>Legal basis</h4>
+          <p><strong>Legitimate interests</strong> pursuant to Art. 6(1)(f) GDPR; where applicable, <strong>pre-contractual obligations</strong> pursuant to Art. 6(1)(b) GDPR.</p>
+          <h4>Note</h4>
+          <p>Please do not include special categories of personal data (Art. 9 GDPR) in your email.</p>
+          <h4>Retention period</h4>
+          <p>Email correspondence is stored for the duration necessary to process your inquiry and in accordance with applicable statutory retention obligations.</p>
+        </div>
 
-        <h4>Zweck</h4>
-        <p>
-          Diese Website verwendet <strong>Google Fonts</strong>, einen Dienst der Google Ireland Limited, um
-          Schriftarten darzustellen. Beim Laden der Seite werden die Schriftdateien direkt von den Servern von
-          Google abgerufen.
-        </p>
+        <hr />
 
-        <h4>Erhobene und verarbeitete Daten</h4>
-        <ul>
-          <li>IP-Adresse des anfragenden Geräts</li>
-          <li>Browser-Typ und Browser-Version</li>
-          <li>Betriebssystem</li>
-          <li>Aufgerufene Schriftdatei und zugehörige URL</li>
-        </ul>
+        <div class="section">
+          <h2>3. What We Don't Do</h2>
+          <p>The following data processing activities are <strong>not</strong> carried out on <strong>netshot.store</strong>:</p>
+          <ul>
+            <li>No web analytics or tracking tools (e.g. Google Analytics, Meta Pixel)</li>
+            <li>No advertising or marketing cookies</li>
+            <li>No newsletter or waitlist registration</li>
+            <li>No user accounts or registration</li>
+            <li>No retargeting or behavioural targeting</li>
+            <li>No sale of personal data to third parties</li>
+          </ul>
+        </div>
 
-        <h4>Rechtsgrundlage</h4>
-        <ul>
-          <li>
-            <strong>Berechtigte Interessen</strong> gemäß Art. 6 Abs. 1 lit. f DSGVO<br />
-            Unser berechtigtes Interesse ist die einheitliche und hochwertige Darstellung der Website.
-          </li>
-        </ul>
+        <hr />
 
-        <h4>Internationale Datenweitergabe und Garantien</h4>
-        <p>
-          Google Fonts kann Daten auf Servern außerhalb der EU/des EWR verarbeiten, insbesondere in den USA.
-          Als Garantien dienen:
-        </p>
-        <ul>
-          <li>die Teilnahme von Google am <strong>EU–US Data Privacy Framework</strong> (sofern anwendbar), und/oder</li>
-          <li>der Einsatz von <strong>Standardvertragsklauseln (SCCs)</strong> der Europäischen Kommission.</li>
-        </ul>
+        <div class="section">
+          <h2>4. Data Sharing</h2>
+          <p>We only share your personal data with third parties where legally required, technically necessary for the operation of the website, or you have given explicit consent.</p>
+          <p>Possible recipients: processors (hosting provider, Google Fonts), tax advisors, legal counsel, authorities and supervisory bodies.</p>
+          <p>We do <strong>not</strong> sell your personal data to third parties.</p>
+        </div>
 
-        <h4>Auftragsverarbeiter</h4>
-        <ul>
-          <li>Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland</li>
-        </ul>
+        <hr />
 
-        <h4>Weitere Informationen</h4>
-        <p>
-          Details zur Datenverarbeitung durch Google finden Sie in der
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von Google</a>.
-        </p>
+        <div class="section">
+          <h2>5. Security</h2>
+          <p>We protect personal data through appropriate technical and organisational measures, including:</p>
+          <ul>
+            <li>Encrypted data transmission (TLS/HTTPS)</li>
+            <li>Access restrictions to systems and data</li>
+            <li>Regular review of our systems and processes</li>
+          </ul>
+        </div>
 
-        <!-- 2.3 -->
-        <h3>2.3 Lokaler Browser-Speicher (localStorage)</h3>
+        <hr />
 
-        <h4>Zweck</h4>
-        <p>
-          Die Website speichert im <strong>lokalen Speicher (localStorage)</strong> Ihres Browsers ausschließlich
-          Ihre Sprachpräferenz, damit diese beim nächsten Besuch erhalten bleibt. Es werden keine Cookies gesetzt.
-          Es erfolgt keine Weitergabe dieser Information an Dritte.
-        </p>
+        <div class="section">
+          <h2>6. International Data Transfers</h2>
+          <p>Through the use of Google Fonts, data may be transferred to the USA. The legal basis for such transfers is the <strong>EU–US Data Privacy Framework</strong> and <strong>Standard Contractual Clauses (SCCs)</strong> of the European Commission.</p>
+        </div>
 
-        <h4>Gespeicherte Daten</h4>
-        <ul>
-          <li><code>netshot-lang</code> — Ihre gewählte Sprache (z. B. <code>de</code> oder <code>en</code>)</li>
-        </ul>
+        <hr />
 
-        <h4>Rechtsgrundlage</h4>
-        <ul>
-          <li>
-            <strong>Berechtigte Interessen</strong> gemäß Art. 6 Abs. 1 lit. f DSGVO<br />
-            Unser berechtigtes Interesse ist die benutzerfreundliche Darstellung der Website in der bevorzugten
-            Sprache des Besuchers. Die gespeicherte Information enthält keine personenbezogenen Daten.
-          </li>
-        </ul>
+        <div class="section">
+          <h2>7. Your Rights</h2>
+          <p>Under the GDPR you have the following rights:</p>
+          <ul>
+            <li><strong>Right of access (Art. 15 GDPR)</strong></li>
+            <li><strong>Right to rectification (Art. 16 GDPR)</strong></li>
+            <li><strong>Right to erasure (Art. 17 GDPR)</strong></li>
+            <li><strong>Right to restriction of processing (Art. 18 GDPR)</strong></li>
+            <li><strong>Right to data portability (Art. 20 GDPR)</strong></li>
+            <li><strong>Right to object (Art. 21 GDPR)</strong></li>
+            <li><strong>Right to lodge a complaint (Art. 77 GDPR)</strong></li>
+          </ul>
+          <p style="margin-top: 16px;">Supervisory authority in Austria:</p>
+          <p style="margin-top: 8px;">
+            <strong>Österreichische Datenschutzbehörde</strong><br />
+            Barichgasse 40–42, 1030 Vienna<br />
+            Website: <a href="https://www.dsb.gv.at/" target="_blank" rel="noopener noreferrer">www.dsb.gv.at</a>
+          </p>
+          <p style="margin-top: 16px;">To exercise your rights, contact: <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a></p>
+        </div>
 
-        <h4>Speicherdauer und Kontrolle</h4>
-        <p>
-          Der Eintrag bleibt im lokalen Speicher Ihres Browsers erhalten, bis Sie ihn manuell löschen. Sie können
-          den lokalen Speicher jederzeit in den Einstellungen Ihres Browsers leeren.
-        </p>
+        <hr />
 
-        <!-- 2.4 -->
-        <h3>2.4 Kontaktaufnahme per E-Mail</h3>
+        <div class="section">
+          <h2>8. Provision of Data</h2>
+          <h3>Website visit</h3>
+          <p>Providing personal data is not legally or contractually required to visit our website. Without certain technical data, however, the website cannot be displayed correctly.</p>
+          <h3>Contact by email</h3>
+          <p>To respond to your email inquiry, we require at least your email address.</p>
+        </div>
 
-        <h4>Zweck</h4>
-        <p>
-          Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir Ihre Anfrage und die darin enthaltenen Daten,
-          um Ihnen antworten zu können.
-        </p>
+        <hr />
 
-        <h4>Erhobene und verarbeitete Daten</h4>
-        <ul>
-          <li>E-Mail-Adresse</li>
-          <li>Name und weitere Kontaktdaten, sofern von Ihnen angegeben</li>
-          <li>Inhalt Ihrer Nachricht (inkl. etwaiger Anhänge)</li>
-          <li>Technische E-Mail-Metadaten (z. B. Datum, Uhrzeit, Routing-Informationen)</li>
-        </ul>
-
-        <h4>Rechtsgrundlage</h4>
-        <ul>
-          <li>
-            <strong>Berechtigte Interessen</strong> gemäß Art. 6 Abs. 1 lit. f DSGVO<br />
-            Unser berechtigtes Interesse ist die Beantwortung von Anfragen und die Aufrechterhaltung der
-            Kommunikation.
-          </li>
-          <li>
-            <strong>(Vor-)vertragliche Pflichten</strong> gemäß Art. 6 Abs. 1 lit. b DSGVO<br />
-            Sofern Ihre Anfrage im Zusammenhang mit einem Vertrag oder einer Vertragsanbahnung steht.
-          </li>
-        </ul>
-
-        <h4>Hinweis</h4>
-        <p>
-          Wir bitten Sie, in Ihrer E-Mail keine <strong>besonderen Kategorien personenbezogener Daten</strong>
-          (Art. 9 DSGVO) zu übermitteln, wie etwa Gesundheitsdaten, politische Überzeugungen oder ähnliche
-          sensible Informationen.
-        </p>
-
-        <h4>Speicherdauer</h4>
-        <p>
-          E-Mail-Korrespondenz wird für die zur Bearbeitung Ihrer Anfrage notwendige Dauer gespeichert sowie
-          darüber hinaus, soweit gesetzliche Aufbewahrungspflichten bestehen.
-        </p>
+        <div class="section">
+          <h2>9. Changes to This Policy</h2>
+          <p>We may update this privacy policy from time to time. All changes will be published on this page with an updated date.</p>
+        </div>
       </div>
 
-      <hr />
-
-      <!-- 3 -->
-      <div class="section">
-        <h2>3. Was wir nicht tun</h2>
-        <p>Zur Klarheit: Auf <strong>netshot.store</strong> werden folgende Datenverarbeitungen <strong>nicht</strong> durchgeführt:</p>
-        <ul>
-          <li>Kein Einsatz von Web-Analytics oder Tracking-Tools (z. B. Google Analytics, Meta Pixel)</li>
-          <li>Keine Werbe- oder Marketing-Cookies</li>
-          <li>Kein Newsletter oder Waitlist-Anmeldeverfahren</li>
-          <li>Keine Benutzerkonten oder Registrierungsmöglichkeiten</li>
-          <li>Kein Retargeting oder verhaltensbasiertes Targeting</li>
-          <li>Kein Verkauf personenbezogener Daten an Dritte</li>
-        </ul>
-      </div>
-
-      <hr />
-
-      <!-- 4 -->
-      <div class="section">
-        <h2>4. Datenweitergabe</h2>
-        <p>Wir geben Ihre personenbezogenen Daten nur dann an Dritte weiter, wenn:</p>
-        <ul>
-          <li>dies gesetzlich vorgeschrieben ist,</li>
-          <li>es für die Bereitstellung unserer Website technisch notwendig ist, oder</li>
-          <li>Sie ausdrücklich eingewilligt haben.</li>
-        </ul>
-
-        <p style="margin-top: 12px;">Mögliche Empfänger sind:</p>
-        <ul>
-          <li><strong>Auftragsverarbeiter</strong> gemäß dieser Erklärung (Hosting-Anbieter, Google Fonts)</li>
-          <li><strong>Steuerberater / Wirtschaftsprüfer</strong>, für Buchführung und gesetzliche Meldepflichten</li>
-          <li><strong>Rechtsanwälte</strong>, zur Geltendmachung oder Abwehr von Rechtsansprüchen</li>
-          <li><strong>Behörden und Aufsichtsbehörden</strong>, sofern gesetzlich verpflichtet</li>
-        </ul>
-
-        <p style="margin-top: 12px;">Wir verkaufen Ihre personenbezogenen Daten <strong>nicht</strong> an Dritte.</p>
-      </div>
-
-      <hr />
-
-      <!-- 5 -->
-      <div class="section">
-        <h2>5. Schutz personenbezogener Daten</h2>
-        <p>
-          Wir schützen personenbezogene Daten durch angemessene <strong>technische und organisatorische
-          Maßnahmen</strong>, die dem Stand der Technik entsprechen. Diese umfassen insbesondere:
-        </p>
-        <ul>
-          <li>Verschlüsselung der Datenübertragung (TLS/HTTPS)</li>
-          <li>Zugriffsbeschränkungen auf Systeme und Daten</li>
-          <li>Regelmäßige Überprüfung unserer Systeme und Prozesse</li>
-        </ul>
-        <p style="margin-top: 10px;">
-          Trotz dieser Maßnahmen kann keine absolute Sicherheit garantiert werden. Wir arbeiten kontinuierlich
-          daran, den Schutz zu erhalten und zu verbessern.
-        </p>
-      </div>
-
-      <hr />
-
-      <!-- 6 -->
-      <div class="section">
-        <h2>6. Internationale Datenweitergabe</h2>
-        <p>
-          Durch den Einsatz von Google Fonts können Daten in Länder außerhalb der EU/des EWR, insbesondere in die
-          USA, übermittelt werden. Als rechtliche Grundlage für derartige Transfers dienen:
-        </p>
-
-        <h3>EU–US Data Privacy Framework</h3>
-        <p>
-          Für bestimmte US-Anbieter kann ein <strong>Angemessenheitsbeschluss</strong> auf Basis des
-          <strong>EU–US Data Privacy Framework</strong> (Art. 45 Abs. 1 DSGVO) vorliegen. Zertifizierte Anbieter
-          gelten als in der Lage, ein angemessenes Datenschutzniveau zu gewährleisten.
-        </p>
-
-        <h3>Standardvertragsklauseln (SCC)</h3>
-        <p>
-          Soweit kein Angemessenheitsbeschluss greift, stützen wir uns auf
-          <strong>Standardvertragsklauseln (SCCs)</strong> der Europäischen Kommission, die den Anbieter
-          verpflichten, ein der EU entsprechendes Datenschutzniveau einzuhalten.
-        </p>
-      </div>
-
-      <hr />
-
-      <!-- 7 -->
-      <div class="section">
-        <h2>7. Ihre Rechte als betroffene Person</h2>
-        <p>Gemäß DSGVO stehen Ihnen folgende Rechte zu:</p>
-        <ul>
-          <li><strong>Auskunftsrecht (Art. 15 DSGVO)</strong> – Sie können Auskunft darüber verlangen, ob und welche personenbezogenen Daten wir über Sie verarbeiten.</li>
-          <li><strong>Recht auf Berichtigung (Art. 16 DSGVO)</strong> – Sie können die Korrektur unrichtiger oder unvollständiger Daten verlangen.</li>
-          <li><strong>Recht auf Löschung (Art. 17 DSGVO)</strong> – Sie können die Löschung Ihrer personenbezogenen Daten verlangen, sofern keine gesetzliche Aufbewahrungspflicht oder überwiegendes berechtigtes Interesse entgegensteht.</li>
-          <li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</strong> – Sie können unter bestimmten Voraussetzungen eine Einschränkung der Verarbeitung verlangen.</li>
-          <li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</strong> – Sie können verlangen, von Ihnen bereitgestellte Daten in einem maschinenlesbaren Format zu erhalten.</li>
-          <li><strong>Widerspruchsrecht (Art. 21 DSGVO)</strong> – Sie können der Verarbeitung Ihrer Daten auf Basis berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO) jederzeit widersprechen.</li>
-          <li><strong>Beschwerderecht (Art. 77 DSGVO)</strong> – Sie können bei einer Datenschutzbehörde Beschwerde einlegen.</li>
-        </ul>
-
-        <p style="margin-top: 16px;">Zuständige Aufsichtsbehörde in Österreich:</p>
-        <p style="margin-top: 8px;">
-          <strong>Österreichische Datenschutzbehörde</strong><br />
-          Barichgasse 40–42<br />
-          1030 Wien<br />
-          Website: <a href="https://www.dsb.gv.at/" target="_blank" rel="noopener noreferrer">https://www.dsb.gv.at/</a>
-        </p>
-
-        <p style="margin-top: 16px;">
-          Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:
-          <a href="mailto:office@ferrosystem.at">office@ferrosystem.at</a>
-        </p>
-      </div>
-
-      <hr />
-
-      <!-- 8 -->
-      <div class="section">
-        <h2>8. Bereitstellung von Daten</h2>
-
-        <h3>Website-Besuch</h3>
-        <p>
-          Die Bereitstellung personenbezogener Daten (z. B. Ihrer IP-Adresse) ist weder gesetzlich noch vertraglich
-          vorgeschrieben, um unsere Website zu besuchen. Ohne die Verarbeitung bestimmter technischer Daten kann
-          die Website jedoch nicht korrekt dargestellt werden.
-        </p>
-
-        <h3>Kontaktaufnahme per E-Mail</h3>
-        <p>
-          Wenn Sie uns per E-Mail kontaktieren, benötigen wir zumindest Ihre E-Mail-Adresse, um Ihnen antworten
-          zu können. Ohne diese Angabe ist eine Beantwortung Ihrer Anfrage nicht möglich.
-        </p>
-      </div>
-
-      <hr />
-
-      <!-- 9 -->
-      <div class="section">
-        <h2>9. Änderungen dieser Datenschutzerklärung</h2>
-        <p>
-          Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren, beispielsweise wenn sich unsere
-          Dienste ändern, neue Technologien eingesetzt werden oder sich gesetzliche Anforderungen ändern.
-          Alle Änderungen werden auf dieser Seite mit aktualisiertem Datum veröffentlicht.
-        </p>
-      </div>
     </main>
 
     <footer>
-      &copy; <script>document.write(new Date().getFullYear())</script> NetShot. Alle Rechte vorbehalten.
+      &copy; <script>document.write(new Date().getFullYear())</script> NetShot. <span id="footer-rights">Alle Rechte vorbehalten.</span>
       &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a>
     </footer>
+
+    <script>
+      const STORAGE_KEY = 'netshot-lang';
+      const btns = document.querySelectorAll('.lang-btn');
+      const contents = document.querySelectorAll('.lang-content');
+      const backLink = document.getElementById('back-link');
+      const footerRights = document.getElementById('footer-rights');
+      const navLinks = document.querySelectorAll('.doc-switcher a');
+
+      function setLang(lang) {
+        btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+        contents.forEach(c => c.classList.toggle('active', c.id === 'content-' + lang));
+        backLink.textContent = lang === 'de' ? 'Zurück' : 'Back';
+        footerRights.textContent = lang === 'de' ? 'Alle Rechte vorbehalten.' : 'All rights reserved.';
+        navLinks.forEach(a => { if (a.dataset[lang]) a.textContent = a.dataset[lang]; });
+        document.documentElement.lang = lang;
+        localStorage.setItem(STORAGE_KEY, lang);
+      }
+
+      btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+      const saved = localStorage.getItem(STORAGE_KEY);
+      const lang = (saved === 'de' || saved === 'en') ? saved : (navigator.language.startsWith('de') ? 'de' : 'en');
+      setLang(lang);
+    </script>
   </body>
 </html>
