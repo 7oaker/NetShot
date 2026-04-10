@@ -30,7 +30,7 @@ export default function FAQ() {
       ref={sectionRef}
       aria-label="Frequently asked questions about NetShot tennis net phone mount"
       style={{
-        background: 'var(--bg-2)',
+        background: 'var(--bg)',
         padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
         position: 'relative',
         overflow: 'hidden',

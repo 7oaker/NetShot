@@ -42,7 +42,7 @@ export default function App() {
       <main>
         <Hero />
         <ProductSpecs />
-        <Tagline />
+        {/* <Tagline /> */}
         <HowItWorks />
         <AppSection />
         <Sports />

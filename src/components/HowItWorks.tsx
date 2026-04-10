@@ -1,6 +1,17 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { useLang } from '../i18n/LanguageContext'
+import placeDevice from '../assets/tennis/how_works/place_device.webp'
+import inplaceDevice from '../assets/tennis/how_works/inplace_device.webp'
+import appScreen from '../assets/tennis/how_works/app_screen.webp'
+import seeImprove from '../assets/tennis/how_works/see_improve.webp'
+
+const stepBg: Record<number, string> = {
+  0: placeDevice,
+  1: inplaceDevice,
+  2: appScreen,
+  3: seeImprove,
+}
 
 const stepIcons = [
   (
@@ -57,7 +68,7 @@ export default function HowItWorks() {
 
   return (
     <section id="how-it-works" aria-label="How NetShot works — mount, clip, play, review" ref={sectionRef} style={{
-      background: 'var(--bg-2)',
+      background: 'var(--bg)',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       position: 'relative',
       overflow: 'hidden',
@@ -67,9 +78,9 @@ export default function HowItWorks() {
 
       {/* Header */}
       <div ref={headRef} style={{ textAlign: 'center', marginBottom: 'clamp(56px, 8vw, 80px)', opacity: 0 }}>
-        <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
+        {/* <p style={{ fontSize: '13px', color: '#0071e3', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>
           {t.howItWorks.label}
-        </p>
+        </p> */}
         <h2 style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.03em', lineHeight: 1.05 }}>
           {t.howItWorks.headline}<br />
           <span style={{ color: 'var(--text-secondary)', fontWeight: 300 }}>{t.howItWorks.subheadline}</span>
@@ -100,20 +111,47 @@ export default function HowItWorks() {
           onMouseEnter={e => e.currentTarget.style.background = 'var(--surface-3)'}
           onMouseLeave={e => e.currentTarget.style.background = 'var(--surface)'}
           >
-            <div style={{ marginBottom: '24px' }}>{stepIcons[i]}</div>
-            <div style={{ fontSize: '11px', color: 'var(--text-tertiary)', fontWeight: 600, letterSpacing: '0.1em', marginBottom: '10px' }}>
-              {step.number}
+            {stepBg[i] && (
+              <>
+                <div className="step-bg-img" style={{
+                  position: 'absolute', inset: 0,
+                  backgroundImage: `url(${stepBg[i]})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  opacity: 0.12,
+                  transition: 'opacity 0.5s ease',
+                  pointerEvents: 'none',
+                }} />
+                <div className="step-bg-overlay" style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(to bottom, var(--surface) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 60%, var(--surface) 100%)',
+                  transition: 'opacity 0.5s ease',
+                  pointerEvents: 'none',
+                }} />
+              </>
+            )}
+            <div className="step-icon" style={{ marginBottom: '24px' }}>{stepIcons[i]}</div>
+            <div className="step-header">
+              <div style={{ fontSize: '11px', color: '#fff', fontWeight: 600, letterSpacing: '0.1em', marginBottom: '10px' }}>
+                {step.number}
+              </div>
+              <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', marginBottom: '10px' }}>
+                {step.headline}
+              </h3>
             </div>
-            <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: 'var(--text)', letterSpacing: '-0.02em', marginBottom: '10px' }}>
-              {step.headline}
-            </h3>
-            <p style={{ fontSize: 'clamp(13px, 1.4vw, 15px)', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+            <p className="step-desc" style={{ fontSize: 'clamp(13px, 1.4vw, 15px)', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, transition: 'opacity 0.4s ease, max-height 0.4s ease' }}>
               {step.description}
             </p>
           </div>
         ))}
       </div>
       <style>{`
+        .how-step:hover .step-bg-img { opacity: 0.55 !important; }
+        .how-step:hover .step-bg-overlay { opacity: 0 !important; }
+        .how-step:hover .step-desc { opacity: 0 !important; }
+        .how-step:hover .step-icon { opacity: 0 !important; }
+        .step-desc { transition: opacity 0.4s ease; }
+        .step-icon { transition: opacity 0.4s ease; }
         @media (max-width: 640px) {
           .how-steps { grid-template-columns: 1fr !important; }
           .how-step-sep { border-right: none !important; border-bottom: 1px solid var(--border); }

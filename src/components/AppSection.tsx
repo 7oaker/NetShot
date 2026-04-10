@@ -35,7 +35,7 @@ export default function AppSection() {
 
   return (
     <section id="app" aria-label="NetShot app — AI highlights, training mode, autopilot recording" ref={sectionRef} style={{
-      background: 'var(--bg-3)',
+      background: 'var(--bg)',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       overflow: 'hidden',
       position: 'relative',
