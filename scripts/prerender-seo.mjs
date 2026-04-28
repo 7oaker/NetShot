@@ -155,6 +155,7 @@ function localizeHtml(template, lang, page, canonicalPath) {
     .replace(/<meta name="twitter:title" content="[^"]*" \/>/, `<meta name="twitter:title" content="${escapeHtml(page.title)}" />`)
     .replace(/<meta name="twitter:description" content="[^"]*" \/>/, `<meta name="twitter:description" content="${escapeHtml(page.description)}" />`)
     .replace(/<link rel="canonical" href="[^"]*" \/>/, `<link rel="canonical" href="${canonicalUrl}" />\n    ${alternates}`)
+    .replace('</head>', `    <style>.seo-prerender{display:none}</style>\n  </head>`)
     .replace(/<div id="root"><\/div>/, `<div id="root">${renderStaticContent(page)}</div>`)
 
   html = updateJsonLd(html, page, canonicalUrl)
