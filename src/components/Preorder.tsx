@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { gsap } from 'gsap'
 import amazonBlackIcon from '../assets/logo/amazon/black/icons8-amazon-100.png'
 import Model3D from './Model3D'
 import { useLang } from '../i18n/LanguageContext'
-import { AMAZON_URL } from '../constants'
+import { AMAZON_URL, HAS_AMAZON_URL } from '../constants'
 
 const statsValues = ['6061', '238g', '<5s', '∞']
 const featureColors = ['#0071e3', '#30d158', '#ff9f0a']
@@ -37,6 +37,20 @@ export default function Preorder() {
   }
 
   const { getYoursCard, appCard } = t.preorder
+  const amazonButtonStyle: CSSProperties = {
+    display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '9px',
+    background: HAS_AMAZON_URL ? '#ff9900' : 'var(--overlay-light)',
+    border: HAS_AMAZON_URL ? 'none' : '1px solid var(--border-medium)',
+    borderRadius: '980px',
+    padding: '13px 24px',
+    color: HAS_AMAZON_URL ? '#000' : 'var(--text-secondary)', fontFamily: 'var(--font)',
+    fontSize: '15px', fontWeight: 600,
+    textDecoration: 'none',
+    transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
+    boxShadow: HAS_AMAZON_URL ? '0 0 24px rgba(255,153,0,0.3)' : 'none',
+    whiteSpace: 'nowrap',
+    cursor: HAS_AMAZON_URL ? 'pointer' : 'default',
+  }
 
   return (
     <section id="order" ref={sectionRef} style={{
@@ -166,29 +180,24 @@ export default function Preorder() {
             </div>
 
             {/* Amazon CTA */}
-            <a
-              href={AMAZON_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="amazon-btn"
-              style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '9px',
-                background: '#ff9900',
-                borderRadius: '980px',
-                padding: '13px 24px',
-                color: '#000', fontFamily: 'var(--font)',
-                fontSize: '15px', fontWeight: 600,
-                textDecoration: 'none',
-                transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
-                boxShadow: '0 0 24px rgba(255,153,0,0.3)',
-                whiteSpace: 'nowrap',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#ffaa1a'; e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 0 36px rgba(255,153,0,0.45)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#ff9900'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 24px rgba(255,153,0,0.3)' }}
-            >
-              <img src={amazonBlackIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
-              {getYoursCard.cta}
-            </a>
+            {HAS_AMAZON_URL ? (
+              <a
+                href={AMAZON_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="amazon-btn"
+                style={amazonButtonStyle}
+                onMouseEnter={e => { e.currentTarget.style.background = '#ffaa1a'; e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 0 36px rgba(255,153,0,0.45)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#ff9900'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 24px rgba(255,153,0,0.3)' }}
+              >
+                <img src={amazonBlackIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
+                {getYoursCard.cta}
+              </a>
+            ) : (
+              <span className="amazon-btn" aria-label={getYoursCard.comingSoonCta} style={amazonButtonStyle}>
+                {getYoursCard.comingSoonCta}
+              </span>
+            )}
           </div>
 
           {/* ── App Waitlist ── */}

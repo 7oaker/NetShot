@@ -14,7 +14,7 @@ export const translations = {
       headline: ['Play.', 'Capture.', 'Enjoy.'],
       sub1: 'Your game. Captured effortlessly.',
       sub2: 'The premium aluminium mount built for the net.',
-      orderNow: 'Order Now',
+      orderNow: 'Get Launch Updates',
       seeHow: 'See How It Works',
       scroll: 'Scroll',
     },
@@ -58,7 +58,7 @@ export const translations = {
           title: 'Clip',
           headline: 'Your phone. Perfectly positioned.',
           description:
-            'The universal spring-loaded cradle holds any smartphone up to 90mm wide. Portrait or landscape — your call.',
+            'The universal spring-loaded cradle holds any smartphone up to 75mm wide. Portrait or landscape — your call.',
         },
         {
           number: '03',
@@ -142,13 +142,14 @@ export const translations = {
     preorder: {
       headline: 'Your game.',
       subheadline: 'Captured effortlessly.',
-      description: 'Get the mount now or join the waitlist for the NetShot app.',
+      description: 'Join the launch list for the mount and the upcoming NetShot app.',
       getYoursCard: {
-        badge: 'Available Now',
+        badge: 'Coming Soon',
         title: 'Get Yours',
-        description: 'Built from aerospace-grade aluminium. Mounts to any tennis net post in seconds.',
+        description: 'Built from aerospace-grade aluminium. Mounts to any tennis net post in seconds. Amazon listing coming soon.',
         statsLabels: ['Aluminium', 'Weight', 'Mount time', 'Potential'],
         cta: 'Buy on Amazon',
+        comingSoonCta: 'Amazon listing coming soon',
       },
       appCard: {
         badge: 'Coming Soon',
@@ -222,7 +223,7 @@ export const translations = {
       headline: ['Spielen.', 'Aufnehmen.', 'Genießen.'],
       sub1: 'Dein Spiel. Mühelos festgehalten.',
       sub2: 'Die premium Aluminiumhalterung fürs Netz.',
-      orderNow: 'Jetzt bestellen',
+      orderNow: 'Updates erhalten',
       seeHow: 'So funktioniert\'s',
       scroll: 'Scrollen',
     },
@@ -350,13 +351,14 @@ export const translations = {
     preorder: {
       headline: 'Dein Spiel.',
       subheadline: 'Mühelos festgehalten.',
-      description: 'Hol dir die Halterung jetzt oder trag dich für die NetShot-App auf die Warteliste ein.',
+      description: 'Trag dich für den Launch der Halterung und der kommenden NetShot-App ein.',
       getYoursCard: {
-        badge: 'Jetzt verfügbar',
-        title: 'Jetzt kaufen',
-        description: 'Aus Luftfahrtaluminium gefertigt. Montiert in Sekunden an jedem Tennisnetpfosten.',
+        badge: 'Demnächst',
+        title: 'Jetzt vormerken',
+        description: 'Aus Luftfahrtaluminium gefertigt. Montiert in Sekunden an jedem Tennisnetpfosten. Amazon-Listing folgt in Kürze.',
         statsLabels: ['Aluminium', 'Gewicht', 'Montagezeit', 'Potenzial'],
         cta: 'Auf Amazon kaufen',
+        comingSoonCta: 'Amazon-Listing folgt in Kürze',
       },
       appCard: {
         badge: 'Demnächst',

@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type CSSProperties } from 'react'
 import { gsap } from 'gsap'
 import amazonWhiteIcon from '../assets/logo/amazon/icons8-amazon-100.png'
 import { useLang } from '../i18n/LanguageContext'
-import { AMAZON_URL } from '../constants'
+import { AMAZON_URL, HAS_AMAZON_URL } from '../constants'
 
 export default function Hero() {
   const { t } = useLang()
@@ -34,6 +34,18 @@ export default function Hero() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const primaryCtaStyle: CSSProperties = {
+    display: 'inline-flex', alignItems: 'center', gap: '9px',
+    background: '#0071e3', borderRadius: '980px', border: 'none',
+    padding: '14px 32px',
+    color: '#fff', fontFamily: 'var(--font)',
+    fontSize: '17px', fontWeight: 500,
+    textDecoration: 'none',
+    transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
+    boxShadow: '0 0 40px rgba(0,113,227,0.35)',
+    cursor: 'pointer',
+  }
+
   return (
     <section aria-label="NetShot tennis net phone mount — record your game automatically" style={{
       minHeight: '100vh',
@@ -52,7 +64,6 @@ export default function Hero() {
         muted
         loop
         playsInline
-        poster="/hero-poster.jpg"
         aria-hidden="true"
         style={{
           position: 'absolute', inset: 0,
@@ -126,26 +137,28 @@ export default function Hero() {
       </div>
 
       <div ref={ctaRef} style={{ display: 'flex', gap: '12px', marginTop: '36px', zIndex: 2, position: 'relative', opacity: 0, flexWrap: 'wrap', justifyContent: 'center' }}>
-        <a
-          href={AMAZON_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: '9px',
-            background: '#0071e3', borderRadius: '980px',
-            padding: '14px 32px',
-            color: '#fff', fontFamily: 'var(--font)',
-            fontSize: '17px', fontWeight: 500,
-            textDecoration: 'none',
-            transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
-            boxShadow: '0 0 40px rgba(0,113,227,0.35)',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.background = '#0077ed'; e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 0 60px rgba(0,113,227,0.5)' }}
-          onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(0,113,227,0.35)' }}
-        >
-          <img src={amazonWhiteIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
-          {t.hero.orderNow}
-        </a>
+        {HAS_AMAZON_URL ? (
+          <a
+            href={AMAZON_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={primaryCtaStyle}
+            onMouseEnter={e => { e.currentTarget.style.background = '#0077ed'; e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 0 60px rgba(0,113,227,0.5)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(0,113,227,0.35)' }}
+          >
+            <img src={amazonWhiteIcon} alt="Amazon" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
+            {t.preorder.getYoursCard.cta}
+          </a>
+        ) : (
+          <button
+            onClick={() => scrollTo('order')}
+            style={primaryCtaStyle}
+            onMouseEnter={e => { e.currentTarget.style.background = '#0077ed'; e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 0 60px rgba(0,113,227,0.5)' }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(0,113,227,0.35)' }}
+          >
+            {t.hero.orderNow}
+          </button>
+        )}
         <button
           onClick={() => scrollTo('how-it-works')}
           style={{

@@ -58,6 +58,7 @@ export default function FAQ() {
           >
             <button
               aria-expanded={open === i}
+              aria-controls={`faq-answer-${i}`}
               onClick={() => setOpen(open === i ? null : i)}
               style={{
                 width: '100%',
@@ -98,17 +99,22 @@ export default function FAQ() {
                 </svg>
               </span>
             </button>
-            {open === i && (
-              <p style={{
+            <p
+              id={`faq-answer-${i}`}
+              style={{
                 fontSize: 'clamp(14px, 1.5vw, 15px)',
                 color: 'var(--text-secondary)',
                 lineHeight: 1.7,
-                paddingBottom: 'clamp(16px, 2vw, 22px)',
+                maxHeight: open === i ? '220px' : 0,
+                opacity: open === i ? 1 : 0,
+                overflow: 'hidden',
+                paddingBottom: open === i ? 'clamp(16px, 2vw, 22px)' : 0,
                 margin: 0,
-              }}>
-                {faq.a}
-              </p>
-            )}
+                transition: 'max-height 0.3s ease, opacity 0.25s ease, padding-bottom 0.3s ease',
+              }}
+            >
+              {faq.a}
+            </p>
           </div>
         ))}
       </div>
