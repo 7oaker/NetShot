@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import { useLang } from '../i18n/LanguageContext'
+import { APP_STORE_URL } from '../constants'
 
 import img1 from '../assets/tennis/pexels-payam-zolfagharian-512739374-20544298.webp'
 import img2 from '../assets/tennis/pexels-rdne-8224402.webp'
@@ -34,7 +35,7 @@ export default function AppSection() {
   const activeBg = featureBgs[active]
 
   return (
-    <section id="app" aria-label="NetShot app — AI highlights, training mode, autopilot recording" ref={sectionRef} style={{
+    <section id="app" aria-label="NetShot app — voice triggers, clip editing, highlight reel generation" ref={sectionRef} style={{
       background: 'var(--bg)',
       padding: 'clamp(80px, 12vw, 140px) clamp(24px, 6vw, 80px)',
       overflow: 'hidden',
@@ -187,16 +188,35 @@ export default function AppSection() {
           }
         `}</style>
 
-        {/* Coming soon badge */}
-        <div style={{ textAlign: 'center', marginTop: '32px' }}>
+        {/* Store buttons */}
+        <div style={{ textAlign: 'center', marginTop: '40px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '9px',
+              background: '#fff', border: 'none',
+              borderRadius: '980px', padding: '13px 28px',
+              color: '#000', fontFamily: 'var(--font)',
+              fontSize: '15px', fontWeight: 600,
+              textDecoration: 'none', whiteSpace: 'nowrap',
+              transition: 'transform 0.2s, box-shadow 0.2s',
+              boxShadow: '0 0 32px rgba(255,255,255,0.15)',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.boxShadow = '0 0 48px rgba(255,255,255,0.25)' }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 0 32px rgba(255,255,255,0.15)' }}
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            {t.app.appStoreCta}
+          </a>
           <span style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            background: 'var(--overlay-faint)',
-            border: '1px solid var(--border)',
-            borderRadius: '980px', padding: '8px 20px',
+            display: 'inline-flex', alignItems: 'center', gap: '7px',
             fontSize: '13px', color: 'var(--text-tertiary)',
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#ff9f0a', display: 'inline-block' }} />
+            <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--text-tertiary)', display: 'inline-block', opacity: 0.4 }} />
             {t.app.comingSoon}
           </span>
         </div>

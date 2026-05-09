@@ -122,6 +122,21 @@ export default function Navbar() {
           {/* Language toggle */}
           <LangToggle lang={lang} setLang={setLang} light={!scrolled} />
 
+          <button onClick={() => scrollTo('app')} style={{
+            background: 'none',
+            border: `1px solid ${scrolled ? 'var(--border-medium)' : 'rgba(255,255,255,0.3)'}`,
+            cursor: 'pointer',
+            color: scrolled ? 'var(--text)' : '#f5f5f7',
+            fontFamily: 'var(--font)',
+            fontSize: '13px', fontWeight: 500,
+            padding: '7px 16px', borderRadius: '980px',
+            transition: 'background 0.2s, transform 0.15s, border-color 0.2s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = scrolled ? 'var(--overlay-light)' : 'rgba(255,255,255,0.12)'; e.currentTarget.style.transform = 'scale(1.03)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'none'; e.currentTarget.style.transform = 'scale(1)' }}>
+            {t.nav.downloadApp}
+          </button>
+
           <button onClick={() => scrollTo('order')} style={{
             background: '#0071e3', border: 'none', cursor: 'pointer',
             color: '#fff', fontFamily: 'var(--font)',
@@ -206,7 +221,17 @@ export default function Navbar() {
               {label}
             </button>
           ))}
-          <div style={{ paddingTop: '12px' }}>
+          <div style={{ paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <button onClick={() => scrollTo('app')} style={{
+              background: 'none',
+              border: '1px solid var(--border-medium)',
+              borderRadius: '980px', cursor: 'pointer',
+              color: 'var(--text)', fontFamily: 'var(--font)',
+              fontSize: '15px', fontWeight: 500,
+              padding: '12px 20px', textAlign: 'center',
+            }}>
+              {t.nav.downloadApp}
+            </button>
             <LangToggle lang={lang} setLang={setLang} light={false} />
           </div>
         </div>

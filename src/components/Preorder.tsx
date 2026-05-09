@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, type CSSProperties } from 'react'
 import { gsap } from 'gsap'
 import amazonBlackIcon from '../assets/logo/amazon/black/icons8-amazon-100.png'
 import Model3D from './Model3D'
 import { useLang } from '../i18n/LanguageContext'
-import { AMAZON_URL, HAS_AMAZON_URL } from '../constants'
+import { AMAZON_URL, HAS_AMAZON_URL, APP_STORE_URL } from '../constants'
 
 const statsValues = ['6061', '238g', '<5s', '∞']
 const featureColors = ['#0071e3', '#30d158', '#ff9f0a']
@@ -12,10 +12,6 @@ export default function Preorder() {
   const { t } = useLang()
   const sectionRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
-  const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-  const [focused, setFocused] = useState(false)
-  const [emailError, setEmailError] = useState(false)
 
   useEffect(() => {
     gsap.fromTo(contentRef.current,
@@ -24,17 +20,6 @@ export default function Preorder() {
         scrollTrigger: { trigger: sectionRef.current, start: 'top 70%' } }
     )
   }, [])
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-    if (!valid) {
-      setEmailError(true)
-      return
-    }
-    setEmailError(false)
-    setSubmitted(true)
-  }
 
   const { getYoursCard, appCard } = t.preorder
   const amazonButtonStyle: CSSProperties = {
@@ -254,72 +239,43 @@ export default function Preorder() {
             {/* Spacer */}
             <div style={{ flex: 1 }} />
 
-            {/* Email form */}
-            {!submitted ? (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <form onSubmit={handleSubmit} className="notify-form" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <input
-                    type="email"
-                    placeholder={appCard.placeholder}
-                    value={email}
-                    onChange={e => { setEmail(e.target.value); setEmailError(false) }}
-                    onFocus={() => setFocused(true)}
-                    onBlur={() => setFocused(false)}
-                    aria-invalid={emailError}
-                    aria-describedby={emailError ? 'email-error' : undefined}
-                    style={{
-                      flex: 1,
-                      background: 'var(--overlay-light)',
-                      border: `1px solid ${emailError ? 'rgba(255,69,58,0.7)' : focused ? 'rgba(0,113,227,0.6)' : 'var(--border-medium)'}`,
-                      borderRadius: '980px',
-                      padding: '12px 18px',
-                      color: 'var(--text)',
-                      fontFamily: 'var(--font)',
-                      fontSize: '14px',
-                      outline: 'none',
-                      transition: 'border-color 0.25s, box-shadow 0.25s',
-                      boxShadow: emailError ? '0 0 0 3px rgba(255,69,58,0.15)' : focused ? '0 0 0 3px rgba(0,113,227,0.15)' : 'none',
-                    }}
-                  />
-                  {emailError && (
-                    <p id="email-error" role="alert" style={{ margin: '0 0 0 4px', fontSize: '12px', color: '#ff453a' }}>
-                      Please enter a valid email address.
-                    </p>
-                  )}
-                  <button type="submit" style={{
-                    background: '#0071e3', border: 'none', cursor: 'pointer',
-                    color: '#fff', fontFamily: 'var(--font)',
-                    fontSize: '14px', fontWeight: 500,
-                    padding: '12px 20px', borderRadius: '980px',
-                    whiteSpace: 'nowrap',
-                    transition: 'background 0.2s, transform 0.2s',
-                    boxShadow: '0 0 24px rgba(0,113,227,0.35)',
-                    width: '100%',
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#0077ed'; e.currentTarget.style.transform = 'scale(1.03)' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#0071e3'; e.currentTarget.style.transform = 'scale(1)' }}>
-                    {appCard.notifyMe}
-                  </button>
-                </form>
-                <p style={{ margin: 0, fontSize: '12px', color: 'var(--text-tertiary)', paddingLeft: '4px' }}>
-                  {appCard.noSpam}
-                </p>
-              </div>
-            ) : (
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: '10px',
-                background: 'rgba(48,209,88,0.1)',
-                border: '1px solid rgba(48,209,88,0.25)',
-                borderRadius: '980px', padding: '12px 20px',
-                color: '#30d158', fontSize: '14px', fontWeight: 500,
-              }}>
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
-                  <circle cx="10" cy="10" r="9" stroke="#30d158" strokeWidth="1.5"/>
-                  <path d="M6.5 10l2.5 2.5 4.5-5" stroke="#30d158" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            {/* Store buttons */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '9px',
+                  background: '#000', border: '1px solid rgba(255,255,255,0.12)',
+                  borderRadius: '980px', padding: '13px 24px',
+                  color: '#fff', fontFamily: 'var(--font)',
+                  fontSize: '15px', fontWeight: 600,
+                  textDecoration: 'none', whiteSpace: 'nowrap',
+                  transition: 'background 0.2s, transform 0.2s, box-shadow 0.2s',
+                  boxShadow: '0 0 24px rgba(0,113,227,0.25)',
+                  width: '100%', boxSizing: 'border-box',
+                } as CSSProperties}
+                onMouseEnter={e => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.transform = 'scale(1.03)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#000'; e.currentTarget.style.transform = 'scale(1)' }}
+              >
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                 </svg>
-                {appCard.onList}
+                {appCard.appStoreCta}
+              </a>
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                background: 'var(--overlay-faint)',
+                border: '1px solid var(--border)',
+                borderRadius: '980px', padding: '10px 20px',
+                fontSize: '13px', color: 'var(--text-tertiary)',
+                width: '100%', boxSizing: 'border-box',
+              } as CSSProperties}>
+                <span style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--text-tertiary)', display: 'inline-block', opacity: 0.5 }} />
+                {appCard.playStoreSoon}
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
